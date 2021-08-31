@@ -1,8 +1,90 @@
-## Welcome to GitHub Pages
+## PHP Houdini Documentation
 
-You can use the [editor on GitHub](https://github.com/profoundinventions/php-houdini-docs/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This document describes how to use the PhpStorm plugin `PHP Houdini`
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+`PHP Houdini` allows you to add completion for classes magic methods
+and properties.
+
+### Table of Contents
+
+1. [The .houdini.php config file](#the-houdini-config-file)
+1. [Promote protected and private properties to public](#promote-protected-and-private-properties-to-public)
+1. [Filters](#filters)
+1. [Transforms](#transforms)
+
+### The houdini config file
+
+The plugin is configured by a `.houdini.php` config file with a special syntax
+in the root of each project. This file is similar  to `.phpstorm.meta.php`.
+You will use some function calls within this file to configure the plugin.
+
+The namespace of the config file must begin with `Houdini\Config\V1`. 
+Each configuration of a class will begin with the function call `houdini()`,
+That function returns an object you can use for configuring the plugin.
+
+So, to start configuring the plugin, you can do this:
+```php
+<?php // inside .houdini.php
+namespace Houdini\Config\V1;
+
+houdini()->
+```
+
+### Promote Protected and Private Properties to Public
+
+Let's say you have a class that uses `__get()` to allow public access
+to properties that are `private` and `protected`. Here's an example that
+will cause PhpStorm to complete the private/protected properties for you
+for that class:
+
+```php
+<?php // inside .houdini.php
+namespace Houdini\Config\V1;
+
+use YourNamespace\YourDynamicClass;
+
+houdini()->modifyClass(YourDynamicClass::class)
+    ->promoteProperties();
+```
+
+#### Only promoting protected properties
+
+The previous example will promote all properties, private and protected.
+If you only wanted to promote protected ones, you could add a [filter](#filters):
+
+```php
+<?php // inside .houdini.php
+namespace Houdini\Config\V1;
+
+use YourNamespace\YourDynamicClass;
+
+houdini()->modifyClass(YourDynamicClass::class)
+    ->promoteProperties()
+    ->filter( AccessFilter::isProtected() );
+```
+
+The `AccessFilter` class used here is defined in the `Houdini\Config\V1`
+namespace. 
+
+### Filters
+
+You can pass multiple filters to the filter method, and they will be
+combined with logical AND - so all the filters must apply. 
+If you want to combine filters with logical OR, you can use `AnyFilter`:
+
+```php
+<?php // inside .houdini.php
+namespace Houdini\Config\V1;
+
+use YourNamespace\YourDynamicClass;
+
+houdini()->modifyClass(YourDynamicClass::class)
+    ->promoteProperties()
+    ->filter( new AnyFilter(AccessFilter::isProtected(), AccessFilter::isPrivate() );
+```
+
+### Transforms
+
 
 ### Markdown
 

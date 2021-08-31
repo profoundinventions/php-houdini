@@ -92,7 +92,7 @@ use YourNamespace\YourDynamicClass;
 
 houdini()->modifyClass(YourDynamicClass::class)
     ->promoteProperties()
-    ->filter( new AnyFilter(AccessFilter::isProtected(), AccessFilter::isPrivate() );
+    ->filter( AnyFilter::create(AccessFilter::isProtected(), AccessFilter::isPrivate() );
 ```
 
 ### Transforms

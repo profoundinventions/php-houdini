@@ -2,15 +2,24 @@
 
 This document describes how to use the PhpStorm plugin `PHP Houdini`
 
-`PHP Houdini` allows you to add completion for classes magic methods
+`PHP Houdini` allows you to add completion for classes with magic methods
 and properties.
 
 ### Table of Contents
 
 1. [The .houdini.php config file](#the-houdini-config-file)
-1. [Promote protected and private properties to public](#promote-protected-and-private-properties-to-public)
+1. [Promoting properties](#promoting-properties)
+1. [Promoting methods](#promoting-methods)
 1. [Filters](#filters)
 1. [Transforms](#transforms)
+1. [Completing methods from properties]()
+1. [Completing methods from constants]()
+1. [Completing properties from methods]()
+1. [Completing properties from properties]()
+1. [Completing properties from constants]()
+1. [ArrayPatterns]()
+1. [Completing methods from ArrayPatterns]()
+1. [Completing properties from ArrayPatterns]()
 
 ### The houdini config file
 
@@ -30,7 +39,7 @@ namespace Houdini\Config\V1;
 houdini()->
 ```
 
-### Promote Protected and Private Properties to Public
+### Promoting Properties
 
 Let's say you have a class that uses `__get()` to allow public access
 to properties that are `private` and `protected`. Here's an example that
@@ -66,6 +75,9 @@ houdini()->modifyClass(YourDynamicClass::class)
 The `AccessFilter` class used here is defined in the `Houdini\Config\V1`
 namespace. 
 
+### Promoting Methods
+
+#### todo
 ### Filters
 
 You can pass multiple filters to the filter method, and they will be
@@ -85,34 +97,6 @@ houdini()->modifyClass(YourDynamicClass::class)
 
 ### Transforms
 
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/profoundinventions/php-houdini-docs/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 

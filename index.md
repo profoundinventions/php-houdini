@@ -12,26 +12,35 @@ and properties.
 1. [Promoting methods](#promoting-methods)
 1. [Filters](#filters)
 1. [Transforms](#transforms)
-1. [Completing methods from properties]()
-1. [Completing methods from constants]()
-1. [Completing properties from methods]()
-1. [Completing properties from properties]()
-1. [Completing properties from constants]()
+1. [Adding dynamic properties]()
+   1. [from a single property]()
+   1. [from all properties]()
+   1. [from a single constant]()
+   1. [from all constants]()
+1. [Adding dynamic methods]()
+   1. [from a single property]()
+   1. [from all properties]()
+   1. [from a single constant]()
+   1. [from all constants]()
 1. [ArrayPatterns]()
-1. [Completing methods from ArrayPatterns]()
-1. [Completing properties from ArrayPatterns]()
+    1. [Completing methods from ArrayPatterns]()
+    1. [Completing properties from ArrayPatterns]()
+1. [List of filters]()
+1. [List of transforms]()
+1. [Support or contact](#support-or-contact)
 
-### The houdini config file
+### The Houdini config file
 
-The plugin is configured by a `.houdini.php` config file with a special syntax
+The Houdini plugin is configured by a `.houdini.php` config file
 in the root of each project. This file is similar  to `.phpstorm.meta.php`.
 You will use some function calls within this file to configure the plugin.
 
-The namespace of the config file must begin with `Houdini\Config\V1`. 
-Each configuration of a class will begin with the function call `houdini()`,
+The namespace of the config file must be `Houdini\Config\V1`. 
+Each configuration of a dynamic class will begin with the function call `houdini()`.
 That function returns an object you can use for configuring the plugin.
 
 So, to start configuring the plugin, you can do this:
+
 ```php
 <?php // inside .houdini.php
 namespace Houdini\Config\V1;
@@ -39,12 +48,32 @@ namespace Houdini\Config\V1;
 houdini()->
 ```
 
+PhpStorm should show a dropdown with completion options once you finish typing
+the `->` arrow. You'll need to use the `modifyClass()` method to add dynamic
+completion.
+
 ### Promoting Properties
 
 Let's say you have a class that uses `__get()` to allow public access
 to properties that are `private` and `protected`. Here's an example that
 will cause PhpStorm to complete the private/protected properties for you
 for that class:
+
+```php
+<?php 
+
+namespace YourNamespace;
+
+class YourDynamicClass
+{
+   /** @var string */
+   private $privateProperty;
+   
+   /** @var int */
+   protected $protectedProperty;
+   
+   public function __get($name) { return $this->$name; }
+}
 
 ```php
 <?php // inside .houdini.php
@@ -77,12 +106,41 @@ namespace.
 
 ### Promoting Methods
 
-#### todo
+Methods can be promoted similarly to properties - just use `promoteMethods()` instead
+of `promoteProperties():`
+
+```php
+<?php
+
+namespace YourNamespace;
+
+class YourDynamicClass {
+   public function __call($method) {
+      $this->$method();
+   }
+   
+   protected function protectedMethod(): string {
+   }
+}
+```
+
+```php
+<?php // inside .houdini.php
+namespace Houdini\Config\V1;
+
+use YourNamespace\YourDynamicClass;
+
+// promote the protected methods so they're visible outside the class:
+houdini()->modifyClass(YourDynamicClass::class)
+    ->promoteMethods()
+    ->filter( AccessFilter::isProtected() );
+```
+
 ### Filters
 
-You can pass multiple filters to the filter method, and they will be
-combined with logical AND - so all the filters must apply. 
-If you want to combine filters with logical OR, you can use `AnyFilter`:
+You can pass multiple filters to the filter method, and they will be combined with logical AND - so *all* of the filters
+passed must apply for the method or property to be added. If you want to combine filters with logical OR, you can
+use `AnyFilter::create()` method and pass both filters in:
 
 ```php
 <?php // inside .houdini.php
@@ -92,12 +150,43 @@ use YourNamespace\YourDynamicClass;
 
 houdini()->modifyClass(YourDynamicClass::class)
     ->promoteProperties()
-    ->filter( AnyFilter::create(AccessFilter::isProtected(), AccessFilter::isPrivate() );
+    ->filter( AnyFilter::create(
+       AccessFilter::isProtected(), 
+       AccessFilter::isPrivate() 
+    ));
 ```
 
 ### Transforms
 
+If the names of the public versions of the properties / methods are 
+different, you can use the `transform()` method to change the publicly visible name of the property:
+
+```php
+<?php // inside .houdini.php
+namespace Houdini\Config\V1;
+
+use YourNamespace\YourDynamicClass;
+
+// Make the publicly visible name camelCase instead of snake_case:
+houdini()->modifyClass(YourDynamicClass::class)
+    ->promoteProperties()
+    ->transform( NameTransform::camelCase() );
+```
+
+A list of available transforms is on the NameTransform class. You can see the full list by
+typing `NameTransform::` and then invoking PhpStorm's completion.
+
+### [Adding dynamic properties]()
+
+####. [From a single property]()
+
+   1. [from a single property]()
+   1. [from all properties]()
+   1. [from a single constant]()
+   1. [from all constants]()
 
 ### Support or Contact
 
+Having trouble with the plugin or feature requests? Send an email to `profoundinventions+houdini@gmail.com`
+and we'll help you sort it out.
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.

@@ -12,21 +12,21 @@ and properties.
 1. [Promoting methods](#promoting-methods)
 1. [Filters](#filters)
 1. [Transforms](#transforms)
-1. [Adding dynamic properties]()
-   1. [from a single property]()
-   1. [from all properties]()
-   1. [from a single constant]()
-   1. [from all constants]()
-1. [Adding dynamic methods]()
-   1. [from a single property]()
-   1. [from all properties]()
-   1. [from a single constant]()
-   1. [from all constants]()
-1. [ArrayPatterns]()
-    1. [Completing methods from ArrayPatterns]()
-    1. [Completing properties from ArrayPatterns]()
-1. [List of filters]()
-1. [List of transforms]()
+1. [Adding dynamic properties](#adding-dynamic-properties)
+   1. [from a single property](#dynamic-properties-from-a-single-property)
+   1. [from all properties](#dynamic-properties-from-all-properties)
+   1. [from a single constant](#dynamic-properties-from-a-single-constant)
+   1. [from all constants](#dynamic-properties-from-all-constants)
+1. [Adding dynamic methods](#adding-dynamic-methods)
+   1. [from a single property](#dynamic-methods-from-a-single-property)
+   1. [from all properties](#dynamic-methods-from-all-properties)
+   1. [from a single constant](#dynamic-methods-from-a-single-constant)
+   1. [from all constants](#dynamic-properties-from-all-constants)
+1. [Array Patterns](#array-patterns)
+   1. [Completing properties from ArrayPatterns](#completing-properties-from-arraypatterns)
+   1. [Completing methods from ArrayPatterns](#completing-methods-from-arraypatterns)
+1. [List of filters](#list-of-filters)
+1. [List of transforms](#list-of-transforms)
 1. [Support or contact](#support-or-contact)
 
 ### The Houdini config file
@@ -116,7 +116,7 @@ namespace YourNamespace;
 
 class YourDynamicClass {
    public function __call($method) {
-      $this->$method();
+      return $this->$method();
    }
    
    protected function protectedMethod(): string {
@@ -174,16 +174,37 @@ houdini()->modifyClass(YourDynamicClass::class)
 ```
 
 A list of available transforms is on the NameTransform class. You can see the full list by
-typing `NameTransform::` and then invoking PhpStorm's completion.
+typing `NameTransform::` and then invoking PhpStorm's completion, or here on the [list of transforms](#list-of-transforms)
 
-### [Adding dynamic properties]()
+### Adding dynamic properties
 
-####. [From a single property]()
+#### Dynamic properties from a single property
 
-   1. [from a single property]()
-   1. [from all properties]()
-   1. [from a single constant]()
-   1. [from all constants]()
+#### Dynamic properties from all properties
+
+#### Dynamic properties from a single constant
+
+#### Dynamic properties from all constants
+
+### Adding dynamic methods
+
+#### Dynamic methods from a single property
+
+#### Dynamic methods from all properties
+
+#### Dynamic methods from a single constant
+
+#### Dynamic methods from all constants
+      
+### Array Patterns
+
+#### Completing properties from ArrayPatterns
+
+#### Completing methods from ArrayPatterns
+      
+### List of filters
+
+### List of transforms
 
 ### Support or Contact
 

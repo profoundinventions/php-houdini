@@ -60,7 +60,7 @@ will cause PhpStorm to complete the private/protected properties for you
 for that class:
 
 ```php
-<?php 
+<?php // example.php
 
 namespace YourNamespace;
 
@@ -111,7 +111,7 @@ Methods can be promoted similarly to properties - just use `promoteMethods()` in
 of `promoteProperties():`
 
 ```php
-<?php
+<?php // example.php
 
 namespace YourNamespace;
 
@@ -211,4 +211,3 @@ typing `NameTransform::` and then invoking PhpStorm's completion, or here on the
 
 Having trouble with the plugin or feature requests? Send an email to `profoundinventions+houdini@gmail.com`
 and we'll help you sort it out.
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.

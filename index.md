@@ -74,6 +74,7 @@ class YourDynamicClass
    
    public function __get($name) { return $this->$name; }
 }
+```
 
 ```php
 <?php // inside .houdini.php

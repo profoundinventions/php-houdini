@@ -1,9 +1,13 @@
+---
+order: 1
+---
 ## PHP Houdini Documentation
 
 This document describes how to use the PhpStorm plugin `PHP Houdini`
 
 `PHP Houdini` allows you to add completion for classes with magic methods
 and properties.
+
 
 ### Table of Contents
 

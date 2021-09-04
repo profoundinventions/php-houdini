@@ -209,5 +209,5 @@ typing `NameTransform::` and then invoking PhpStorm's completion, or here on the
 
 ### Support or Contact
 
-Having trouble with the plugin or feature requests? Send an email to `profoundinventions+houdini@gmail.com`
+Having trouble with the plugin or have feature requests? Send an email to `profoundinventions+houdini@gmail.com`
 and we'll help you sort it out.

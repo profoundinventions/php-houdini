@@ -1,6 +1,5 @@
 ---
 nav_order: 1
-has_toc: false
 ---
 ## PHP Houdini Documentation
 

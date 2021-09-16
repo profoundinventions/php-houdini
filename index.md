@@ -1,5 +1,6 @@
 ---
 nav_order: 1
+has_toc: false
 ---
 ## PHP Houdini Documentation
 
@@ -9,29 +10,51 @@ This document describes how to use the PhpStorm plugin `PHP Houdini`
 and properties.
 
 
-### Table of Contents
+1. Table of Contents
 
-1. [The .houdini.php config file](#the-houdini-config-file)
-1. [Promoting properties](#promoting-properties)
-1. [Promoting methods](#promoting-methods)
-1. [Filters](#filters)
-1. [Transforms](#transforms)
-1. [Adding dynamic properties](#adding-dynamic-properties)
-   1. [from a single property](#dynamic-properties-from-a-single-property)
-   1. [from all properties](#dynamic-properties-from-all-properties)
-   1. [from a single constant](#dynamic-properties-from-a-single-constant)
-   1. [from all constants](#dynamic-properties-from-all-constants)
-1. [Adding dynamic methods](#adding-dynamic-methods)
-   1. [from a single property](#dynamic-methods-from-a-single-property)
-   1. [from all properties](#dynamic-methods-from-all-properties)
-   1. [from a single constant](#dynamic-methods-from-a-single-constant)
-   1. [from all constants](#dynamic-properties-from-all-constants)
-1. [Array Patterns](#array-patterns)
-   1. [Completing properties from ArrayPatterns](#completing-properties-from-arraypatterns)
-   1. [Completing methods from ArrayPatterns](#completing-methods-from-arraypatterns)
-1. [List of filters](#list-of-filters)
-1. [List of transforms](#list-of-transforms)
-1. [Support or contact](#support-or-contact)
+{: toc}
+
+[comment]: <> (1. [The .houdini.php config file]&#40;#the-houdini-config-file&#41;)
+
+[comment]: <> (1. [Promoting properties]&#40;#promoting-properties&#41;)
+
+[comment]: <> (1. [Promoting methods]&#40;#promoting-methods&#41;)
+
+[comment]: <> (1. [Filters]&#40;#filters&#41;)
+
+[comment]: <> (1. [Transforms]&#40;#transforms&#41;)
+
+[comment]: <> (1. [Adding dynamic properties]&#40;#adding-dynamic-properties&#41;)
+
+[comment]: <> (   1. [from a single property]&#40;#dynamic-properties-from-a-single-property&#41;)
+
+[comment]: <> (   1. [from all properties]&#40;#dynamic-properties-from-all-properties&#41;)
+
+[comment]: <> (   1. [from a single constant]&#40;#dynamic-properties-from-a-single-constant&#41;)
+
+[comment]: <> (   1. [from all constants]&#40;#dynamic-properties-from-all-constants&#41;)
+
+[comment]: <> (1. [Adding dynamic methods]&#40;#adding-dynamic-methods&#41;)
+
+[comment]: <> (   1. [from a single property]&#40;#dynamic-methods-from-a-single-property&#41;)
+
+[comment]: <> (   1. [from all properties]&#40;#dynamic-methods-from-all-properties&#41;)
+
+[comment]: <> (   1. [from a single constant]&#40;#dynamic-methods-from-a-single-constant&#41;)
+
+[comment]: <> (   1. [from all constants]&#40;#dynamic-properties-from-all-constants&#41;)
+
+[comment]: <> (1. [Array Patterns]&#40;#array-patterns&#41;)
+
+[comment]: <> (   1. [Completing properties from ArrayPatterns]&#40;#completing-properties-from-arraypatterns&#41;)
+
+[comment]: <> (   1. [Completing methods from ArrayPatterns]&#40;#completing-methods-from-arraypatterns&#41;)
+
+[comment]: <> (1. [List of filters]&#40;#list-of-filters&#41;)
+
+[comment]: <> (1. [List of transforms]&#40;#list-of-transforms&#41;)
+
+[comment]: <> (1. [Support or contact]&#40;#support-or-contact&#41;)
 
 ### The Houdini config file
 

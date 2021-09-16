@@ -11,7 +11,7 @@ and properties.
 
 1. Table of Contents
 
-{: toc}
+{:toc}
 
 [comment]: <> (1. [The .houdini.php config file]&#40;#the-houdini-config-file&#41;)
 

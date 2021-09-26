@@ -12,3 +12,11 @@ and properties.
     the-houdini-config-file
     promoting-properties
     promoting-methods
+    filters
+    transforms
+    adding-dynamic-properties
+    adding-dynamic-methods
+    array-patterns
+    support
+    list-of-filters
+    list-of-transforms

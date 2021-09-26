@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>nav_order: 1 &mdash; PHP Houdini  documentation</title>
+  <title>PHP Houdini Documentation &mdash; PHP Houdini  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,7 +17,8 @@
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Houdini config file" href="the-houdini-config-file.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,44 +36,20 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">nav_order: 1</a></li>
-<li><a class="reference internal" href="#php-houdini-documentation">PHP Houdini Documentation</a><ul>
-<li><a class="reference internal" href="#the-houdini-config-file">The Houdini config file</a></li>
-<li><a class="reference internal" href="#promoting-properties">Promoting Properties</a><ul>
-<li><a class="reference internal" href="#only-promoting-protected-properties">Only promoting protected properties</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="the-houdini-config-file.html">The Houdini config file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-properties.html">Promoting Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-properties.html">Adding dynamic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-methods.html">Adding dynamic methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="#promoting-methods">Promoting Methods</a></li>
-<li><a class="reference internal" href="#filters">Filters</a></li>
-<li><a class="reference internal" href="#transforms">Transforms</a></li>
-<li><a class="reference internal" href="#adding-dynamic-properties">Adding dynamic properties</a><ul>
-<li><a class="reference internal" href="#dynamic-properties-from-a-single-property">Dynamic properties from a single property</a></li>
-<li><a class="reference internal" href="#dynamic-properties-from-all-properties">Dynamic properties from all properties</a></li>
-<li><a class="reference internal" href="#dynamic-properties-from-a-single-constant">Dynamic properties from a single constant</a></li>
-<li><a class="reference internal" href="#dynamic-properties-from-all-constants">Dynamic properties from all constants</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#adding-dynamic-methods">Adding dynamic methods</a><ul>
-<li><a class="reference internal" href="#dynamic-methods-from-a-single-property">Dynamic methods from a single property</a></li>
-<li><a class="reference internal" href="#dynamic-methods-from-all-properties">Dynamic methods from all properties</a></li>
-<li><a class="reference internal" href="#dynamic-methods-from-a-single-constant">Dynamic methods from a single constant</a></li>
-<li><a class="reference internal" href="#dynamic-methods-from-all-constants">Dynamic methods from all constants</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#array-patterns">Array Patterns</a><ul>
-<li><a class="reference internal" href="#completing-properties-from-arraypatterns">Completing properties from ArrayPatterns</a></li>
-<li><a class="reference internal" href="#completing-methods-from-arraypatterns">Completing methods from ArrayPatterns</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#list-of-filters">List of filters</a></li>
-<li><a class="reference internal" href="#id1">List of transforms</a></li>
-<li><a class="reference internal" href="#support-or-contact">Support or Contact</a></li>
-</ul>
-</li>
-</ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -87,7 +64,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>nav_order: 1</li>
+      <li>PHP Houdini Documentation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -97,194 +74,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <hr class="docutils" />
-<section id="nav-order-1">
-<h1>nav_order: 1<a class="headerlink" href="#nav-order-1" title="Permalink to this headline"></a></h1>
-</section>
-<section id="php-houdini-documentation">
+  <section id="php-houdini-documentation">
 <h1>PHP Houdini Documentation<a class="headerlink" href="#php-houdini-documentation" title="Permalink to this headline"></a></h1>
 <p>This document describes how to use the PhpStorm plugin <code class="docutils literal notranslate"><span class="pre">PHP</span> <span class="pre">Houdini</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">PHP</span> <span class="pre">Houdini</span></code> allows you to add completion for classes with magic methods
 and properties.</p>
-<ol class="arabic simple">
-<li><p>Table of Contents
-{:toc}</p></li>
-</ol>
-<section id="the-houdini-config-file">
-<h2>The Houdini config file<a class="headerlink" href="#the-houdini-config-file" title="Permalink to this headline"></a></h2>
-</section>
-<section id="promoting-properties">
-<h2>Promoting Properties<a class="headerlink" href="#promoting-properties" title="Permalink to this headline"></a></h2>
-<p>Let’s say you have a class that uses <code class="docutils literal notranslate"><span class="pre">__get()</span></code> to allow public access
-to properties that are <code class="docutils literal notranslate"><span class="pre">private</span></code> and <code class="docutils literal notranslate"><span class="pre">protected</span></code>. Here’s an example that
-will cause PhpStorm to complete the private/protected properties for you
-for that class:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// example.php</span>
-
-<span class="k">namespace</span> <span class="nx">YourNamespace</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">YourDynamicClass</span>
-<span class="p">{</span>
-   <span class="sd">/** @var string */</span>
-   <span class="k">private</span> <span class="nv">$privateProperty</span><span class="p">;</span>
-
-   <span class="sd">/** @var int */</span>
-   <span class="k">protected</span> <span class="nv">$protectedProperty</span><span class="p">;</span>
-
-   <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$name</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="the-houdini-config-file.html">The Houdini config file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-properties.html">Promoting Properties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="promoting-properties.html#only-promoting-protected-properties">Only promoting protected properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-properties.html">Adding dynamic properties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#dynamic-properties-from-a-single-property">Dynamic properties from a single property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#dynamic-properties-from-all-properties">Dynamic properties from all properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#dynamic-properties-from-a-single-constant">Dynamic properties from a single constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#dynamic-properties-from-all-constants">Dynamic properties from all constants</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-methods.html">Adding dynamic methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-methods.html#dynamic-methods-from-a-single-property">Dynamic methods from a single property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-methods.html#dynamic-methods-from-all-properties">Dynamic methods from all properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-methods.html#dynamic-methods-from-a-single-constant">Dynamic methods from a single constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-methods.html#dynamic-methods-from-all-constants">Dynamic methods from all constants</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="array-patterns.html#completing-properties-from-arraypatterns">Completing properties from ArrayPatterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array-patterns.html#completing-methods-from-arraypatterns">Completing methods from ArrayPatterns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
+</ul>
 </div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
-<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
-
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">promoteProperties</span><span class="p">();</span>
-</pre></div>
-</div>
-<section id="only-promoting-protected-properties">
-<h3>Only promoting protected properties<a class="headerlink" href="#only-promoting-protected-properties" title="Permalink to this headline"></a></h3>
-<p>The previous example will promote all properties, private and protected.
-If you only wanted to promote protected ones, you could add a <a class="reference external" href="#filters">filter</a>:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
-<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
-
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">promoteProperties</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span> <span class="nx">AccessFilter</span><span class="o">::</span><span class="na">isProtected</span><span class="p">()</span> <span class="p">);</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">AccessFilter</span></code> class used here is defined in the <code class="docutils literal notranslate"><span class="pre">Houdini\Config\V1</span></code>
-namespace.</p>
-</section>
-</section>
-<section id="promoting-methods">
-<h2>Promoting Methods<a class="headerlink" href="#promoting-methods" title="Permalink to this headline"></a></h2>
-<p>Methods can be promoted similarly to properties - just use <code class="docutils literal notranslate"><span class="pre">promoteMethods()</span></code> instead
-of <code class="docutils literal notranslate"><span class="pre">promoteProperties():</span></code></p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// example.php</span>
-
-<span class="k">namespace</span> <span class="nx">YourNamespace</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">YourDynamicClass</span> <span class="p">{</span>
-   <span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$method</span><span class="p">();</span>
-   <span class="p">}</span>
-
-   <span class="k">protected</span> <span class="k">function</span> <span class="nf">protectedMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
-<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
-
-<span class="c1">// promote the protected methods so they&#39;re visible outside the class:</span>
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">promoteMethods</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span> <span class="nx">AccessFilter</span><span class="o">::</span><span class="na">isProtected</span><span class="p">()</span> <span class="p">);</span>
-</pre></div>
-</div>
-</section>
-<section id="filters">
-<h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline"></a></h2>
-<p>You can pass multiple filters to the filter method, and they will be combined with logical AND - so <em>all</em> of the filters
-passed must apply for the method or property to be added. If you want to combine filters with logical OR, you can
-use <code class="docutils literal notranslate"><span class="pre">AnyFilter::create()</span></code> method and pass both filters in:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
-<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
-
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">promoteProperties</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span> <span class="nx">AnyFilter</span><span class="o">::</span><span class="na">create</span><span class="p">(</span>
-       <span class="nx">AccessFilter</span><span class="o">::</span><span class="na">isProtected</span><span class="p">(),</span>
-       <span class="nx">AccessFilter</span><span class="o">::</span><span class="na">isPrivate</span><span class="p">()</span>
-    <span class="p">));</span>
-</pre></div>
-</div>
-</section>
-<section id="transforms">
-<h2>Transforms<a class="headerlink" href="#transforms" title="Permalink to this headline"></a></h2>
-<p>If the names of the public versions of the properties / methods are
-different, you can use the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> method to change the publicly visible name of the property:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
-<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
-
-<span class="c1">// Make the publicly visible name camelCase instead of snake_case:</span>
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">promoteProperties</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">transform</span><span class="p">(</span> <span class="nx">NameTransform</span><span class="o">::</span><span class="na">camelCase</span><span class="p">()</span> <span class="p">);</span>
-</pre></div>
-</div>
-<p>A list of available transforms is on the NameTransform class. You can see the full list by
-typing <code class="docutils literal notranslate"><span class="pre">NameTransform::</span></code> and then invoking PhpStorm’s completion, or here on the <a class="reference external" href="#list-of-transforms">list of transforms</a></p>
-</section>
-<section id="adding-dynamic-properties">
-<h2>Adding dynamic properties<a class="headerlink" href="#adding-dynamic-properties" title="Permalink to this headline"></a></h2>
-<section id="dynamic-properties-from-a-single-property">
-<h3>Dynamic properties from a single property<a class="headerlink" href="#dynamic-properties-from-a-single-property" title="Permalink to this headline"></a></h3>
-</section>
-<section id="dynamic-properties-from-all-properties">
-<h3>Dynamic properties from all properties<a class="headerlink" href="#dynamic-properties-from-all-properties" title="Permalink to this headline"></a></h3>
-</section>
-<section id="dynamic-properties-from-a-single-constant">
-<h3>Dynamic properties from a single constant<a class="headerlink" href="#dynamic-properties-from-a-single-constant" title="Permalink to this headline"></a></h3>
-</section>
-<section id="dynamic-properties-from-all-constants">
-<h3>Dynamic properties from all constants<a class="headerlink" href="#dynamic-properties-from-all-constants" title="Permalink to this headline"></a></h3>
-</section>
-</section>
-<section id="adding-dynamic-methods">
-<h2>Adding dynamic methods<a class="headerlink" href="#adding-dynamic-methods" title="Permalink to this headline"></a></h2>
-<section id="dynamic-methods-from-a-single-property">
-<h3>Dynamic methods from a single property<a class="headerlink" href="#dynamic-methods-from-a-single-property" title="Permalink to this headline"></a></h3>
-</section>
-<section id="dynamic-methods-from-all-properties">
-<h3>Dynamic methods from all properties<a class="headerlink" href="#dynamic-methods-from-all-properties" title="Permalink to this headline"></a></h3>
-</section>
-<section id="dynamic-methods-from-a-single-constant">
-<h3>Dynamic methods from a single constant<a class="headerlink" href="#dynamic-methods-from-a-single-constant" title="Permalink to this headline"></a></h3>
-</section>
-<section id="dynamic-methods-from-all-constants">
-<h3>Dynamic methods from all constants<a class="headerlink" href="#dynamic-methods-from-all-constants" title="Permalink to this headline"></a></h3>
-</section>
-</section>
-<section id="array-patterns">
-<h2>Array Patterns<a class="headerlink" href="#array-patterns" title="Permalink to this headline"></a></h2>
-<section id="completing-properties-from-arraypatterns">
-<h3>Completing properties from ArrayPatterns<a class="headerlink" href="#completing-properties-from-arraypatterns" title="Permalink to this headline"></a></h3>
-</section>
-<section id="completing-methods-from-arraypatterns">
-<h3>Completing methods from ArrayPatterns<a class="headerlink" href="#completing-methods-from-arraypatterns" title="Permalink to this headline"></a></h3>
-</section>
-</section>
-<section id="list-of-filters">
-<h2>List of filters<a class="headerlink" href="#list-of-filters" title="Permalink to this headline"></a></h2>
-</section>
-<section id="id1">
-<h2>List of transforms<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-</section>
-<section id="support-or-contact">
-<h2>Support or Contact<a class="headerlink" href="#support-or-contact" title="Permalink to this headline"></a></h2>
-<p>Having trouble with the plugin or have feature requests? Send an email to <code class="docutils literal notranslate"><span class="pre">profoundinventions+houdini&#64;gmail.com</span></code>
-and we’ll help you sort it out.</p>
-</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="the-houdini-config-file.html" class="btn btn-neutral float-right" title="The Houdini config file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

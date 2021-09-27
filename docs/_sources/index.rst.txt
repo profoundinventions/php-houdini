@@ -9,6 +9,7 @@ and properties.
 .. toctree::
     :maxdepth 2
 
+    introduction
     the-houdini-config-file
     promoting-properties
     promoting-methods

@@ -37,7 +37,7 @@ Only promoting protected properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The previous example will promote all properties, private and protected.
-If you only wanted to promote protected ones, you could add a `filter <#filters>`_\ :
+If you only wanted to promote protected ones, you could add a :doc:`filter <filters>` :
 
 .. code-block:: php
 
@@ -53,3 +53,5 @@ If you only wanted to promote protected ones, you could add a `filter <#filters>
 The ``AccessFilter`` class used here is defined in the ``Houdini\Config\V1``
 namespace.
 
+Go to the :doc:`next step <filters>` to see how to do the same thing for methods
+instead of properties.

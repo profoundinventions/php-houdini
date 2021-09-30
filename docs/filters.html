@@ -83,7 +83,7 @@
   <section id="filters">
 <h1>Filters<a class="headerlink" href="#filters" title="Permalink to this headline"></a></h1>
 <p>Filters allow you to control which properties or methods are generated that will affect the source
-. For example, you can use <code class="docutils literal notranslate"><span class="pre">promoteMethods()</span></code> to and the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> operator to only promote methods
+. For example, you can use <code class="docutils literal notranslate"><span class="pre">promoteMethods()</span></code> and the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> operator to only promote methods
 of a class that have a certain character string:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
@@ -95,9 +95,9 @@ of a class that have a certain character string:</p>
     <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span> <span class="nx">NameFilter</span><span class="o">::</span><span class="na">contains</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="p">);</span>
 </pre></div>
 </div>
-<p>Here we used the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> operator and passed a <code class="docutils literal notranslate"><span class="pre">NameFilter</span></code> class. This will
-promote the properties of <code class="docutils literal notranslate"><span class="pre">YourDynamicClass</span></code> so you’ll see private and protected properties, but only
-if those properties contain the string <cite>foo</cite>.</p>
+<p>Here we used passed a <code class="docutils literal notranslate"><span class="pre">NameFilter</span></code> to the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. This will
+enable autocompletion for private and protected properties of <code class="docutils literal notranslate"><span class="pre">YourDynamicClass</span></code>,
+but only if those properties contain the string <cite>foo</cite>.</p>
 <p>You can see the complete list of name filters supported by typing <code class="docutils literal notranslate"><span class="pre">NameFilter::</span></code> and PhpStorm will
 autocomplete them for you inside <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code>. Another way to view them is to look at the
 <a class="reference internal" href="list-of-filters.html"><span class="doc">list of filters</span></a>.</p>
@@ -141,6 +141,8 @@ use <code class="docutils literal notranslate"><span class="pre">AnyFilter::crea
 <p>Here we used the <code class="docutils literal notranslate"><span class="pre">AnyFilter</span></code> class to combine filters, and the <code class="docutils literal notranslate"><span class="pre">AccessFilter</span></code> class
 to limit it to private properties. This will promote any property that matches either
 filter, so all private properties, and any filter that matches <cite>foo</cite>.</p>
+<p>Go to the <a class="reference internal" href="transforms.html"><span class="doc">next step</span></a> to see how you can change the names of
+autocompleted methods and properties.</p>
 </section>
 </section>
 

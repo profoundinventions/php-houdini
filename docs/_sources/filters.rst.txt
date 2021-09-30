@@ -2,7 +2,7 @@ Filters
 -------
 
 Filters allow you to control which properties or methods are generated that will affect the source
-. For example, you can use ``promoteMethods()`` to and the ``filter()`` operator to only promote methods
+. For example, you can use ``promoteMethods()`` and the ``filter()`` operator to only promote methods
 of a class that have a certain character string:
 
 .. code-block:: php
@@ -16,9 +16,9 @@ of a class that have a certain character string:
        ->promoteProperties()
        ->filter( NameFilter::contains('foo') );
 
-Here we used the ``filter()`` operator and passed a ``NameFilter`` class. This will
-promote the properties of ``YourDynamicClass`` so you'll see private and protected properties, but only
-if those properties contain the string `foo`.
+Here we used passed a ``NameFilter`` to the ``filter()`` method. This will
+enable autocompletion for private and protected properties of ``YourDynamicClass``,
+but only if those properties contain the string `foo`.
 
 You can see the complete list of name filters supported by typing ``NameFilter::`` and PhpStorm will
 autocomplete them for you inside ``.houdini.php``. Another way to view them is to look at the
@@ -70,3 +70,6 @@ use ``AnyFilter::create()`` method and pass both filters in:
 Here we used the ``AnyFilter`` class to combine filters, and the ``AccessFilter`` class
 to limit it to private properties. This will promote any property that matches either
 filter, so all private properties, and any filter that matches `foo`.
+
+Go to the :doc:`next step <transforms>` to see how you can change the names of
+autocompleted methods and properties.

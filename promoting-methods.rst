@@ -1,7 +1,7 @@
 Promoting Methods
 -----------------
 
-Methods can be promoted similarly to properties - just use ``promoteMethods()`` instead
+Methods can be promoted similarly to :doc:`properties <promoting-properties>` - just use ``promoteMethods()`` instead
 of ``promoteProperties():``
 
 .. code-block:: php
@@ -31,3 +31,5 @@ of ``promoteProperties():``
        ->promoteMethods()
        ->filter( AccessFilter::isProtected() );
 
+
+Go to the :doc:`next step <filters>` to see how filters work.

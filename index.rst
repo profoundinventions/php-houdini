@@ -17,6 +17,7 @@ and properties.
     transforms
     adding-dynamic-properties
     adding-dynamic-methods
+    using-constants-as-a-source
     array-patterns
     support
     list-of-filters

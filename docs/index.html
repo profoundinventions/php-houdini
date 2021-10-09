@@ -38,16 +38,17 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="the-houdini-config-file.html">The Houdini config file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-houdini-config-file.html">The Houdini Config File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="promoting-properties.html">Promoting Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-properties.html">Adding dynamic properties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-methods.html">Adding dynamic methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-properties.html">Adding Dynamic Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-methods.html">Adding Dynamic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
-<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
 </ul>
 
@@ -83,7 +84,7 @@ and properties.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="the-houdini-config-file.html">The Houdini config file</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="the-houdini-config-file.html">The Houdini Config File</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="the-houdini-config-file.html#the-modifyclass-method">The <code class="docutils literal notranslate"><span class="pre">modifyClass()</span></code> method</a></li>
 </ul>
 </li>
@@ -93,8 +94,9 @@ and properties.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="filters.html#using-multiple-filters-with-logical-and">Using Multiple Filters (with logical AND)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="filters.html#using-multiple-filters-with-logical-or">Using Multiple Filters (with logical OR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html#using-multiple-filters-with-logical-and">Using multiple filters (with logical AND)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html#using-multiple-filters-with-logical-or">Using multiple filters (with logical OR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html#combining-filters-with-logical-or-and-logical-and">Combining filters with logical OR and logical AND</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a><ul>
@@ -102,18 +104,24 @@ and properties.</p>
 <li class="toctree-l2"><a class="reference internal" href="transforms.html#transforming-auto-completed-methods">Transforming auto-completed methods</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-properties.html">Adding dynamic properties</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#dynamic-properties-from-a-single-property">Dynamic properties from a single property</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#dynamic-properties-from-all-properties">Dynamic properties from all properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#dynamic-properties-from-a-single-constant">Dynamic properties from a single constant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#dynamic-properties-from-all-constants">Dynamic properties from all constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-properties.html">Adding Dynamic Properties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#adding-a-single-dynamic-property">Adding a single dynamic property</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adding-dynamic-properties.html#changing-the-property-name">Changing the property name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-dynamic-properties.html#changing-the-property-type">Changing the property type</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adding-dynamic-properties.html#setpropertytypefrompropertyvalue">setPropertyTypeFromPropertyValue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adding-dynamic-properties.html#setpropertytype">setPropertyType</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-methods.html">Adding dynamic methods</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-methods.html#dynamic-methods-from-a-single-property">Dynamic methods from a single property</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-methods.html#dynamic-methods-from-all-properties">Dynamic methods from all properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-methods.html#dynamic-methods-from-a-single-constant">Dynamic methods from a single constant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-methods.html#dynamic-methods-from-all-constants">Dynamic methods from all constants</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#changes-are-inherited">Changes are inherited!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-dynamic-properties.html#using-all-the-properties-of-a-class-as-a-source">Using all the properties of a class as a source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-methods.html">Adding Dynamic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="using-constants-as-a-source.html#from-a-single-constant-in-a-class">From a single constant in a class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-constants-as-a-source.html#from-all-constants-in-a-class">From all constants in a class</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a><ul>
@@ -122,7 +130,7 @@ and properties.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
-<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
 </ul>
 </div>

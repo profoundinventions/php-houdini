@@ -22,6 +22,9 @@ Here's an example that autocompletes ``camelCase`` properties from private ``sna
        ->filter( AccessFilter::isPrivate() )
        ->transform( NameTransform::camelCase() );
 
+Similar to :doc:`filters <filters>`, you can pass multiple transforms to the ``transform`` method
+and they will be applied in-order.
+
 Transforming auto-completed methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

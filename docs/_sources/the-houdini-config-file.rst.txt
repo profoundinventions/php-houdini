@@ -1,13 +1,15 @@
-The Houdini config file
+-----------------------
+The Houdini Config File
 -----------------------
 
 The Houdini plugin is configured by a ``.houdini.php`` config file
 in the root of each project. This file is similar  to ``.phpstorm.meta.php``.
-You will use some function calls within this file to configure the plugin.
+Although the syntax of the file is PHP, you won't use PHP functions like ``str_replace``
+to configure the plugin. Instead, like ``.phpstorm.meta.php``, you will use some special function calls.
 
-The namespace of the config file must be ``Houdini\\Config\V1``.
-Each configuration of a dynamic class will begin with the function call ``houdini()``.
-That function returns an object you can use for configuring the plugin.
+The namespace of the config file must be ``Houdini\\Config\V1``. Each configuration of a dynamic
+class will begin with the function call one or more calls to the function ``houdini()``. That
+function returns an object you can use for configuring the plugin with a fluent interface.
 
 So, to start configuring the plugin, you can do this:
 

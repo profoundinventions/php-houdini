@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Houdini config file &mdash; PHP Houdini  documentation</title>
+  <title>The Houdini Config File &mdash; PHP Houdini  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -39,7 +39,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Houdini config file</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Houdini Config File</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-modifyclass-method">The <code class="docutils literal notranslate"><span class="pre">modifyClass()</span></code> method</a></li>
 </ul>
 </li>
@@ -47,11 +47,12 @@
 <li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-properties.html">Adding dynamic properties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-methods.html">Adding dynamic methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-properties.html">Adding Dynamic Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-methods.html">Adding Dynamic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
-<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
 </ul>
 
@@ -69,7 +70,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>The Houdini config file</li>
+      <li>The Houdini Config File</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/the-houdini-config-file.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -80,13 +81,14 @@
            <div itemprop="articleBody">
              
   <section id="the-houdini-config-file">
-<h1>The Houdini config file<a class="headerlink" href="#the-houdini-config-file" title="Permalink to this headline"></a></h1>
+<h1>The Houdini Config File<a class="headerlink" href="#the-houdini-config-file" title="Permalink to this headline"></a></h1>
 <p>The Houdini plugin is configured by a <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code> config file
 in the root of each project. This file is similar  to <code class="docutils literal notranslate"><span class="pre">.phpstorm.meta.php</span></code>.
-You will use some function calls within this file to configure the plugin.</p>
-<p>The namespace of the config file must be <code class="docutils literal notranslate"><span class="pre">Houdini\\Config\V1</span></code>.
-Each configuration of a dynamic class will begin with the function call <code class="docutils literal notranslate"><span class="pre">houdini()</span></code>.
-That function returns an object you can use for configuring the plugin.</p>
+Although the syntax of the file is PHP, you won’t use PHP functions like <code class="docutils literal notranslate"><span class="pre">str_replace</span></code>
+to configure the plugin. Instead, like <code class="docutils literal notranslate"><span class="pre">.phpstorm.meta.php</span></code>, you will use some special function calls.</p>
+<p>The namespace of the config file must be <code class="docutils literal notranslate"><span class="pre">Houdini\\Config\V1</span></code>. Each configuration of a dynamic
+class will begin with the function call one or more calls to the function <code class="docutils literal notranslate"><span class="pre">houdini()</span></code>. That
+function returns an object you can use for configuring the plugin with a fluent interface.</p>
 <p>So, to start configuring the plugin, you can do this:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>

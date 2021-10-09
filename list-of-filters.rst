@@ -1,2 +1,3 @@
-List of filters
+---------------
+List of Filters
 ---------------

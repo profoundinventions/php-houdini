@@ -7,6 +7,7 @@
   <title>Filters &mdash; PHP Houdini  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -88,7 +89,9 @@
 <p>Filters allow you to control which properties or methods are generated that will affect the source
 . For example, you can use <code class="docutils literal notranslate"><span class="pre">promoteMethods()</span></code> and the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> operator to only promote methods
 of a class that have a certain character string:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
@@ -97,6 +100,7 @@ of a class that have a certain character string:</p>
     <span class="o">-&gt;</span><span class="na">promoteProperties</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span> <span class="nx">NameFilter</span><span class="o">::</span><span class="na">contains</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="p">);</span>
 </pre></div>
+</div>
 </div>
 <p>Here we used passed a <code class="docutils literal notranslate"><span class="pre">NameFilter</span></code> to the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. This will
 enable autocompletion for private and protected properties of <code class="docutils literal notranslate"><span class="pre">YourDynamicClass</span></code>,
@@ -108,7 +112,9 @@ autocomplete them for you inside <code class="docutils literal notranslate"><spa
 <h2>Using multiple filters (with logical AND)<a class="headerlink" href="#using-multiple-filters-with-logical-and" title="Permalink to this headline"></a></h2>
 <p>You can pass multiple filters to the filter method, and they will be combined implicitly with logical AND -
 so <em>all</em> of the filters passed must apply for the method or property to be added:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
@@ -121,6 +127,7 @@ so <em>all</em> of the filters passed must apply for the method or property to b
     <span class="p">));</span>
 </pre></div>
 </div>
+</div>
 <p>This will promote any property that both filters, so only properties that start
 with <cite>get</cite> and also contain <cite>foo</cite> somewhere in the name will be promoted.</p>
 <p>You can also combine multiple filters explicitly with the <code class="docutils literal notranslate"><span class="pre">AllFilters</span></code> class.
@@ -130,7 +137,9 @@ This isn’t useful though unless you are <span class="xref std std-ref">combini
 <h2>Using multiple filters (with logical OR)<a class="headerlink" href="#using-multiple-filters-with-logical-or" title="Permalink to this headline"></a></h2>
 <p>If you want to combine filters with logical OR, you can
 use <code class="docutils literal notranslate"><span class="pre">AnyFilter::create()</span></code> method and pass both filters in:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
@@ -143,6 +152,7 @@ use <code class="docutils literal notranslate"><span class="pre">AnyFilter::crea
     <span class="p">));</span>
 </pre></div>
 </div>
+</div>
 <p>Here we used the <code class="docutils literal notranslate"><span class="pre">AnyFilter</span></code> class to combine filters, and the <code class="docutils literal notranslate"><span class="pre">AccessFilter</span></code> class
 to limit it to private properties. This will promote any property that matches either
 filter, so all private properties, and any filter that matches <cite>foo</cite>.</p>
@@ -151,7 +161,9 @@ filter, so all private properties, and any filter that matches <cite>foo</cite>.
 <h2>Combining filters with logical OR and logical AND<a class="headerlink" href="#combining-filters-with-logical-or-and-logical-and" title="Permalink to this headline"></a></h2>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">AllFilters</span></code> and <code class="docutils literal notranslate"><span class="pre">AnyFilter</span></code> classes together to filter by arbitrary
 complicated conditions:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
@@ -166,6 +178,7 @@ complicated conditions:</p>
        <span class="p">)</span>
     <span class="p">));</span>
 </pre></div>
+</div>
 </div>
 <p>This will promote autocompletion for any property that contains foo, or is both a private property and contains
 the string <code class="docutils literal notranslate"><span class="pre">bar</span></code>.</p>

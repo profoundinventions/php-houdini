@@ -5,8 +5,9 @@ Methods can be promoted similarly to :doc:`properties <promoting-properties>` - 
 of ``promoteProperties():``
 
 .. code-block:: php
+   :caption: **example.php**
 
-   <?php // example.php
+   <?php
 
    namespace YourNamespace;
 
@@ -20,8 +21,9 @@ of ``promoteProperties():``
    }
 
 .. code-block:: php
+   :caption: **.houdini.php**
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;

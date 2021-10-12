@@ -6,8 +6,9 @@ Filters allow you to control which properties or methods are generated that will
 of a class that have a certain character string:
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -31,8 +32,9 @@ You can pass multiple filters to the filter method, and they will be combined im
 so *all* of the filters passed must apply for the method or property to be added:
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -57,8 +59,9 @@ If you want to combine filters with logical OR, you can
 use ``AnyFilter::create()`` method and pass both filters in:
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -81,8 +84,9 @@ You can use ``AllFilters`` and ``AnyFilter`` classes together to filter by arbit
 complicated conditions:
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;

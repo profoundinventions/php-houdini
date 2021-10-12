@@ -12,8 +12,9 @@ To promote a single property, you can use ``promoteProperty()`` and specify the 
 string parameter:
 
 .. code-block:: php
+   :caption: example.php
 
-   <?php // example.php
+   <?php
    namespace YourNamespace;
 
    class YourDynamicClass {
@@ -26,8 +27,9 @@ string parameter:
    }
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -46,8 +48,9 @@ To set the name of the autocompleted property from the value of the ``sourceProp
 ``setPropertyNameFromPropertyValue()``:
 
 .. code-block:: php
+   :caption: example.php
 
-   <?php // example.php
+   <?php
    namespace YourNamespace;
 
    class YourDynamicClass {
@@ -62,6 +65,7 @@ To set the name of the autocompleted property from the value of the ``sourceProp
    }
 
 .. code-block:: php
+   :caption: .houdini.php
 
    <?php // inside .houdini.php
    namespace Houdini\Config\V1;
@@ -89,8 +93,9 @@ as a string. For example, if you specify a property whose value is the string
 ``int``, then the property's return type will be ``int``:
 
 .. code-block:: php
+   :caption: example.php
 
-   <?php // example.php
+   <?php
    namespace YourNamespace;
 
    class YourDynamicClass {
@@ -106,8 +111,9 @@ as a string. For example, if you specify a property whose value is the string
    }
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -120,8 +126,9 @@ Instead of ``int``, you can use any fully qualified class name, and even
 import the class with a ``use`` statement or add ``::class``.
 
 .. code-block:: php
+   :caption: example.php
 
-   <?php // example.php
+   <?php
    namespace YourNamespace;
 
    use SomeOtherNamespace\SomeOtherClass;
@@ -143,8 +150,9 @@ import the class with a ``use`` statement or add ``::class``.
    }
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -162,8 +170,9 @@ You can also specify a completely custom type as a string in the ``.houdini.php`
 file itself instead of in a class property:
 
 .. code-block:: php
+   :caption: example.php
 
-   <?php // example.php
+   <?php
    namespace YourNamespace;
 
    use SomeOtherNamespace\SomeOtherClass;
@@ -181,8 +190,9 @@ file itself instead of in a class property:
    }
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -217,8 +227,9 @@ Here's an example that generates properties from the types
 specified in the class:
 
 .. code-block:: php
+   :caption: example.php
 
-   <?php // example.php
+   <?php
    namespace YourNamespace;
 
    use SomeOtherNamespace\SomeOtherClass;
@@ -233,8 +244,9 @@ specified in the class:
    }
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -243,7 +255,6 @@ specified in the class:
    houdini()->modifyClass(YourDynamicClass::class)
        ->promoteProperties(')
        ->setPropertyTypeFromPropertyType();
-
 
 This will complete a property for each of ``$stringProperty``, ``$intProperty``, and ``$dateTimeProperty``
 of the corresponding type.
@@ -257,8 +268,9 @@ If you only want to promote one type, you can use the pass a ``Context::isStatic
 ``Context::isInstance()`` to ``filter`` to control which ones to complete:
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -285,8 +297,9 @@ Using the previous example, but if we wanted to use it like ``YourDynamicClass::
 it would look like this:
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;

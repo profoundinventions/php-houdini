@@ -19,8 +19,9 @@ function returns an object you can use for configuring the plugin with a fluent 
 So, to start configuring the plugin, you can do this:
 
 .. code-block:: php
+    :caption: **Inside .houdini.php**
 
-    <?php // inside .houdini.php
+    <?php
     namespace Houdini\Config\V1;
 
     houdini()->
@@ -38,8 +39,9 @@ name as a string, or add a ``use`` statement add the ``::class`` modifier after 
 to affect:
 
 .. code-block:: php
+    :caption: **Inside .houdini.php**
 
-    <?php // inside .houdini.php
+    <?php
     namespace Houdini\Config\V1;
 
     use YourDynamicNamespace\YourDynamicClass;

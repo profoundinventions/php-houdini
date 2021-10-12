@@ -7,9 +7,9 @@ will cause PhpStorm to complete the private/protected properties for you
 for that class:
 
 .. code-block:: php
+   :caption: **example.php**
 
-   <?php // example.php
-
+   <?php
    namespace YourNamespace;
 
    class YourDynamicClass
@@ -24,8 +24,9 @@ for that class:
    }
 
 .. code-block:: php
+   :caption: **.houdini.php**
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -40,8 +41,9 @@ The previous example will promote all properties, private and protected.
 If you only wanted to promote protected ones, you could add a :doc:`filter <filters>` :
 
 .. code-block:: php
+   :caption: **.houdini.php**
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;

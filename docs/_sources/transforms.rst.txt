@@ -10,8 +10,9 @@ Transforming auto-completed properties
 Here's an example that autocompletes ``camelCase`` properties from private ``snake_case`` private properties:
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -32,8 +33,9 @@ The same method works for methods - just replace ``promoteProperties()`` with
 ``promoteMethods()``:
 
 .. code-block:: php
+   :caption .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;

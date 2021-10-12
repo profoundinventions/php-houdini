@@ -7,6 +7,7 @@
   <title>Adding methods from properties or constants &mdash; PHP Houdini  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -46,7 +47,15 @@
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuring-property-promotion.html">Configuring Property Promotion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuring-method-promotion.html">Configuring Method Promotion</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding methods from properties or constants</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding methods from properties or constants</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-the-method-name">Configuring the method name</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setmethodnamefrompropertyname">setMethodNameFromPropertyName()</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-the-return-type">Configuring the return type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#completing-static-methods">Completing static methods</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
@@ -80,7 +89,9 @@
              
   <section id="adding-methods-from-properties-or-constants">
 <h1>Adding methods from properties or constants<a class="headerlink" href="#adding-methods-from-properties-or-constants" title="Permalink to this headline"></a></h1>
-<p>For methods, you can autocomplete them from properties or constants.</p>
+<p>You can also autocomplete methods from properties.</p>
+<p>To do this, you use the <code class="docutils literal notranslate"><span class="pre">addMethodsFromAllProperties</span></code> or <code class="docutils literal notranslate"><span class="pre">addMethodFromProperty</span></code>
+methods.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The autocompleted methods have zero arguments. This is ideal for configuring getter methods.</p>
@@ -102,6 +113,27 @@ is set from the type of the value of the corresponding property:</p>
     <span class="o">-&gt;</span><span class="na">transform</span><span class="p">(</span> <span class="nx">NameTransform</span><span class="o">::</span><span class="na">camelCase</span><span class="p">()</span> <span class="p">)</span>
 </pre></div>
 </div>
+<p>There are a also a of other options for configuring the method and its return type.</p>
+<section id="configuring-the-method-name">
+<h2>Configuring the method name<a class="headerlink" href="#configuring-the-method-name" title="Permalink to this headline"></a></h2>
+<section id="setmethodnamefrompropertyname">
+<h3>setMethodNameFromPropertyName()<a class="headerlink" href="#setmethodnamefrompropertyname" title="Permalink to this headline"></a></h3>
+<p>The default is</p>
+</section>
+</section>
+<section id="configuring-the-return-type">
+<h2>Configuring the return type<a class="headerlink" href="#configuring-the-return-type" title="Permalink to this headline"></a></h2>
+</section>
+<section id="completing-static-methods">
+<h2>Completing static methods<a class="headerlink" href="#completing-static-methods" title="Permalink to this headline"></a></h2>
+<p>For <code class="docutils literal notranslate"><span class="pre">addMethodsFromAllProperties</span></code>, by default both static and instance properties
+will be used. You can control this by passing <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code> to the
+<a class="reference internal" href="filters.html"><span class="doc">filter()</span></a> method.</p>
+<p>The context of the method will match the source property. So, a method
+completed from a static property will be static and a method completed from an instance
+property will be an instance method.</p>
+<p>You can change this by doing <code class="docutils literal notranslate"><span class="pre">setMethodContext()</span></code> and passing <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code>.</p>
+</section>
 </section>
 
 

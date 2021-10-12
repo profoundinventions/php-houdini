@@ -12,8 +12,9 @@ You can set a custom return type with ``setReturnType()``, just like
 you can for properties with ``setPropertyType()``:
 
 .. code-block:: php
+   :caption: example.php
 
-   <?php // example.php
+   <?php
    namespace YourNamespace;
 
    use SomeOtherNamespace\SomeOtherClass;
@@ -29,8 +30,9 @@ you can for properties with ``setPropertyType()``:
    }
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -50,8 +52,9 @@ type is promoted by passing ``Context::isStatic()`` or ``Context::isInstance()``
 to the ``filter()`` method:
 
 .. code-block:: php
+   :caption: example.php
 
-   <?php // example.php
+   <?php
    namespace YourNamespace;
 
    use SomeOtherNamespace\SomeOtherClass;
@@ -73,8 +76,9 @@ to the ``filter()`` method:
    }
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;

@@ -1,25 +1,32 @@
--------------------------
-Adding Dynamic Methods
--------------------------
+----------------------------
+Configuring Method Promotion
+----------------------------
 
-PHP Houdini can also add autocompletion for dynamic methods in
-much the same way as for :doc:`dynamic properties <adding-dynamic-properties>`.
+Promoting methods can also be configuring like dynamic properties, but
+there are fewer options.
 
-The API for methods is similar to properties, except you replace the words
-``Property`` with ``Method``, and ``PropertyType`` with ``ReturnType`` .
+Overriding the return type
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+You can set a custom return type with ``setReturnType()``, just like
+you can for properties with ``setPropertyType()``:
 
-For methods, you can autocomplete them from properties or constants.
+.. code-block:: php
 
-.. note::
-    The autocompleted methods have zero arguments. This is ideal for configuring getter methods.
+   <?php // example.php
+   namespace YourNamespace;
 
-    In the future, there may be a way to configure the arguments for each dynamic method. Please contact us
-    at ``profoundinventions+houdini@gmail.com`` if you would like to request this feature.
+   use SomeOtherNamespace\SomeOtherClass;
 
-Here's an example that completes methods from all the protected properties in a class, and
-transforms them from ``snake_case`` to ``camelCase``. The return type of the method
-is set from the type of the value of the corresponding property:
+   class YourDynamicClass {
+      public function __call($name) {
+         return $this->sourceMethod();
+      }
+
+      protected function sourceMethod() {
+         return new SomeOtherClass();
+      }
+   }
 
 .. code-block:: php
 
@@ -30,11 +37,57 @@ is set from the type of the value of the corresponding property:
    use SomeOtherNamespace\SomeOtherClass;
 
    houdini()->modifyClass(YourDynamicClass::class)
-       ->addMethodsFromAllProperties()
-       ->filter( AccessFilter::isProtected() )
-       ->transform( NameTransform::camelCase() )
+       ->promoteMethod('sourceMethod')
+       ->setMethodType(SomeOtherClass::class);
 
-Go to the :doc:`next step <using-constants-as-a-source>` to learn about how
-to use constants as a source for autocompletion.
+
+Using static methods
+~~~~~~~~~~~~~~~~~~~~
+
+Like properties, static methods will be promoted as static methods, and
+instance methods as instance methods, and you can control which
+type is promoted by passing ``Context::isStatic()`` or ``Context::isInstance()``
+to the ``filter()`` method:
+
+.. code-block:: php
+
+   <?php // example.php
+   namespace YourNamespace;
+
+   use SomeOtherNamespace\SomeOtherClass;
+
+   class YourDynamicClass {
+      public function __call($name) {
+         return $this->sourceMethod();
+      }
+
+      protected static function staticMethod() {
+      }
+
+      protected function sourceMethod() {
+         return new SomeOtherClass();
+      }
+
+      protected function sourceMethod2() {
+      }
+   }
+
+.. code-block:: php
+
+   <?php // inside .houdini.php
+   namespace Houdini\Config\V1;
+
+   use YourNamespace\YourDynamicClass;
+   use SomeOtherNamespace\SomeOtherClass;
+
+   houdini()->modifyClass(YourDynamicClass::class)
+       ->promoteProperties()
+       ->setPropertyTypeFromPropertyType()
+       ->filter( Context::isInstance() ); // ignores staticMethod()
+
+
+Go to the :doc:`next step <adding-methods-from-properties>` to learn about how
+to add methods from  properties.
+
 
 

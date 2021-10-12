@@ -15,8 +15,9 @@ and properties.
     promoting-methods
     filters
     transforms
-    adding-dynamic-properties
-    adding-dynamic-methods
+    configuring-property-promotion
+    configuring-method-promotion
+    adding-methods-from-properties.rst
     using-constants-as-a-source
     array-patterns
     support

@@ -1,13 +1,6 @@
--------------------------
-Adding Dynamic Methods
--------------------------
-
-PHP Houdini can also add autocompletion for dynamic methods in
-much the same way as for :doc:`dynamic properties <adding-dynamic-properties>`.
-
-The API for methods is similar to properties, except you replace the words
-``Property`` with ``Method``, and ``PropertyType`` with ``ReturnType`` .
-
+-------------------------------------------
+Adding methods from properties or constants
+-------------------------------------------
 
 For methods, you can autocomplete them from properties or constants.
 
@@ -33,8 +26,5 @@ is set from the type of the value of the corresponding property:
        ->addMethodsFromAllProperties()
        ->filter( AccessFilter::isProtected() )
        ->transform( NameTransform::camelCase() )
-
-Go to the :doc:`next step <using-constants-as-a-source>` to learn about how
-to use constants as a source for autocompletion.
 
 

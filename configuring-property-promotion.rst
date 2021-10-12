@@ -1,18 +1,15 @@
--------------------------
-Adding Dynamic Properties
--------------------------
+------------------------------
+Configuring Property Promotion
+------------------------------
 
-PHP Houdini can not only promote properties and methods - you
-can also add autocompletion for properties and methods that don't exist
-on the class at all.
+PHP Houdini also enables you to configure property completion to change things like
+the name of the promoted property or its type.
 
-Adding a single dynamic property
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Promoting a single dynamic property
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To add a property, you need to specify a `source` for the property.
-That source can be either another property, a constant, or a method.
-
-Here's an example of completing a property from another property:
+To promote a single property, you can use ``promoteProperty()`` and specify the name of the property as a
+string parameter:
 
 .. code-block:: php
 
@@ -35,14 +32,14 @@ Here's an example of completing a property from another property:
    use YourNamespace\YourDynamicClass;
 
    houdini()->modifyClass(YourDynamicClass::class)
-       ->addPropertiesFromProperty('sourceProperty'); // name of the property
+       ->promoteProperty('sourceProperty'); // name of the property
 
 Changing the property name
 ##########################
 
-The previous example will autocomplete the name ``sourceProperty`` and the
-type will be ``string``. You can manipulate different settings for the
-autocompletion by calling additional methods after ``addPropertiesFromProperty``.
+You can manipulate different settings for the
+autocompletion by calling additional methods after ``promoteProperty()`` or
+``promoteProperties()``.
 
 To set the name of the autocompleted property from the value of the ``sourceProperty``, you can call
 ``setPropertyNameFromPropertyValue()``:
@@ -57,7 +54,7 @@ To set the name of the autocompleted property from the value of the ``sourceProp
       protected $sourceProperty = 'yourPropertyName';
       private $yourPropertyName;
       public function __get($name) {
-         return $this->$name();
+         return $this->yourPropertyName;
       }
    }
 
@@ -69,7 +66,7 @@ To set the name of the autocompleted property from the value of the ``sourceProp
    use YourNamespace\YourDynamicClass;
 
    houdini()->modifyClass(YourDynamicClass::class)
-       ->addPropertiesFromProperty('sourceProperty')
+       ->promoteProperty('sourceProperty')
        ->setPropertyNameFromPropertyValue();
 
 Now there will be a virtual property ``yourProperty``
@@ -94,11 +91,14 @@ as a string. For example, if you specify a property whose value is the string
    namespace YourNamespace;
 
    class YourDynamicClass {
-      /** var string */
+      /** @var string */
       protected $sourceProperty = 'int';
-      private $yourPropertyName;
+
+      /** @var int */
+      private $backingProperty = 1;
+
       public function __get($name) {
-         return $this->$name();
+         return $this->backingProperty;
       }
    }
 
@@ -110,11 +110,11 @@ as a string. For example, if you specify a property whose value is the string
    use YourNamespace\YourDynamicClass;
 
    houdini()->modifyClass(YourDynamicClass::class)
-       ->addPropertiesFromProperty('sourceProperty')
+       ->promoteProperty('sourceProperty')
        ->setPropertyTypeFromPropertyValue();
 
 Instead of ``int``, you can use any fully qualified class name, and even
-import the class with a ``use`` statement and add ``::class``.
+import the class with a ``use`` statement or add ``::class``.
 
 .. code-block:: php
 
@@ -122,16 +122,20 @@ import the class with a ``use`` statement and add ``::class``.
    namespace YourNamespace;
 
    use SomeOtherNamespace\SomeOtherClass;
+
    class YourDynamicClass {
       /** @var string */
       protected $sourceProperty = SomeOtherClass::class;
+
       /** @var SomeOtherClass */
-      private $something;
+      private $backingProperty;
+
       public function __construct() {
-        $this->something = new SomeOtherClass();
+        $this->backingProperty = new SomeOtherClass();
       }
+
       public function __get($name) {
-         return $this->$name();
+         return $this->backingProperty;
       }
    }
 
@@ -143,7 +147,7 @@ import the class with a ``use`` statement and add ``::class``.
    use YourNamespace\YourDynamicClass;
 
    houdini()->modifyClass(YourDynamicClass::class)
-       ->addPropertiesFromProperty('sourceProperty')
+       ->promoteProperty('sourceProperty')
        ->setPropertyTypeFromPropertyValue();
 
 In the previous example, the type of the property will be taken from the type
@@ -160,11 +164,14 @@ file itself instead of in a class property:
    namespace YourNamespace;
 
    use SomeOtherNamespace\SomeOtherClass;
+
    class YourDynamicClass {
       protected $sourceProperty;
+
       public function __construct() {
         $this->sourceProperty = new SomeOtherClass();
       }
+
       public function __get($name) {
          return $this->$name();
       }
@@ -179,7 +186,7 @@ file itself instead of in a class property:
    use SomeOtherNamespace\SomeOtherClass;
 
    houdini()->modifyClass(YourDynamicClass::class)
-       ->addPropertiesFromProperty('sourceProperty')
+       ->promoteProperty('sourceProperty')
        ->setPropertyType(SomeOtherClass::class);
 
 Changes are inherited!
@@ -193,15 +200,19 @@ then you only have to specify the dynamic pattern on the base class, and not all
 of the descendant classes individually.
 
 
+.. note::
+    If the type of the property is a class, you can navigate to the class definition from ``$this->yourProperty``
+    as if it were a normally defined property.
+
+
 Using all the properties of a class as a source
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you use the method ``addPropertiesFromAllProperties()``, you
+If you use the method ``promoteProperties()``, you
 can autocomplete a property for each property in a class.
 
 Here's an example that generates properties from the types
 specified in the class:
-
 
 .. code-block:: php
 
@@ -228,11 +239,14 @@ specified in the class:
    use SomeOtherNamespace\SomeOtherClass;
 
    houdini()->modifyClass(YourDynamicClass::class)
-       ->addPropertiesFromAllProperties('sourceProperty')
+       ->promoteProperties(')
        ->setPropertyTypeFromPropertyType();
 
 
-Go to the :doc:`next step <adding-dynamic-methods>` to learn about how to do
-the same thing for methods.
+This will complete a property for each of ``$stringProperty``, ``$intProperty``, and ``$dateTimeProperty``
+of the corresponding type.
+
+Go to the :doc:`next step <configuring-dynamic-methods>` to learn about how to
+configure dynamic methods.
 
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Array Patterns &mdash; PHP Houdini  documentation</title>
+  <title>Using Constants as a Source &mdash; PHP Houdini  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Support or Contact" href="support.html" />
-    <link rel="prev" title="Using Constants as a Source" href="using-constants-as-a-source.html" /> 
+    <link rel="next" title="Array Patterns" href="array-patterns.html" />
+    <link rel="prev" title="Adding methods from properties or constants" href="adding-methods-from-properties.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,12 +47,12 @@
 <li class="toctree-l1"><a class="reference internal" href="configuring-property-promotion.html">Configuring Property Promotion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuring-method-promotion.html">Configuring Method Promotion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-methods-from-properties.html">Adding methods from properties or constants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Array Patterns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#completing-properties-from-arraypatterns">Completing properties from ArrayPatterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#completing-methods-from-arraypatterns">Completing methods from ArrayPatterns</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Constants as a Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#from-a-single-constant-in-a-class">From a single constant in a class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#from-all-constants-in-a-class">From all constants in a class</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
@@ -72,9 +72,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Array Patterns</li>
+      <li>Using Constants as a Source</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/array-patterns.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/using-constants-as-a-source.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -82,13 +82,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="array-patterns">
-<h1>Array Patterns<a class="headerlink" href="#array-patterns" title="Permalink to this headline"></a></h1>
-<section id="completing-properties-from-arraypatterns">
-<h2>Completing properties from ArrayPatterns<a class="headerlink" href="#completing-properties-from-arraypatterns" title="Permalink to this headline"></a></h2>
+  <section id="using-constants-as-a-source">
+<h1>Using Constants as a Source<a class="headerlink" href="#using-constants-as-a-source" title="Permalink to this headline"></a></h1>
+<p>It’s also possible to use constants as a source of dynamic properties or methods.</p>
+<section id="from-a-single-constant-in-a-class">
+<h2>From a single constant in a class<a class="headerlink" href="#from-a-single-constant-in-a-class" title="Permalink to this headline"></a></h2>
+<p>The method to use for using a constant as a source is <code class="docutils literal notranslate"><span class="pre">addPropertiesFromConstant()</span></code>.
+The options for configuring from a constant are similar for properties, except that
+you use <a href="#id1"><span class="problematic" id="id2">`</span></a>setContantName</p>
+<p>Here’s an example</p>
 </section>
-<section id="completing-methods-from-arraypatterns">
-<h2>Completing methods from ArrayPatterns<a class="headerlink" href="#completing-methods-from-arraypatterns" title="Permalink to this headline"></a></h2>
+<section id="from-all-constants-in-a-class">
+<h2>From all constants in a class<a class="headerlink" href="#from-all-constants-in-a-class" title="Permalink to this headline"></a></h2>
 </section>
 </section>
 
@@ -96,8 +101,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="using-constants-as-a-source.html" class="btn btn-neutral float-left" title="Using Constants as a Source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="support.html" class="btn btn-neutral float-right" title="Support or Contact" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="adding-methods-from-properties.html" class="btn btn-neutral float-left" title="Adding methods from properties or constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="array-patterns.html" class="btn btn-neutral float-right" title="Array Patterns" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

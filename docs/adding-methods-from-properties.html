@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adding Dynamic Methods &mdash; PHP Houdini  documentation</title>
+  <title>Adding methods from properties or constants &mdash; PHP Houdini  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link href="using-constants-as-a-source.html" rel="next" title="Using Constants as a Source" />
-    <link href="adding-dynamic-properties.html" rel="prev" title="Adding Dynamic Properties" />
+    <link rel="next" title="Using Constants as a Source" href="using-constants-as-a-source.html" />
+    <link rel="prev" title="Configuring Method Promotion" href="configuring-method-promotion.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,8 +44,9 @@
 <li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-properties.html">Adding Dynamic Properties</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding Dynamic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuring-property-promotion.html">Configuring Property Promotion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuring-method-promotion.html">Configuring Method Promotion</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding methods from properties or constants</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
@@ -67,9 +68,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Adding Dynamic Methods</li>
+      <li>Adding methods from properties or constants</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/adding-dynamic-methods.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/adding-methods-from-properties.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,12 +78,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="adding-dynamic-methods">
-<h1>Adding Dynamic Methods<a class="headerlink" href="#adding-dynamic-methods" title="Permalink to this headline"></a></h1>
-<p>PHP Houdini can also add autocompletion for dynamic methods in
-much the same way as for <a class="reference internal" href="adding-dynamic-properties.html"><span class="doc">dynamic properties</span></a>.</p>
-<p>The API for methods is similar to properties, except you replace the words
-<code class="docutils literal notranslate"><span class="pre">Property</span></code> with <code class="docutils literal notranslate"><span class="pre">Method</span></code>, and <code class="docutils literal notranslate"><span class="pre">PropertyType</span></code> with <code class="docutils literal notranslate"><span class="pre">ReturnType</span></code> .</p>
+  <section id="adding-methods-from-properties-or-constants">
+<h1>Adding methods from properties or constants<a class="headerlink" href="#adding-methods-from-properties-or-constants" title="Permalink to this headline"></a></h1>
 <p>For methods, you can autocomplete them from properties or constants.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -105,16 +102,14 @@ is set from the type of the value of the corresponding property:</p>
     <span class="o">-&gt;</span><span class="na">transform</span><span class="p">(</span> <span class="nx">NameTransform</span><span class="o">::</span><span class="na">camelCase</span><span class="p">()</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>Go to the <a class="reference internal" href="using-constants-as-a-source.html"><span class="doc">next step</span></a> to learn about how
-to use constants as a source for autocompletion.</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a accesskey="p" class="btn btn-neutral float-left" href="adding-dynamic-properties.html" rel="prev" title="Adding Dynamic Properties"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-        <a accesskey="n" class="btn btn-neutral float-right" href="using-constants-as-a-source.html" rel="next" title="Using Constants as a Source">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+        <a href="configuring-method-promotion.html" class="btn btn-neutral float-left" title="Configuring Method Promotion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="using-constants-as-a-source.html" class="btn btn-neutral float-right" title="Using Constants as a Source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

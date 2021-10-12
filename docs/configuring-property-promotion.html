@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adding Dynamic Properties &mdash; PHP Houdini  documentation</title>
+  <title>Configuring Property Promotion &mdash; PHP Houdini  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link href="adding-dynamic-methods.html" rel="next" title="Adding Dynamic Methods" />
+    <link rel="next" title="Configuring Method Promotion" href="configuring-method-promotion.html" />
     <link rel="prev" title="Transforms" href="transforms.html" /> 
 </head>
 
@@ -44,8 +44,8 @@
 <li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding Dynamic Properties</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#adding-a-single-dynamic-property">Adding a single dynamic property</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuring Property Promotion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#promoting-a-single-dynamic-property">Promoting a single dynamic property</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#changing-the-property-name">Changing the property name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changing-the-property-type">Changing the property type</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#setpropertytypefrompropertyvalue">setPropertyTypeFromPropertyValue</a></li>
@@ -55,10 +55,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#changes-are-inherited">Changes are inherited!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-all-the-properties-of-a-class-as-a-source">Using all the properties of a class as a source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-to-promote-all-the-properties">Configuring to promote all the properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-static-properties">Handling static properties</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="adding-dynamic-methods.html">Adding Dynamic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuring-method-promotion.html">Configuring Method Promotion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-methods-from-properties.html">Adding methods from properties or constants</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
@@ -80,9 +82,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Adding Dynamic Properties</li>
+      <li>Configuring Property Promotion</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/adding-dynamic-properties.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/configuring-property-promotion.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -90,22 +92,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="adding-dynamic-properties">
-<h1>Adding Dynamic Properties<a class="headerlink" href="#adding-dynamic-properties" title="Permalink to this headline"></a></h1>
-<p>PHP Houdini can not only promote properties and methods - you
-can also add autocompletion for properties and methods that don’t exist
-on the class at all.</p>
-<section id="adding-a-single-dynamic-property">
-<h2>Adding a single dynamic property<a class="headerlink" href="#adding-a-single-dynamic-property" title="Permalink to this headline"></a></h2>
-<p>To add a property, you need to specify a <cite>source</cite> for the property.
-That source can be either another property, a constant, or a method.</p>
-<p>Here’s an example of completing a property from another property:</p>
+  <section id="configuring-property-promotion">
+<h1>Configuring Property Promotion<a class="headerlink" href="#configuring-property-promotion" title="Permalink to this headline"></a></h1>
+<p>PHP Houdini also enables you to configure property completion to change things like
+the name of the promoted property or its type.</p>
+<section id="promoting-a-single-dynamic-property">
+<h2>Promoting a single dynamic property<a class="headerlink" href="#promoting-a-single-dynamic-property" title="Permalink to this headline"></a></h2>
+<p>To promote a single property, you can use <code class="docutils literal notranslate"><span class="pre">promoteProperty()</span></code> and specify the name of the property as a
+string parameter:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// example.php</span>
 <span class="k">namespace</span> <span class="nx">YourNamespace</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">YourDynamicClass</span> <span class="p">{</span>
    <span class="sd">/** var string */</span>
    <span class="k">protected</span> <span class="nv">$sourceProperty</span><span class="p">;</span>
+
    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$name</span><span class="p">();</span>
    <span class="p">}</span>
@@ -118,14 +119,14 @@ That source can be either another property, a constant, or a method.</p>
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
 <span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addPropertiesFromProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">);</span> <span class="c1">// name of the property</span>
+    <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">);</span> <span class="c1">// name of the property</span>
 </pre></div>
 </div>
 <section id="changing-the-property-name">
 <h3>Changing the property name<a class="headerlink" href="#changing-the-property-name" title="Permalink to this headline"></a></h3>
-<p>The previous example will autocomplete the name <code class="docutils literal notranslate"><span class="pre">sourceProperty</span></code> and the
-type will be <code class="docutils literal notranslate"><span class="pre">string</span></code>. You can manipulate different settings for the
-autocompletion by calling additional methods after <code class="docutils literal notranslate"><span class="pre">addPropertiesFromProperty</span></code>.</p>
+<p>You can manipulate different settings for the
+autocompletion by calling additional methods after <code class="docutils literal notranslate"><span class="pre">promoteProperty()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">promoteProperties()</span></code>.</p>
 <p>To set the name of the autocompleted property from the value of the <code class="docutils literal notranslate"><span class="pre">sourceProperty</span></code>, you can call
 <code class="docutils literal notranslate"><span class="pre">setPropertyNameFromPropertyValue()</span></code>:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// example.php</span>
@@ -134,9 +135,11 @@ autocompletion by calling additional methods after <code class="docutils literal
 <span class="k">class</span> <span class="nc">YourDynamicClass</span> <span class="p">{</span>
    <span class="sd">/** var string */</span>
    <span class="k">protected</span> <span class="nv">$sourceProperty</span> <span class="o">=</span> <span class="s1">&#39;yourPropertyName&#39;</span><span class="p">;</span>
+
    <span class="k">private</span> <span class="nv">$yourPropertyName</span><span class="p">;</span>
+
    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$name</span><span class="p">();</span>
+      <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">yourPropertyName</span><span class="p">;</span>
    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -147,7 +150,7 @@ autocompletion by calling additional methods after <code class="docutils literal
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
 <span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addPropertiesFromProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyNameFromPropertyValue</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -167,11 +170,14 @@ as a string. For example, if you specify a property whose value is the string
 <span class="k">namespace</span> <span class="nx">YourNamespace</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">YourDynamicClass</span> <span class="p">{</span>
-   <span class="sd">/** var string */</span>
+   <span class="sd">/** @var string */</span>
    <span class="k">protected</span> <span class="nv">$sourceProperty</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span><span class="p">;</span>
-   <span class="k">private</span> <span class="nv">$yourPropertyName</span><span class="p">;</span>
+
+   <span class="sd">/** @var int */</span>
+   <span class="k">private</span> <span class="nv">$backingProperty</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$name</span><span class="p">();</span>
+      <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">backingProperty</span><span class="p">;</span>
    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -182,26 +188,30 @@ as a string. For example, if you specify a property whose value is the string
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
 <span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addPropertiesFromProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyTypeFromPropertyValue</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>Instead of <code class="docutils literal notranslate"><span class="pre">int</span></code>, you can use any fully qualified class name, and even
-import the class with a <code class="docutils literal notranslate"><span class="pre">use</span></code> statement and add <code class="docutils literal notranslate"><span class="pre">::class</span></code>.</p>
+import the class with a <code class="docutils literal notranslate"><span class="pre">use</span></code> statement or add <code class="docutils literal notranslate"><span class="pre">::class</span></code>.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// example.php</span>
 <span class="k">namespace</span> <span class="nx">YourNamespace</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">SomeOtherNamespace\SomeOtherClass</span><span class="p">;</span>
+
 <span class="k">class</span> <span class="nc">YourDynamicClass</span> <span class="p">{</span>
    <span class="sd">/** @var string */</span>
    <span class="k">protected</span> <span class="nv">$sourceProperty</span> <span class="o">=</span> <span class="nx">SomeOtherClass</span><span class="o">::</span><span class="na">class</span><span class="p">;</span>
+
    <span class="sd">/** @var SomeOtherClass */</span>
-   <span class="k">private</span> <span class="nv">$something</span><span class="p">;</span>
+   <span class="k">private</span> <span class="nv">$backingProperty</span><span class="p">;</span>
+
    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">something</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeOtherClass</span><span class="p">();</span>
+     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">backingProperty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeOtherClass</span><span class="p">();</span>
    <span class="p">}</span>
+
    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$name</span><span class="p">();</span>
+      <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">backingProperty</span><span class="p">;</span>
    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -212,7 +222,7 @@ import the class with a <code class="docutils literal notranslate"><span class="
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
 <span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addPropertiesFromProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyTypeFromPropertyValue</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -226,11 +236,14 @@ file itself instead of in a class property:</p>
 <span class="k">namespace</span> <span class="nx">YourNamespace</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">SomeOtherNamespace\SomeOtherClass</span><span class="p">;</span>
+
 <span class="k">class</span> <span class="nc">YourDynamicClass</span> <span class="p">{</span>
    <span class="k">protected</span> <span class="nv">$sourceProperty</span><span class="p">;</span>
+
    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">sourceProperty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeOtherClass</span><span class="p">();</span>
    <span class="p">}</span>
+
    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$name</span><span class="p">();</span>
    <span class="p">}</span>
@@ -244,9 +257,14 @@ file itself instead of in a class property:</p>
 <span class="k">use</span> <span class="nx">SomeOtherNamespace\SomeOtherClass</span><span class="p">;</span>
 
 <span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addPropertiesFromProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyType</span><span class="p">(</span><span class="nx">SomeOtherClass</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the type of the property is a class, you can navigate to the class definition from
+<code class="docutils literal notranslate"><span class="pre">$this-&gt;yourProperty</span></code> as if it were a normally defined property.</p>
 </div>
 </section>
 </section>
@@ -259,9 +277,9 @@ automatically.</p>
 then you only have to specify the dynamic pattern on the base class, and not all
 of the descendant classes individually.</p>
 </section>
-<section id="using-all-the-properties-of-a-class-as-a-source">
-<h2>Using all the properties of a class as a source<a class="headerlink" href="#using-all-the-properties-of-a-class-as-a-source" title="Permalink to this headline"></a></h2>
-<p>If you use the method <code class="docutils literal notranslate"><span class="pre">addPropertiesFromAllProperties()</span></code>, you
+<section id="configuring-to-promote-all-the-properties">
+<h2>Configuring to promote all the properties<a class="headerlink" href="#configuring-to-promote-all-the-properties" title="Permalink to this headline"></a></h2>
+<p>If you use the method <code class="docutils literal notranslate"><span class="pre">promoteProperties()</span></code>, you
 can autocomplete a property for each property in a class.</p>
 <p>Here’s an example that generates properties from the types
 specified in the class:</p>
@@ -280,6 +298,25 @@ specified in the class:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>&lt;?php // inside .houdini.php
+namespace Houdini\Config\V1;
+
+use YourNamespace\YourDynamicClass;
+use SomeOtherNamespace\SomeOtherClass;
+
+houdini()-&gt;modifyClass(YourDynamicClass::class)
+    -&gt;promoteProperties(&#39;)
+    -&gt;setPropertyTypeFromPropertyType();
+</pre></div>
+</div>
+<p>This will complete a property for each of <code class="docutils literal notranslate"><span class="pre">$stringProperty</span></code>, <code class="docutils literal notranslate"><span class="pre">$intProperty</span></code>, and <code class="docutils literal notranslate"><span class="pre">$dateTimeProperty</span></code>
+of the corresponding type.</p>
+</section>
+<section id="handling-static-properties">
+<h2>Handling static properties<a class="headerlink" href="#handling-static-properties" title="Permalink to this headline"></a></h2>
+<p>By default, all properties, static and instance, will be promoted.</p>
+<p>If you only want to promote one type, you can use the pass a <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Context::isInstance()</span></code> to <code class="docutils literal notranslate"><span class="pre">filter</span></code> to control which ones to complete:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
@@ -287,12 +324,37 @@ specified in the class:</p>
 <span class="k">use</span> <span class="nx">SomeOtherNamespace\SomeOtherClass</span><span class="p">;</span>
 
 <span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addPropertiesFromAllProperties</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">setPropertyTypeFromPropertyType</span><span class="p">();</span>
+    <span class="o">-&gt;</span><span class="na">promoteProperties</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">setPropertyTypeFromPropertyType</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span> <span class="nx">Context</span><span class="o">::</span><span class="na">isInstance</span><span class="p">()</span> <span class="p">);</span> <span class="c1">// ignores any private/protected static properties.</span>
 </pre></div>
 </div>
-<p>Go to the <a class="reference internal" href="adding-dynamic-methods.html"><span class="doc">next step</span></a> to learn about how to do
-the same thing for methods.</p>
+<p>If the property you’re promoting is a static property, the promoted version will also be static.</p>
+<p>If you want the promoted version to be static but the source property is an instance
+property, you can control that separately with the <code class="docutils literal notranslate"><span class="pre">setPropertyContext()</span></code> and passing either
+<code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code> or <code class="docutils literal notranslate"><span class="pre">Context::isInstance()</span></code> to complete a static or instance property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Generating a static property from an instance one usually isn’t useful, but can be if you want to generate
+multiple dynamic properties from a single property with :doc:<code class="docutils literal notranslate"><span class="pre">Array</span> <span class="pre">Patterns</span> <span class="pre">&lt;array-patterns&gt;</span></code>. That’s a
+more advanced usage and not necessary for most projects.</p>
+</div>
+<p>Using the previous example, but if we wanted to use it like <code class="docutils literal notranslate"><span class="pre">YourDynamicClass::$sourceProperty</span></code>,
+it would look like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
+<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">SomeOtherNamespace\SomeOtherClass</span><span class="p">;</span>
+
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setPropertyType</span><span class="p">(</span><span class="nx">SomeOtherClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setPropertyContext</span><span class="p">(</span><span class="nx">Context</span><span class="o">::</span><span class="na">isStatic</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Go to the <span class="xref std std-doc">next step</span> to learn about how to
+configure dynamic methods.</p>
 </section>
 </section>
 
@@ -301,7 +363,7 @@ the same thing for methods.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="transforms.html" class="btn btn-neutral float-left" title="Transforms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a accesskey="n" class="btn btn-neutral float-right" href="adding-dynamic-methods.html" rel="next" title="Adding Dynamic Methods">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+        <a href="configuring-method-promotion.html" class="btn btn-neutral float-right" title="Configuring Method Promotion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

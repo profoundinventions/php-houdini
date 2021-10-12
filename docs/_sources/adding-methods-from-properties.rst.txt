@@ -1,0 +1,30 @@
+-------------------------------------------
+Adding methods from properties or constants
+-------------------------------------------
+
+For methods, you can autocomplete them from properties or constants.
+
+.. note::
+    The autocompleted methods have zero arguments. This is ideal for configuring getter methods.
+
+    In the future, there may be a way to configure the arguments for each dynamic method. Please contact us
+    at ``profoundinventions+houdini@gmail.com`` if you would like to request this feature.
+
+Here's an example that completes methods from all the protected properties in a class, and
+transforms them from ``snake_case`` to ``camelCase``. The return type of the method
+is set from the type of the value of the corresponding property:
+
+.. code-block:: php
+
+   <?php // inside .houdini.php
+   namespace Houdini\Config\V1;
+
+   use YourNamespace\YourDynamicClass;
+   use SomeOtherNamespace\SomeOtherClass;
+
+   houdini()->modifyClass(YourDynamicClass::class)
+       ->addMethodsFromAllProperties()
+       ->filter( AccessFilter::isProtected() )
+       ->transform( NameTransform::camelCase() )
+
+

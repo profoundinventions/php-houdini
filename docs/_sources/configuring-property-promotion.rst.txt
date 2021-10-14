@@ -290,7 +290,7 @@ property, you can control that separately with the ``setPropertyContext()`` and 
 
 .. note::
     Generating a static property from an instance one usually isn't useful, but can be if you want to generate
-    multiple dynamic properties from a single property with :doc:``Array Patterns <array-patterns>``. That's a
+    multiple dynamic properties from a single property with :doc:`Array Patterns <array-patterns>`. That's a
     more advanced usage and not necessary for most projects.
 
 Using the previous example, but if we wanted to use it like ``YourDynamicClass::$sourceProperty``,

@@ -1,6 +1,6 @@
--------------------------------------------
-Adding methods from properties or constants
--------------------------------------------
+------------------------------
+Adding Methods from Properties
+------------------------------
 
 You can also autocomplete methods from properties.
 
@@ -18,8 +18,9 @@ transforms them from ``snake_case`` to ``camelCase``. The return type of the met
 is set from the type of the value of the corresponding property:
 
 .. code-block:: php
+   :caption: .houdini.php
 
-   <?php // inside .houdini.php
+   <?php
    namespace Houdini\Config\V1;
 
    use YourNamespace\YourDynamicClass;
@@ -30,7 +31,7 @@ is set from the type of the value of the corresponding property:
        ->filter( AccessFilter::isProtected() )
        ->transform( NameTransform::camelCase() )
 
-There are a also a of other options for configuring the method and its return type.
+There are a also other options for configuring the method and its return type.
 
 Configuring the method name
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,11 +39,50 @@ Configuring the method name
 setMethodNameFromPropertyName()
 -------------------------------
 
-The default is
+This sets the method name from the property name.
 
+setMethodNameFromPropertyValue()
+--------------------------------
+
+This sets the method name from the property value.
 
 Configuring the return type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+setReturnTypeFromPropertyName()
+-------------------------------
+
+This sets the return type from the name of the property.
+
+setReturnTypeFromPropertyValue()
+--------------------------------
+
+This sets the return type from the default value in the class. For example,
+if the property is ``$property`` and is assigned to a value of ``'int'``
+in the class definition, then the return type of the method will be ``int``:
+
+.. code-block:: php
+   :caption: example.php
+
+   <?php
+   namespace YourNamespace;
+
+   class YourDynamicClass {
+      protected $property = 'int';
+   }
+
+setReturnTypeFromTypeOfPropertyValue()
+--------------------------------------
+
+This sets the return type from the type of the property.
+
+This is the default.
+
+setReturnType(string $returnType)
+---------------------------------
+
+This sets a custom return type from a string parameter.
+
 
 Completing static methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,4 +96,7 @@ completed from a static property will be static and a method completed from an i
 property will be an instance method.
 
 You can change this by doing ``setMethodContext()`` and passing ``Context::isStatic()``.
+
+Go to the :doc:`next step <using-constants-as-a-source>` to learn about
+adding methods or properties from constants.
 

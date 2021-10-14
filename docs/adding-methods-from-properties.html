@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adding methods from properties or constants &mdash; PHP Houdini  documentation</title>
+  <title>Adding Methods from Properties &mdash; PHP Houdini  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -47,12 +47,19 @@
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuring-property-promotion.html">Configuring Property Promotion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuring-method-promotion.html">Configuring Method Promotion</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding methods from properties or constants</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding Methods from Properties</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-the-method-name">Configuring the method name</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#setmethodnamefrompropertyname">setMethodNameFromPropertyName()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setmethodnamefrompropertyvalue">setMethodNameFromPropertyValue()</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#configuring-the-return-type">Configuring the return type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-the-return-type">Configuring the return type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setreturntypefrompropertyname">setReturnTypeFromPropertyName()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setreturntypefrompropertyvalue">setReturnTypeFromPropertyValue()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setreturntypefromtypeofpropertyvalue">setReturnTypeFromTypeOfPropertyValue()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setreturntype-string-returntype">setReturnType(string $returnType)</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#completing-static-methods">Completing static methods</a></li>
 </ul>
 </li>
@@ -77,7 +84,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Adding methods from properties or constants</li>
+      <li>Adding Methods from Properties</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/adding-methods-from-properties.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -87,8 +94,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="adding-methods-from-properties-or-constants">
-<h1>Adding methods from properties or constants<a class="headerlink" href="#adding-methods-from-properties-or-constants" title="Permalink to this headline"></a></h1>
+  <section id="adding-methods-from-properties">
+<h1>Adding Methods from Properties<a class="headerlink" href="#adding-methods-from-properties" title="Permalink to this headline"></a></h1>
 <p>You can also autocomplete methods from properties.</p>
 <p>To do this, you use the <code class="docutils literal notranslate"><span class="pre">addMethodsFromAllProperties</span></code> or <code class="docutils literal notranslate"><span class="pre">addMethodFromProperty</span></code>
 methods.</p>
@@ -101,7 +108,9 @@ at <code class="docutils literal notranslate"><span class="pre">profoundinventio
 <p>Here’s an example that completes methods from all the protected properties in a class, and
 transforms them from <code class="docutils literal notranslate"><span class="pre">snake_case</span></code> to <code class="docutils literal notranslate"><span class="pre">camelCase</span></code>. The return type of the method
 is set from the type of the value of the corresponding property:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="c1">// inside .houdini.php</span>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
@@ -113,16 +122,51 @@ is set from the type of the value of the corresponding property:</p>
     <span class="o">-&gt;</span><span class="na">transform</span><span class="p">(</span> <span class="nx">NameTransform</span><span class="o">::</span><span class="na">camelCase</span><span class="p">()</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>There are a also a of other options for configuring the method and its return type.</p>
+</div>
+<p>There are a also other options for configuring the method and its return type.</p>
 <section id="configuring-the-method-name">
 <h2>Configuring the method name<a class="headerlink" href="#configuring-the-method-name" title="Permalink to this headline"></a></h2>
 <section id="setmethodnamefrompropertyname">
 <h3>setMethodNameFromPropertyName()<a class="headerlink" href="#setmethodnamefrompropertyname" title="Permalink to this headline"></a></h3>
-<p>The default is</p>
+<p>This sets the method name from the property name.</p>
+</section>
+<section id="setmethodnamefrompropertyvalue">
+<h3>setMethodNameFromPropertyValue()<a class="headerlink" href="#setmethodnamefrompropertyvalue" title="Permalink to this headline"></a></h3>
+<p>This sets the method name from the property value.</p>
 </section>
 </section>
 <section id="configuring-the-return-type">
 <h2>Configuring the return type<a class="headerlink" href="#configuring-the-return-type" title="Permalink to this headline"></a></h2>
+<section id="setreturntypefrompropertyname">
+<h3>setReturnTypeFromPropertyName()<a class="headerlink" href="#setreturntypefrompropertyname" title="Permalink to this headline"></a></h3>
+<p>This sets the return type from the name of the property.</p>
+</section>
+<section id="setreturntypefrompropertyvalue">
+<h3>setReturnTypeFromPropertyValue()<a class="headerlink" href="#setreturntypefrompropertyvalue" title="Permalink to this headline"></a></h3>
+<p>This sets the return type from the default value in the class. For example,
+if the property is <code class="docutils literal notranslate"><span class="pre">$property</span></code> and is assigned to a value of <code class="docutils literal notranslate"><span class="pre">'int'</span></code>
+in the class definition, then the return type of the method will be <code class="docutils literal notranslate"><span class="pre">int</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">example.php</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">YourNamespace</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">YourDynamicClass</span> <span class="p">{</span>
+   <span class="k">protected</span> <span class="nv">$property</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="setreturntypefromtypeofpropertyvalue">
+<h3>setReturnTypeFromTypeOfPropertyValue()<a class="headerlink" href="#setreturntypefromtypeofpropertyvalue" title="Permalink to this headline"></a></h3>
+<p>This sets the return type from the type of the property.</p>
+<p>This is the default.</p>
+</section>
+<section id="setreturntype-string-returntype">
+<h3>setReturnType(string $returnType)<a class="headerlink" href="#setreturntype-string-returntype" title="Permalink to this headline"></a></h3>
+<p>This sets a custom return type from a string parameter.</p>
+</section>
 </section>
 <section id="completing-static-methods">
 <h2>Completing static methods<a class="headerlink" href="#completing-static-methods" title="Permalink to this headline"></a></h2>
@@ -133,6 +177,8 @@ will be used. You can control this by passing <code class="docutils literal notr
 completed from a static property will be static and a method completed from an instance
 property will be an instance method.</p>
 <p>You can change this by doing <code class="docutils literal notranslate"><span class="pre">setMethodContext()</span></code> and passing <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code>.</p>
+<p>Go to the <a class="reference internal" href="using-constants-as-a-source.html"><span class="doc">next step</span></a> to learn about
+adding methods or properties from constants.</p>
 </section>
 </section>
 

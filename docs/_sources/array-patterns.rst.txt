@@ -376,6 +376,11 @@ in the first ``match()`` method. The match isn't complete at that point though, 
 the contents of that array with ``forEachValue()`` and then pull out the property type from the
 contents of the ``type`` parameter.
 
+Combining Patterns with other methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TODO - also possible to use patterns with `setReturnType()` or `setPropertyType()`
+
 Adieu to Array Patterns
 ~~~~~~~~~~~~~~~~~~~~~~~
 

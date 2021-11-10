@@ -124,7 +124,7 @@ string parameter:</p>
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">);</span> <span class="c1">// name of the property</span>
 </pre></div>
 </div>
@@ -161,7 +161,7 @@ autocompletion by calling additional methods after <code class="docutils literal
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyNameFromPropertyValue</span><span class="p">();</span>
 </pre></div>
@@ -205,7 +205,7 @@ as a string. For example, if you specify a property whose value is the string
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyTypeFromPropertyValue</span><span class="p">();</span>
 </pre></div>
@@ -245,7 +245,7 @@ import the class with a <code class="docutils literal notranslate"><span class="
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyTypeFromPropertyValue</span><span class="p">();</span>
 </pre></div>
@@ -286,7 +286,7 @@ file itself instead of in a class property:</p>
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">SomeOtherNamespace\SomeOtherClass</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyType</span><span class="p">(</span><span class="nx">SomeOtherClass</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 </pre></div>
@@ -340,7 +340,7 @@ namespace Houdini\Config\V1;
 use YourNamespace\YourDynamicClass;
 use SomeOtherNamespace\SomeOtherClass;
 
-houdini()-&gt;modifyClass(YourDynamicClass::class)
+houdini()-&gt;overrideClass(YourDynamicClass::class)
     -&gt;promoteProperties(&#39;)
     -&gt;setPropertyTypeFromPropertyType();
 </pre></div>
@@ -362,7 +362,7 @@ of the corresponding type.</p>
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">SomeOtherNamespace\SomeOtherClass</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteProperties</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">setPropertyTypeFromPropertyType</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span> <span class="nx">Context</span><span class="o">::</span><span class="na">isInstance</span><span class="p">()</span> <span class="p">);</span> <span class="c1">// ignores any private/protected static properties.</span>
@@ -389,7 +389,7 @@ it would look like this:</p>
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">SomeOtherNamespace\SomeOtherClass</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteProperty</span><span class="p">(</span><span class="s1">&#39;sourceProperty&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyType</span><span class="p">(</span><span class="nx">SomeOtherClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setPropertyContext</span><span class="p">(</span><span class="nx">Context</span><span class="o">::</span><span class="na">isStatic</span><span class="p">());</span>

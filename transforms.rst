@@ -18,13 +18,17 @@ Here's an example that autocompletes ``camelCase`` properties from private ``sna
    use YourNamespace\YourDynamicClass;
 
    // Make the publicly visible name camelCase instead of snake_case:
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties()
        ->filter( AccessFilter::isPrivate() )
        ->transform( NameTransform::camelCase() );
 
 Similar to :doc:`filters <filters>`, you can pass multiple transforms to the ``transform`` method
 and they will be applied in-order.
+
+.. note::
+    Filters are checked *before* applying any transforms on them.
+
 
 Transforming auto-completed methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +45,7 @@ The same method works for methods - just replace ``promoteProperties()`` with
    use YourNamespace\YourDynamicClass;
 
    // Make the publicly visible name camelCase instead of snake_case:
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteMethods()
        ->filter( AccessFilter::isPrivate() )
        ->transform( NameTransform::camelCase() );

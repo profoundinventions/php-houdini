@@ -2,9 +2,12 @@
 Introduction
 ============
 
-PHP Houdini lets you adds autocomplete for classes with magic methods, like ``__call()``,
-``__get()``, and ``__set()``. The plugin allows you to control completion
-flexibly by specifying how to complete properties and methods through PHP code.
+PHP Houdini lets you add autocompletion for classes with magic methods, like ``__call()``,
+``__get()``, and ``__set()``.
+
+The plugin allows you to control completion
+flexibly by specifying how to complete properties and methods through a configuration
+file written in PHP.
 
 .. note::
     If the plugin is missing anything you think is essential, please let

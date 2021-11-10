@@ -108,7 +108,7 @@ of <code class="docutils literal notranslate"><span class="pre">promotePropertie
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
 <span class="c1">// promote the protected methods so they&#39;re visible outside the class:</span>
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteMethods</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span> <span class="nx">AccessFilter</span><span class="o">::</span><span class="na">isProtected</span><span class="p">()</span> <span class="p">);</span>
 </pre></div>

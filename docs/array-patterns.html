@@ -145,7 +145,7 @@ namespace Houdini\Config\V1;
 
 use SomeNamespace\SimpleArrayPatternExample;
 
-houdini()-&gt;modifyClass(SimpleArrayPatternExample::class)
+houdini()-&gt;overrideClass(SimpleArrayPatternExample::class)
     -&gt;addMethodFromProperty(&#39;methodDefinitions&#39;)
     -&gt;matchMethodInfoFromArrayPattern(
          ArrayPattern::create()
@@ -211,7 +211,7 @@ namespace Houdini\Config\V1;
 
 use SomeNamespace\ArrayMatchExample;
 
-houdini()-&gt;modifyClass(ArrayMatchExample::class)
+houdini()-&gt;overrideClass(ArrayMatchExample::class)
     -&gt;addMethodFromProperty(&#39;methodDefinitions&#39;)
     -&gt;matchMethodInfoFromArrayPattern(
          ArrayPattern::create()
@@ -264,7 +264,7 @@ namespace Houdini\Config\V1;
 
 use SomeNamespace\ArrayPatternExample;
 
-houdini()-&gt;modifyClass(PropertyConstantExample::class)
+houdini()-&gt;overrideClass(PropertyConstantExample::class)
     -&gt;addPropertyFromConstant(&#39;PROPERTY_DEFINITIONS&#39;)
     -&gt;matchPropertyInfoFromArrayPattern(
          ArrayPattern::create()
@@ -320,7 +320,7 @@ namespace Houdini\Config\V1;
 
 use SomeNamespace\MultiConstantExample;
 
-houdini()-&gt;modifyClass(MultiConstantExample::class)
+houdini()-&gt;overrideClass(MultiConstantExample::class)
     -&gt;addProperties(&#39;PROPERTY_DEFINITIONS&#39;)
     -&gt;matchPropertyInfoFromArrayPattern(
          ArrayPattern::create()
@@ -379,7 +379,7 @@ if the definition is indexed.</p>
 
 <span class="k">use</span> <span class="nx">SomeNamespace\ForEachValueExample</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">ForEachValueExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">ForEachValueExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">addProperties</span><span class="p">(</span><span class="s1">&#39;PROPERTY_DEFINITIONS&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">matchPropertyInfoFromArrayPattern</span><span class="p">(</span>
          <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
@@ -439,7 +439,7 @@ calls to match each property or method:</p>
 
 <span class="k">use</span> <span class="nx">SomeNamespace\MultiForEachExample</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">MultiForEachExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">MultiForEachExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">addProperties</span><span class="p">(</span><span class="s1">&#39;PROPERTY_DEFINITIONS&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">matchPropertyInfoFromArrayPattern</span><span class="p">(</span>
          <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>

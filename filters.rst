@@ -13,7 +13,7 @@ of a class that have a certain character string:
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties()
        ->filter( NameFilter::contains('foo') );
 
@@ -39,7 +39,7 @@ so *all* of the filters passed must apply for the method or property to be added
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties()
        ->filter(
           NameFilter::contains('foo'),
@@ -66,7 +66,7 @@ use ``AnyFilter::create()`` method and pass both filters in:
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties()
        ->filter( AnyFilter::create(
           NameFilter::contains('foo'),
@@ -91,7 +91,7 @@ complicated conditions:
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties()
        ->filter( AnyFilter::create(
           NameFilter::contains('foo'),

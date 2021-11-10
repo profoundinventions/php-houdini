@@ -34,7 +34,7 @@ string parameter:
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperty('sourceProperty'); // name of the property
 
 Changing the property name
@@ -72,7 +72,7 @@ To set the name of the autocompleted property from the value of the ``sourceProp
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperty('sourceProperty')
        ->setPropertyNameFromPropertyValue();
 
@@ -118,7 +118,7 @@ as a string. For example, if you specify a property whose value is the string
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperty('sourceProperty')
        ->setPropertyTypeFromPropertyValue();
 
@@ -157,7 +157,7 @@ import the class with a ``use`` statement or add ``::class``.
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperty('sourceProperty')
        ->setPropertyTypeFromPropertyValue();
 
@@ -198,7 +198,7 @@ file itself instead of in a class property:
    use YourNamespace\YourDynamicClass;
    use SomeOtherNamespace\SomeOtherClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperty('sourceProperty')
        ->setPropertyType(SomeOtherClass::class);
 
@@ -252,7 +252,7 @@ specified in the class:
    use YourNamespace\YourDynamicClass;
    use SomeOtherNamespace\SomeOtherClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties(')
        ->setPropertyTypeFromPropertyType();
 
@@ -276,7 +276,7 @@ If you only want to promote one type, you can use the pass a ``Context::isStatic
    use YourNamespace\YourDynamicClass;
    use SomeOtherNamespace\SomeOtherClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties()
        ->setPropertyTypeFromPropertyType()
        ->filter( Context::isInstance() ); // ignores any private/protected static properties.
@@ -305,7 +305,7 @@ it would look like this:
    use YourNamespace\YourDynamicClass;
    use SomeOtherNamespace\SomeOtherClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperty('sourceProperty')
        ->setPropertyType(SomeOtherClass::class)
        ->setPropertyContext(Context::isStatic());

@@ -113,7 +113,7 @@ for that class:</p>
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteProperties</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -129,7 +129,7 @@ If you only wanted to promote protected ones, you could add a <a class="referenc
 
 <span class="k">use</span> <span class="nx">YourNamespace\YourDynamicClass</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">modifyClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">promoteProperties</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span> <span class="nx">AccessFilter</span><span class="o">::</span><span class="na">isProtected</span><span class="p">()</span> <span class="p">);</span>
 </pre></div>

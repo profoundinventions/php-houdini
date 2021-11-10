@@ -8,8 +8,7 @@ the name of the promoted property or its type.
 Promoting a single dynamic property
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To promote a single property, you can use ``promoteProperty()`` and specify the name of the property as a
-string parameter:
+To promote a single property, you can pass a ``NameFilter::equals`` filter to the ``filter`` method:
 
 .. code-block:: php
    :caption: example.php
@@ -35,17 +34,32 @@ string parameter:
    use YourNamespace\YourDynamicClass;
 
    houdini()->modifyClass(YourDynamicClass::class)
-       ->promoteProperty('sourceProperty'); // name of the property
+       ->promoteProperties()
+       ->filter( NameFilter::equals('sourceProperty') );
 
 Changing the property name
 ##########################
 
 You can manipulate different settings for the
-autocompletion by calling additional methods after ``promoteProperty()`` or
+autocompletion by calling additional methods after
 ``promoteProperties()``.
 
+To change the name, you have a number of options. Each one is configured
+with a different method listed below.
+
+useTheSameName():
+   This uses the name of the source property as the autocompleted property.
+   This is the default.
+
+useValueAsTheName():
+   This uses the default value assigned to the property in the class definition
+   as the name. For example, if the property looks like ``protected $property = 'name'``,
+   the property name with this method will be ``name``.
+
+
+
 To set the name of the autocompleted property from the value of the ``sourceProperty``, you can call
-``setPropertyNameFromPropertyValue()``:
+``useValueA()``:
 
 .. code-block:: php
    :caption: example.php

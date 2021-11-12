@@ -27,7 +27,7 @@ extend ``MyCLabs\Enum\Enum``:
 
    use MyCLabs\Enum\Enum;
 
-   houdini()->modifyClass(Enum::class)
+   houdini()->overrideClass(Enum::class)
    ->addMethodsFromAllConstants()
    ->transform( NameTransform::lowercase(), NameTransform::camelCase() )
    ->setMethodContext( Context::isStatic() );

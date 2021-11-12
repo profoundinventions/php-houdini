@@ -5,13 +5,13 @@ Adding New Methods and Properties
 PHP Houdini also allows you to complete methods and properties that
 don't exist on the dynamic class.
 
-The methods for doing so are ``addNewMethods()` and ``addNewProperties()``.
+The methods for doing so are ``addNewMethods()`` and ``addNewProperties()``.
 
 Adding New Methods
 ~~~~~~~~~~~~~~~~~~
 
 To add new methods, you call the ``addNewMethods()`` after ``overrideClass()``
-and the you must specify a `source` for the new methods.
+and the you must specify a :ref:`source<Available Sources>` for the new methods.
 
 Sources include constants, properties, or methods from another class or the same class.
 
@@ -44,7 +44,6 @@ is set from the type of the value of the corresponding property:
        ->transform( NameTransform::camelCase() )
 
 
-
 Adding New Properties
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -68,6 +67,33 @@ generates properties instead of methods:
 
 
 
+Available Sources
+~~~~~~~~~~~~~~~~~
+
+The sources for methods or properties are configured with another method call with the return value of
+``addNewMethods()`` and ``addNewProperties()``.
+
+This gives you flexibility to generate completion from any many combinatoins of methods, properties,
+and constants.
+
+Here's a list of all the available sources.
+
+   ``fromAllMethodsOfTheSameClass()``
+       Use all methods of the same class that you're overriding in ``overrideClass``) as a source.
+   ``fromAllMethodsOfAnotherClass(string $className)``
+       Use all methods of another class as a source.
+   ``fromAllConstantsOfTheSameClass()``
+       Use all contants of the same class that you're overriding in ``overrideClass``) as a source.
+   ``fromAllConstantsOfAnotherClass(string $className)``
+       Use all constants of another class as a source.
+   ``fromConstantOfTheSameClass(string $constantName)``
+       Use a single property of the same class that you're overriding in ``overrideClass``) as a source.
+   ``fromAllPropertiesOfTheSameClass()``
+       Use all properties of the same class that you're overriding in ``overrideClass``) as a source.
+   ``fromAllPropertiesOfAnotherClass(string $className)``
+       Use all properties of another class as a source.
+   ``fromPropertyOfTheSameClass(string $propertyName)``
+       Use a single property of the same class that you're overriding in ``overrideClass``) as a source.
 
 Using Static Properties and Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

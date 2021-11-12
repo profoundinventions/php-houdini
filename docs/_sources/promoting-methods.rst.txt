@@ -29,7 +29,7 @@ of ``promoteProperties():``
    use YourNamespace\YourDynamicClass;
 
    // promote the protected methods so they're visible outside the class:
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteMethods()
        ->filter( AccessFilter::isProtected() );
 

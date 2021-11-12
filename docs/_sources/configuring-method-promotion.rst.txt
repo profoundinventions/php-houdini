@@ -38,7 +38,7 @@ you can for properties with ``setPropertyType()``:
    use YourNamespace\YourDynamicClass;
    use SomeOtherNamespace\SomeOtherClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteMethod('sourceMethod')
        ->setMethodType(SomeOtherClass::class);
 
@@ -84,7 +84,7 @@ to the ``filter()`` method:
    use YourNamespace\YourDynamicClass;
    use SomeOtherNamespace\SomeOtherClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties()
        ->setPropertyTypeFromPropertyType()
        ->filter( Context::isInstance() ); // ignores staticMethod()

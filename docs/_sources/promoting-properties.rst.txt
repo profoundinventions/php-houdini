@@ -31,7 +31,7 @@ for that class:
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties();
 
 Only promoting protected properties
@@ -48,7 +48,7 @@ If you only wanted to promote protected ones, you could add a :doc:`filter <filt
 
    use YourNamespace\YourDynamicClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->promoteProperties()
        ->filter( AccessFilter::isProtected() );
 

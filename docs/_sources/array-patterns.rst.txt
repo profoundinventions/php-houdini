@@ -59,7 +59,7 @@ test
 
    use SomeNamespace\SimpleArrayPatternExample;
 
-   houdini()->modifyClass(SimpleArrayPatternExample::class)
+   houdini()->overrideClass(SimpleArrayPatternExample::class)
        ->addMethodFromProperty('methodDefinitions')
        ->matchMethodInfoFromArrayPattern(
             ArrayPattern::create()
@@ -127,7 +127,7 @@ and still match:
 
    use SomeNamespace\ArrayMatchExample;
 
-   houdini()->modifyClass(ArrayMatchExample::class)
+   houdini()->overrideClass(ArrayMatchExample::class)
        ->addMethodFromProperty('methodDefinitions')
        ->matchMethodInfoFromArrayPattern(
             ArrayPattern::create()
@@ -180,7 +180,7 @@ similar example, that generates properties from constants:
 
    use SomeNamespace\ArrayPatternExample;
 
-   houdini()->modifyClass(PropertyConstantExample::class)
+   houdini()->overrideClass(PropertyConstantExample::class)
        ->addPropertyFromConstant('PROPERTY_DEFINITIONS')
        ->matchPropertyInfoFromArrayPattern(
             ArrayPattern::create()
@@ -238,7 +238,7 @@ test
 
    use SomeNamespace\MultiConstantExample;
 
-   houdini()->modifyClass(MultiConstantExample::class)
+   houdini()->overrideClass(MultiConstantExample::class)
        ->addProperties('PROPERTY_DEFINITIONS')
        ->matchPropertyInfoFromArrayPattern(
             ArrayPattern::create()
@@ -300,7 +300,7 @@ Here's an example of using ``forEachValue()``
 
    use SomeNamespace\ForEachValueExample;
 
-   houdini()->modifyClass(ForEachValueExample::class)
+   houdini()->overrideClass(ForEachValueExample::class)
        ->addProperties('PROPERTY_DEFINITIONS')
        ->matchPropertyInfoFromArrayPattern(
             ArrayPattern::create()
@@ -358,7 +358,7 @@ calls to match each property or method:
 
    use SomeNamespace\MultiForEachExample;
 
-   houdini()->modifyClass(MultiForEachExample::class)
+   houdini()->overrideClass(MultiForEachExample::class)
        ->addProperties('PROPERTY_DEFINITIONS')
        ->matchPropertyInfoFromArrayPattern(
             ArrayPattern::create()

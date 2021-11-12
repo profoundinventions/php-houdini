@@ -26,7 +26,7 @@ is set from the type of the value of the corresponding property:
    use YourNamespace\YourDynamicClass;
    use SomeOtherNamespace\SomeOtherClass;
 
-   houdini()->modifyClass(YourDynamicClass::class)
+   houdini()->overrideClass(YourDynamicClass::class)
        ->addMethodsFromAllProperties()
        ->filter( AccessFilter::isProtected() )
        ->transform( NameTransform::camelCase() )

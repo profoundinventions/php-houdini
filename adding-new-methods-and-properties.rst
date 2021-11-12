@@ -79,21 +79,21 @@ and constants.
 Here's a list of all the available sources.
 
    ``fromAllMethodsOfTheSameClass()``
-       Use all methods of the same class that you're overriding in ``overrideClass``) as a source.
+       Use all methods of the same class that you're overriding in ``overrideClass`` as a source.
    ``fromAllMethodsOfAnotherClass(string $className)``
        Use all methods of another class as a source.
    ``fromAllConstantsOfTheSameClass()``
-       Use all contants of the same class that you're overriding in ``overrideClass``) as a source.
+       Use all contants of the same class that you're overriding in ``overrideClass`` as a source.
    ``fromAllConstantsOfAnotherClass(string $className)``
        Use all constants of another class as a source.
    ``fromConstantOfTheSameClass(string $constantName)``
-       Use a single property of the same class that you're overriding in ``overrideClass``) as a source.
+       Use a single property of the same class that you're overriding in ``overrideClass`` as a source.
    ``fromAllPropertiesOfTheSameClass()``
-       Use all properties of the same class that you're overriding in ``overrideClass``) as a source.
+       Use all properties of the same class that you're overriding in ``overrideClass`` as a source.
    ``fromAllPropertiesOfAnotherClass(string $className)``
        Use all properties of another class as a source.
    ``fromPropertyOfTheSameClass(string $propertyName)``
-       Use a single property of the same class that you're overriding in ``overrideClass``) as a source.
+       Use a single property of the same class that you're overriding in ``overrideClass`` as a source.
 
 Using Static Properties and Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -73,7 +73,7 @@ Available Sources
 The sources for methods or properties are configured with another method call with the return value of
 ``addNewMethods()`` and ``addNewProperties()``.
 
-This gives you flexibility to generate completion from any many combinatoins of methods, properties,
+This gives you flexibility to generate completion from any many combinations of methods, properties,
 and constants.
 
 Here's a list of all the available sources.

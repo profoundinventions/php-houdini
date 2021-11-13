@@ -152,12 +152,128 @@ You may find you want to traverse only down a particular part of the array. You 
 for this:
 
 
+.. code-block:: php
+   :caption: **array-pattern-select-key**.php
+
+   <?php
+
+   namespace SomeNamespace;
+
+   class SelectKeyExample {
+       const DEFINITIONS = [
+           'properties' => [
+               [
+                   'name' => 'foo',
+                   'type' => 'string',
+               ],
+               [
+                   'name' => 'bar',
+                   'type' => 'int',
+               ],
+           ]
+           'methods' => [
+                // ...
+           ]
+       ];
+   }
+
+.. code-block:: php
+   :caption: .houdini.php
+
+   <?php
+   namespace Houdini\Config\V1;
+
+   use SomeNamespace\SelectKeyExample;
+
+   houdini()->overrideClass(SelectKeyExample::class)
+      ->addNewProperties()
+      ->fromConstantOfTheSameClass('DEFINITIONS')
+      ->useCustomType('string')
+      ->useArrayPattern(
+           ArrayPattern::create()
+           ->selectKey('properties')
+           ->forEachValue()
+           ->match([
+               'name' => ArrayPattern::NAME,
+               'type' => ArrayPattern::TYPE
+           ])
+       );
+
+Here we look at the ``DEFINITIONS`` constant on the class. Here it has some properties defined in
+the ``'properties'`` key. Calling the ``selectKey('properties')`` will select that key for further
+iteration.
+
+Then, we call the ``forEachValue()`` method to traverse each of the values in that array. Finally,
+we do the ``match()`` and extract the *name* and *type* fields. So, this will generate two properties
+named ``foo`` and ``bar`` with types ``string`` and ``int`` respectively.
+
 Handling mixed associative arrays
 ---------------------------------
 
-If the definition has a mixture of both types of associative and indexed arrays, it's possible
-to use both ``forEachValue()`` and ``forEachKeyAndValue()`` combinined with multiple ``match``
-calls to match each property or method:
+If an array contains a mixture of key-value pairs and unpaired elements, there are two optional filters
+you can pass to ``forEachValue()`` and ``forEachKeyAndValue`` to only grab the key-value pairs or
+the unpaired elements. Those filters are on the ``ForEachOptions`` class and are created with
+``ForEachOptions::onlyStringKeys()`` and ``ForEachOptions::onlyIntegerKeys()``.
+
+The string keys will correspond to the key-value pairs, while the integer keys will correspond to the
+unpaired elements.
+
+Here's an example showing how to extract both from an array:
+
+.. code-block:: php
+   :caption: **array-pattern-mixed-pair-arrays**.php
+
+   <?php
+   namespace SomeNamespace;
+
+   class MixedPairArrays {
+       const PROPERTY_DEFINITIONS = [
+           'propNameOne' => 'int',
+           'propNameTwo' => 'string',
+           'propNameThree',
+       ];
+   }
+
+.. code-block:: php
+   :caption: .houdini.php
+
+   <?php
+   namespace Houdini\Config\V1;
+
+   use SomeNamespace\MixedPairArrays;
+
+   // match the key-value pairs (with string keys):
+   houdini()->overrideClass(MixedPairArrays::class)
+      ->addNewProperties()
+      ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
+      ->useCustomType('string')
+      ->useArrayPattern(
+           ArrayPattern::create()
+           ->forEachValue( ForEachOptions::onlyStringKeys() )
+           ->match([ ArrayPattern::NAME => ArrayPattern::TYPE ])
+       );
+
+   // Match the non-paired keys (with integer keys):
+   houdini()->overrideClass(MixedPairArrays::class)
+      ->addNewProperties()
+      ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
+      ->useCustomType('string')
+      ->useArrayPattern(
+           ArrayPattern::create()
+           ->forEachValue( ForEachOptions::onlyIntegerKeys() )
+           ->match(ArrayPattern::NAME)
+       );
+
+
+This will match both types of pairs in the array: the unpaired and the paired.
+
+In the first definition, we pass ``ForEachOptions::onlyStringKeys()`` to select only the key value pairs. Then,
+we extract the name and type from the pair.
+
+In the second definition, we pass ``ForEachOptions::onlyIntegerKeys()`` to select only the unpaired values in
+the array. We use ``useCustomType("string")`` to set a default type because we need a *name* and a *type*
+for each completion match. Then, in the ``match``, we pass the ``ArrayPattern::NAME`` directly. Here, we're
+passing a string to ``match()`` since the ``ArrayPattern::NAME`` constant is a string.
 
 Using ``ArrayPattern::NEXT``
 ----------------------------

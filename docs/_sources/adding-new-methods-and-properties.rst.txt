@@ -97,15 +97,15 @@ Here's a list of all the available sources.
 Using Static Properties and Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, methods and prpoerties are added in *instance* context. This means
+By default, methods and properties are added in *instance* context. This means
 you can only access them as instance methods and not as static methods or properties.
 
-You can specify autocompleting in one context or another using the ``useContext`` method, and then
-specifying the context with ``Context::isStatic()`` or ``Context::isInstance()``.
+You can specify autocompleting in one context or another using the ``useContext`` method, and
+then specifying which context with ``Context::isStatic()`` or ``Context::isInstance()``.
 
 If you want to autocomplete a static property or method from a non-static one or vice-versa,
-you can use the ``fromContext()`` or ``toContext()`` methods, and pass ``Context::isStatic()``
-or ``Context::isInstance()`` as required. Effectively, ``useContext(Context::isStatic()``
+you can use the ``fromContext()`` or ``toContext()`` methods individually instead of ``useContext()` individually instead of ``useContext()``.
+to control whether the source or autocompleted property/method is static. Effectively, ``useContext(Context::isStatic()``
 is equivalent to ``fromContext(Context::isStatic())->toContext(Context::isStatic()``
 
 .. note::
@@ -113,8 +113,8 @@ is equivalent to ``fromContext(Context::isStatic())->toContext(Context::isStatic
     ``fromContext(Context::isInstance())`` will be ignored.
 
 Here's an example that adds completion for the `MyCLabs Enum <https://github.com/myclabs/php-enum>`_
-library. To use that library, you extend the Each class using that library has a static method that corresponds
-to a constant on the enum.
+library. To use that library, you extend an ``Enum`` class provided by the library that
+allows you to access a static method that corresponds to constants on the enum class.
 
 Note this example will add completion for *all* Enum classes in your project that
 extend ``MyCLabs\Enum\Enum`` - you don't need to specify each one individually.
@@ -123,7 +123,6 @@ extend ``MyCLabs\Enum\Enum`` - you don't need to specify each one individually.
    :caption: .houdini.php
 
    <?php
-
    namespace Houdini\Config\V1;
 
    use MyCLabs\Enum\Enum;
@@ -178,4 +177,3 @@ The types of properties and methods are also configurable using methods:
 
 Go to the :doc:`next step <array-patterns>` to learn about
 adding methods or properties from specialized patterns of arrays.
-

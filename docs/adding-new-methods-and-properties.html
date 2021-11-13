@@ -16,6 +16,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/js/custom.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -174,13 +175,13 @@ and constants.</p>
 </section>
 <section id="using-static-properties-and-methods">
 <h2>Using Static Properties and Methods<a class="headerlink" href="#using-static-properties-and-methods" title="Permalink to this headline"></a></h2>
-<p>By default, methods and prpoerties are added in <em>instance</em> context. This means
+<p>By default, methods and properties are added in <em>instance</em> context. This means
 you can only access them as instance methods and not as static methods or properties.</p>
-<p>You can specify autocompleting in one context or another using the <code class="docutils literal notranslate"><span class="pre">useContext</span></code> method, and then
-specifying the context with <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code> or <code class="docutils literal notranslate"><span class="pre">Context::isInstance()</span></code>.</p>
+<p>You can specify autocompleting in one context or another using the <code class="docutils literal notranslate"><span class="pre">useContext</span></code> method, and
+then specifying which context with <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code> or <code class="docutils literal notranslate"><span class="pre">Context::isInstance()</span></code>.</p>
 <p>If you want to autocomplete a static property or method from a non-static one or vice-versa,
-you can use the <code class="docutils literal notranslate"><span class="pre">fromContext()</span></code> or <code class="docutils literal notranslate"><span class="pre">toContext()</span></code> methods, and pass <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code>
-or <code class="docutils literal notranslate"><span class="pre">Context::isInstance()</span></code> as required. Effectively, <code class="docutils literal notranslate"><span class="pre">useContext(Context::isStatic()</span></code>
+you can use the <code class="docutils literal notranslate"><span class="pre">fromContext()</span></code> or <code class="docutils literal notranslate"><span class="pre">toContext()</span></code> methods individually instead of <code class="docutils literal notranslate"><span class="pre">useContext()`</span> <span class="pre">individually</span> <span class="pre">instead</span> <span class="pre">of</span> <span class="pre">``useContext()</span></code>.
+to control whether the source or autocompleted property/method is static. Effectively, <code class="docutils literal notranslate"><span class="pre">useContext(Context::isStatic()</span></code>
 is equivalent to <code class="docutils literal notranslate"><span class="pre">fromContext(Context::isStatic())-&gt;toContext(Context::isStatic()</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -188,14 +189,13 @@ is equivalent to <code class="docutils literal notranslate"><span class="pre">fr
 <code class="docutils literal notranslate"><span class="pre">fromContext(Context::isInstance())</span></code> will be ignored.</p>
 </div>
 <p>Here’s an example that adds completion for the <a class="reference external" href="https://github.com/myclabs/php-enum">MyCLabs Enum</a>
-library. To use that library, you extend the Each class using that library has a static method that corresponds
-to a constant on the enum.</p>
+library. To use that library, you extend an <code class="docutils literal notranslate"><span class="pre">Enum</span></code> class provided by the library that
+allows you to access a static method that corresponds to constants on the enum class.</p>
 <p>Note this example will add completion for <em>all</em> Enum classes in your project that
 extend <code class="docutils literal notranslate"><span class="pre">MyCLabs\Enum\Enum</span></code> - you don’t need to specify each one individually.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">MyCLabs\Enum\Enum</span><span class="p">;</span>

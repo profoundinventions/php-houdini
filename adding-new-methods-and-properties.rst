@@ -98,11 +98,20 @@ Here's a list of all the available sources.
 Using Static Properties and Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, methods and prpoerties are added in *both* static and instance context. This means
-you can access them statically or as instance methods.
+By default, methods and prpoerties are added in *instance* context. This means
+you can only access them as instance methods and not as static methods or properties.
 
-You can specify autocompleting only in one context using the ``useContext`` method, and then
+You can specify autocompleting in one context or another using the ``useContext`` method, and then
 specifying the context with ``Context::isStatic()`` or ``Context::isInstance()``.
+
+If you want to autocomplete a static property or method from a non-static one or vice-versa,
+you can use the ``fromContext()`` or ``toContext()`` methods, and pass ``Context::isStatic()``
+or ``Context::isInstance()`` as required. Effectively, ``useContext(Context::isStatic()``
+is equivalent to ``fromContext(Context::isStatic())->toContext(Context::isStatic()``
+
+.. note::
+    Constants are always treated as static, and so when completing from a constant
+    ``fromContext(Context::isInstance())`` will be ignored.
 
 Here's an example that adds completion for the `MyCLabs Enum <https://github.com/myclabs/php-enum>`_
 library. To use that library, you extend the Each class using that library has a static method that corresponds
@@ -128,6 +137,8 @@ extend ``MyCLabs\Enum\Enum`` - you don't need to specify each one individually.
 
 Configuring the Name and Type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also how the name or the type are determined.
 
 Configuring the Name
 ####################
@@ -165,3 +176,7 @@ The types of properties and methods are also configurable using methods:
        This uses the name of the method, property, or constant as the type.
    ``useCustomType(string $type)``
         This uses a custom type that you pass as a parameter.
+
+Go to the :doc:`next step <array-patterns>` to learn about
+adding methods or properties from specialized patterns of arrays.
+

@@ -175,10 +175,19 @@ and constants.</p>
 </section>
 <section id="using-static-properties-and-methods">
 <h2>Using Static Properties and Methods<a class="headerlink" href="#using-static-properties-and-methods" title="Permalink to this headline"></a></h2>
-<p>By default, methods and prpoerties are added in <em>both</em> static and instance context. This means
-you can access them statically or as instance methods.</p>
-<p>You can specify autocompleting only in one context using the <code class="docutils literal notranslate"><span class="pre">useContext</span></code> method, and then
+<p>By default, methods and prpoerties are added in <em>instance</em> context. This means
+you can only access them as instance methods and not as static methods or properties.</p>
+<p>You can specify autocompleting in one context or another using the <code class="docutils literal notranslate"><span class="pre">useContext</span></code> method, and then
 specifying the context with <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code> or <code class="docutils literal notranslate"><span class="pre">Context::isInstance()</span></code>.</p>
+<p>If you want to autocomplete a static property or method from a non-static one or vice-versa,
+you can use the <code class="docutils literal notranslate"><span class="pre">fromContext()</span></code> or <code class="docutils literal notranslate"><span class="pre">toContext()</span></code> methods, and pass <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code>
+or <code class="docutils literal notranslate"><span class="pre">Context::isInstance()</span></code> as required. Effectively, <code class="docutils literal notranslate"><span class="pre">useContext(Context::isStatic()</span></code>
+is equivalent to <code class="docutils literal notranslate"><span class="pre">fromContext(Context::isStatic())-&gt;toContext(Context::isStatic()</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Constants are always treated as static, and so when completing from a constant
+<code class="docutils literal notranslate"><span class="pre">fromContext(Context::isInstance())</span></code> will be ignored.</p>
+</div>
 <p>Here’s an example that adds completion for the <a class="reference external" href="https://github.com/myclabs/php-enum">MyCLabs Enum</a>
 library. To use that library, you extend the Each class using that library has a static method that corresponds
 to a constant on the enum.</p>
@@ -202,6 +211,7 @@ extend <code class="docutils literal notranslate"><span class="pre">MyCLabs\Enum
 </section>
 <section id="configuring-the-name-and-type">
 <h2>Configuring the Name and Type<a class="headerlink" href="#configuring-the-name-and-type" title="Permalink to this headline"></a></h2>
+<p>You can also how the name or the type are determined.</p>
 <section id="configuring-the-name">
 <h3>Configuring the Name<a class="headerlink" href="#configuring-the-name" title="Permalink to this headline"></a></h3>
 <p>You can configure the name to come using a few different methods:</p>
@@ -241,6 +251,8 @@ or property generated from that.</p>
 </dd>
 </dl>
 </div></blockquote>
+<p>Go to the <a class="reference internal" href="array-patterns.html"><span class="doc">next step</span></a> to learn about
+adding methods or properties from specialized patterns of arrays.</p>
 </section>
 </section>
 </section>

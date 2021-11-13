@@ -16,8 +16,8 @@ and properties.
     filters
     transforms
     adding-new-methods-and-properties
-    using-constants-as-a-source
     array-patterns
+    iterating-array-patterns
     support
     list-of-filters
     list-of-transforms

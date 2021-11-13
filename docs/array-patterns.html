@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Support or Contact" href="support.html" />
-    <link rel="prev" title="Using Constants as a Source" href="using-constants-as-a-source.html" /> 
+    <link rel="next" title="Iterating Array Patterns" href="iterating-array-patterns.html" />
+    <link rel="prev" title="Adding New Methods and Properties" href="adding-new-methods-and-properties.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,21 +46,14 @@
 <li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-new-methods-and-properties.html">Adding New Methods and Properties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Array Patterns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#simple-array-patterns-example">Simple Array Patterns Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-match-method">The <code class="docutils literal notranslate"><span class="pre">match()</span></code> method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#autocompleting-properties-example">Autocompleting Properties Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#generating-more-than-one-match-from-a-pattern">Generating more than one match from a pattern</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#using-foreachkeyandvalue">Using forEachKeyAndValue()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-foreachvalue">Using forEachValue()</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#combining-foreachvalue-and-foreachkeyandvalue">Combining forEachValue() and forEachKeyAndValue()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#combining-patterns-with-other-methods">Combining Patterns with other methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adieu-to-array-patterns">Adieu to Array Patterns</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="iterating-array-patterns.html">Iterating Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
@@ -99,7 +92,7 @@ using <em>Array Patterns</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The use of this is pretty specialized, and you don’t need it to use Houdini, which is why
-it’s at the end of this tutorial. Feel free to <a class="reference internal" href="support.html"><span class="doc">skip to the next document</span></a>
+it’s at the end of this tutorial. Feel free to <a class="reference internal" href="support.html"><span class="doc">skip array patterns</span></a>
 if you don’t need it.</p>
 </div>
 <p>Array patterns parse the class definition, and then autocomplete methods or properties from
@@ -108,7 +101,7 @@ the default values based on patterns you describe in the <code class="docutils l
 <h2>Simple Array Patterns Example<a class="headerlink" href="#simple-array-patterns-example" title="Permalink to this headline"></a></h2>
 <p>Here’s a simple example of autocompleting a property from a specification inside an array:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">array-pattern-example1.php</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>array-pattern-example1.php</strong></span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">SomeNamespace</span><span class="p">;</span>
 
@@ -119,6 +112,7 @@ the default values based on patterns you describe in the <code class="docutils l
 <span class="sd">    */</span>
    <span class="k">protected</span> <span class="k">static</span> <span class="nv">$methodDefinitions</span> <span class="o">=</span> <span class="p">[</span>
       <span class="s1">&#39;methodOne&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;methodTwo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span>
    <span class="p">];</span>
 
    <span class="sd">/**</span>
@@ -135,42 +129,50 @@ the default values based on patterns you describe in the <code class="docutils l
 </pre></div>
 </div>
 </div>
-<p>test</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>&lt;?php
-namespace Houdini\Config\V1;
+<div class="code-block-caption"><span class="caption-text"><strong>.houdini.php</strong></span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
-use SomeNamespace\SimpleArrayPatternExample;
+<span class="k">use</span> <span class="nx">SomeNamespace\SimpleArrayPatternExample</span><span class="p">;</span>
 
-houdini()-&gt;overrideClass(SimpleArrayPatternExample::class)
-    -&gt;addMethodFromProperty(&#39;methodDefinitions&#39;)
-    -&gt;matchMethodInfoFromArrayPattern(
-         ArrayPattern::create()
-         -&gt;match([ArrayPattern::METHOD_NAME&#39; =&gt; ArrayPattern::METHOD_RETURN_TYPE])
-    );
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">SimpleArrayPatternExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addNewMethods</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">fromPropertyOfTheSameClass</span><span class="p">(</span><span class="s1">&#39;methodDefinitions&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">fromContext</span><span class="p">(</span> <span class="nx">Context</span><span class="o">::</span><span class="na">isStatic</span><span class="p">()</span> <span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">matchArrayPattern</span><span class="p">(</span>
+         <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
+         <span class="o">-&gt;</span><span class="na">match</span><span class="p">(</span> <span class="p">[</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">NAME</span> <span class="o">=&gt;</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">TYPE</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <p>In this example, we’re autocompleting a method from a definition in the array stored
 in the static property <code class="docutils literal notranslate"><span class="pre">$methodDefitions</span></code>. The definition has to include
-both the method name and the return type in for a completion match to be generated, and
-a call to the <code class="docutils literal notranslate"><span class="pre">match</span></code> method on the <code class="docutils literal notranslate"><span class="pre">ArrayPattern</span></code> that includes both will autocomplete
-the method.</p>
+both the method name and the return type in for a completion match to be generated. The
+name is matched with the <code class="docutils literal notranslate"><span class="pre">ArrayPattern::NAME</span></code> placeholder. Whatever is in the array will
+be used in th completion. Similarly, the <code class="docutils literal notranslate"><span class="pre">ArrayPattern::TYPE</span></code> placeholder will match the
+property type or the method return type.  In order for an array pattern to generate a completion,
+both the name and type have to be matched (but see below for an exception to this).</p>
+<p>So, in this example, two non-static methods will be autocompleted for the <code class="docutils literal notranslate"><span class="pre">SimpleArrayPatternExample</span></code>
+instances.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We used a static property in the previous example as a source for the methods, but it could also have been
-an instance property.</p>
+an instance property. In that case, you wouldn’t pass the <code class="docutils literal notranslate"><span class="pre">-&gt;fromContext(</span> <span class="pre">Context::isStatic()</span> <span class="pre">)</span></code>.
+part.</p>
 </div>
 </section>
 <section id="the-match-method">
 <h2>The <code class="docutils literal notranslate"><span class="pre">match()</span></code> method<a class="headerlink" href="#the-match-method" title="Permalink to this headline"></a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">match</span></code> specification takes an array that matches the structure of the array in the
-specification. You can include arbitrary strings and arrays to match the structure of how the method
-name or return type are laid out in your method or property definition.</p>
-<p>When matching against an array value, the <code class="docutils literal notranslate"><span class="pre">match()</span></code> method looks
-only at the relevant subset of the array - so an array can contain values not in the pattern
-and still match:</p>
+<p>The argument passed to the <code class="docutils literal notranslate"><span class="pre">match</span></code> method is the one that is generating the completion.</p>
+<p>There are two options to pass to <code class="docutils literal notranslate"><span class="pre">match</span></code>: a string or an array. In the previous example, we passed an array.
+We’ll look at when you might want to pass a string later. When passing an array,
+you can include arbitrary strings and arrays in the pattern to match the structure of how the method
+name or return type are laid out in your method or property definition - just make sure to include
+<code class="docutils literal notranslate"><span class="pre">ArrayPattern::NAME</span></code> or <code class="docutils literal notranslate"><span class="pre">ArrayPattern::TYPE</span></code> to get either the property type or the method return type.</p>
+<p>When matching against an array value, the <code class="docutils literal notranslate"><span class="pre">match()</span></code> method looks only at the relevant
+subset of the array - so an array can contain values not in the pattern and still match:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">array-pattern-match-example.php</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -204,21 +206,24 @@ and still match:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>&lt;?php
-namespace Houdini\Config\V1;
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
-use SomeNamespace\ArrayMatchExample;
+<span class="k">use</span> <span class="nx">SomeNamespace\ArrayMatchExample</span><span class="p">;</span>
 
-houdini()-&gt;overrideClass(ArrayMatchExample::class)
-    -&gt;addMethodFromProperty(&#39;methodDefinitions&#39;)
-    -&gt;matchMethodInfoFromArrayPattern(
-         ArrayPattern::create()
-         -&gt;match([
-            ArrayPattern::METHOD_NAME&#39; =&gt; [
-               &#39;type&#39; =&gt; ArrayPattern::METHOD_RETURN_TYPE
-            ]
-         ])
-    );
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">ArrayMatchExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addNewMethods</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">fromPropertyOfTheSameClass</span><span class="p">(</span><span class="s1">&#39;methodDefinitions&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">fromContext</span><span class="p">(</span> <span class="nx">Context</span><span class="o">::</span><span class="na">isStatic</span><span class="p">()</span> <span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">matchArrayPattern</span><span class="p">(</span>
+         <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
+         <span class="o">-&gt;</span><span class="na">match</span><span class="p">([</span>
+            <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">NAME</span> <span class="o">=&gt;</span> <span class="p">[</span>
+               <span class="c1">// only this part is matched:</span>
+               <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">TYPE</span>
+            <span class="p">]</span>
+         <span class="p">])</span>
+    <span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -239,6 +244,7 @@ similar example, that generates properties from constants:</p>
 <span class="sd">    */</span>
    <span class="k">const</span> <span class="no">PROPERTY_DEFINITIONS</span> <span class="o">=</span> <span class="p">[</span>
       <span class="s1">&#39;propertyOne&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;propertyTwo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span>
    <span class="p">];</span>
 
    <span class="sd">/**</span>
@@ -257,216 +263,31 @@ similar example, that generates properties from constants:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>&lt;?php
-namespace Houdini\Config\V1;
-
-use SomeNamespace\ArrayPatternExample;
-
-houdini()-&gt;overrideClass(PropertyConstantExample::class)
-    -&gt;addPropertyFromConstant(&#39;PROPERTY_DEFINITIONS&#39;)
-    -&gt;matchPropertyInfoFromArrayPattern(
-         ArrayPattern::create()
-         -&gt;match([ArrayPattern::PROPERTY_NAME&#39; =&gt; ArrayPattern::PROPERTY_TYPE])
-    );
-</pre></div>
-</div>
-</div>
-<p>Note here that we use a different method <code class="docutils literal notranslate"><span class="pre">addPropertiesFromConstant</span></code> than the previous example.
-Also, we don’t pass in the constant itself, but a <code class="docutils literal notranslate"><span class="pre">string</span></code> that refers to it. And we’re
-also using the <code class="docutils literal notranslate"><span class="pre">ArrayPattern::PROPERTY_NAME</span></code> and <code class="docutils literal notranslate"><span class="pre">ArrayPattern::PROPERTY_TYPE</span></code></p>
-</section>
-<section id="generating-more-than-one-match-from-a-pattern">
-<h2>Generating more than one match from a pattern<a class="headerlink" href="#generating-more-than-one-match-from-a-pattern" title="Permalink to this headline"></a></h2>
-<section id="using-foreachkeyandvalue">
-<h3>Using forEachKeyAndValue()<a class="headerlink" href="#using-foreachkeyandvalue" title="Permalink to this headline"></a></h3>
-<p>It’s also possible to generate more than one match, but you need to modify the pattern itself
-to iterate with <code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code>:</p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">array-pattern-multipattern-example.php</span><a class="headerlink" href="#id7" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">SomeNamespace</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">MultiConstantExample</span> <span class="p">{</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * This static array defines the valid properties.</span>
-<span class="sd">    */</span>
-   <span class="k">const</span> <span class="no">PROPERTY_DEFINITIONS</span> <span class="o">=</span> <span class="p">[</span>
-      <span class="s1">&#39;propertyOne&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;propertyTwo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span>
-   <span class="p">];</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * Where this class stores its data.</span>
-<span class="sd">    */</span>
-   <span class="k">protected</span> <span class="nv">$data</span> <span class="o">=</span> <span class="p">[];</span>
-
-   <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">PROPERTY_DEFINITIONS</span><span class="p">[</span><span class="nv">$name</span><span class="p">]))</span> <span class="p">{</span>
-         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$name</span><span class="p">];</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<p>test</p>
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id8" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>&lt;?php
-namespace Houdini\Config\V1;
-
-use SomeNamespace\MultiConstantExample;
-
-houdini()-&gt;overrideClass(MultiConstantExample::class)
-    -&gt;addProperties(&#39;PROPERTY_DEFINITIONS&#39;)
-    -&gt;matchPropertyInfoFromArrayPattern(
-         ArrayPattern::create()
-         -&gt;forEachKeyAndValue()
-         -&gt;match([ArrayPattern::PROPERTY_NAME&#39; =&gt; ArrayPattern::PROPERTY_TYPE])
-    );
-</pre></div>
-</div>
-</div>
-<p>Here we changed the example to generate multiple properties from our constant definitions.</p>
-<p>Because the <code class="docutils literal notranslate"><span class="pre">match</span></code> method will only generate a single match, we need to add <code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code>
-to iterate all the entries in the <code class="docutils literal notranslate"><span class="pre">PROPERTY_DEFINITIONS</span></code> constant.</p>
-</section>
-<section id="using-foreachvalue">
-<h3>Using forEachValue()<a class="headerlink" href="#using-foreachvalue" title="Permalink to this headline"></a></h3>
-<p>You use <code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code> when either the method name / property name or the return type / property
-type are in the key of the definition. If the key is not in the definition, use <cite>forEachValue()</cite> instead,
-and then the pattern will exclude the key and only match inside the value.</p>
-<p>Basically, you would use <code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code> if the definition is associative, and <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code>
-if the definition is indexed.</p>
-<p>Here’s an example of using <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code></p>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">array-pattern-foreach-value-example.php</span><a class="headerlink" href="#id9" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">SomeNamespace</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">ForEachValueExample</span> <span class="p">{</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * This static array defines the valid properties.</span>
-<span class="sd">    */</span>
-   <span class="k">const</span> <span class="no">PROPERTY_DEFINITIONS</span> <span class="o">=</span> <span class="p">[</span>
-      <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;propertyOne&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
-      <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;propertyTwo&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span>
-   <span class="p">];</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * Where this class stores its data.</span>
-<span class="sd">    */</span>
-   <span class="k">protected</span> <span class="nv">$data</span> <span class="o">=</span> <span class="p">[];</span>
-
-   <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">foreach</span> <span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">PROPERTY_DEFINITIONS</span> <span class="k">as</span> <span class="nv">$definition</span><span class="p">)</span> <span class="p">{</span>
-         <span class="k">if</span> <span class="p">(</span><span class="nv">$definition</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">===</span> <span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$name</span><span class="p">];</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id10" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
-<span class="k">use</span> <span class="nx">SomeNamespace\ForEachValueExample</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">SomeNamespace\ArrayPatternExample</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">ForEachValueExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addProperties</span><span class="p">(</span><span class="s1">&#39;PROPERTY_DEFINITIONS&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">matchPropertyInfoFromArrayPattern</span><span class="p">(</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">PropertyConstantExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addNewProperties</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">fromPropertyOfTheSameClass</span><span class="p">(</span><span class="s1">&#39;PROPERTY_DEFINITIONS&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">matchArrayPattern</span><span class="p">(</span>
          <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
-         <span class="o">-&gt;</span><span class="na">forEachValue</span><span class="p">()</span>
-         <span class="o">-&gt;</span><span class="na">match</span><span class="p">([</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">PROPERTY_NAME</span><span class="p">,</span>
-            <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">PROPERTY_TYPE</span>
-         <span class="p">])</span>
+         <span class="o">-&gt;</span><span class="na">match</span><span class="p">(</span> <span class="p">[</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">NAME</span> <span class="o">=&gt;</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">TYPE</span> <span class="p">]</span> <span class="p">)</span>
     <span class="p">);</span>
 </pre></div>
 </div>
 </div>
-</section>
-</section>
-<section id="combining-foreachvalue-and-foreachkeyandvalue">
-<h2>Combining forEachValue() and forEachKeyAndValue()<a class="headerlink" href="#combining-foreachvalue-and-foreachkeyandvalue" title="Permalink to this headline"></a></h2>
-<p>If the definition has a mixture of both types of associative and indexed arrays, it’s possible
-to use both <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code> and <code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code> combinined with multiple <code class="docutils literal notranslate"><span class="pre">match</span></code>
-calls to match each property or method:</p>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">array-pattern-example-multi-foreach-example.php</span><a class="headerlink" href="#id11" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">SomeNamespace</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">MultiForEachExample</span> <span class="p">{</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * This static array defines the valid properties.</span>
-<span class="sd">    */</span>
-   <span class="k">const</span> <span class="no">PROPERTY_DEFINITIONS</span> <span class="o">=</span> <span class="p">[</span>
-         <span class="s1">&#39;propertyOne&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
-         <span class="p">]</span>
-         <span class="s1">&#39;propertyTwo&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;int&#39;</span>
-         <span class="p">]</span>
-   <span class="p">];</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * Where this class stores its data.</span>
-<span class="sd">    */</span>
-   <span class="k">protected</span> <span class="nv">$data</span> <span class="o">=</span> <span class="p">[];</span>
-
-   <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">PROPERTY_DEFINITIONS</span><span class="p">[</span><span class="nv">$name</span><span class="p">])</span> <span class="p">{</span>
-         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$name</span><span class="p">];</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id12" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">SomeNamespace\MultiForEachExample</span><span class="p">;</span>
-
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">MultiForEachExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addProperties</span><span class="p">(</span><span class="s1">&#39;PROPERTY_DEFINITIONS&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">matchPropertyInfoFromArrayPattern</span><span class="p">(</span>
-         <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
-         <span class="o">-&gt;</span><span class="na">forEachKeyAndValue</span><span class="p">()</span>
-         <span class="o">-&gt;</span><span class="na">match</span><span class="p">([</span><span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">PROPERTY_NAME</span> <span class="o">=&gt;</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">ANY_ARRAY</span><span class="p">]</span>
-         <span class="o">-&gt;</span><span class="na">forEachValue</span><span class="p">()</span>
-         <span class="o">-&gt;</span><span class="na">match</span><span class="p">([</span>
-            <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">PROPERTY_TYPE</span>
-         <span class="p">])</span>
-    <span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<p>Here we used the <code class="docutils literal notranslate"><span class="pre">ArrayPattern::ANY_ARRAY</span></code> as a placeholder to match an array of any format
-in the first <code class="docutils literal notranslate"><span class="pre">match()</span></code> method. The match isn’t complete at that point though, and so we iterate
-the contents of that array with <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code> and then pull out the property type from the
-contents of the <code class="docutils literal notranslate"><span class="pre">type</span></code> parameter.</p>
 </section>
 <section id="combining-patterns-with-other-methods">
 <h2>Combining Patterns with other methods<a class="headerlink" href="#combining-patterns-with-other-methods" title="Permalink to this headline"></a></h2>
-<p>TODO - also possible to use patterns with <cite>setReturnType()</cite> or <cite>setPropertyType()</cite></p>
-</section>
-<section id="adieu-to-array-patterns">
-<h2>Adieu to Array Patterns<a class="headerlink" href="#adieu-to-array-patterns" title="Permalink to this headline"></a></h2>
-<p>Hopefully that helps to illustrate Array Patterns and what you would use them for. It
-can be a powerful feature if you have to deal with code that makes heavy use of
-array definitions for magic methods or properties.</p>
-<p>If you have any question, feel free to email <code class="docutils literal notranslate"><span class="pre">profoundinventions+houdini&#64;gmail.com</span></code>
-and let us know you questions or concerns.</p>
+<p>For generating a completion, you need both a name and a type. So, you usually will want your array pattern
+to include <code class="docutils literal notranslate"><span class="pre">ArrayPattern::NAME</span></code> and <code class="docutils literal notranslate"><span class="pre">ArrayPattern::TYPE</span></code>, but it’s also possible to only include
+one of those and grab the other one from another method.</p>
+<p>For example, you could grab the name from the ArrayPattern with <code class="docutils literal notranslate"><span class="pre">ArrayPattern::NAME</span></code>
+and the return type with <code class="docutils literal notranslate"><span class="pre">useCustomType('string')</span></code>.</p>
+<p>Go to the <a class="reference internal" href="iterating-array-patterns.html"><span class="doc">next step</span></a> to learn about
+adding methods or properties from specialized patterns of arrays.</p>
 </section>
 </section>
 
@@ -474,8 +295,8 @@ and let us know you questions or concerns.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="using-constants-as-a-source.html" class="btn btn-neutral float-left" title="Using Constants as a Source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="support.html" class="btn btn-neutral float-right" title="Support or Contact" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="adding-new-methods-and-properties.html" class="btn btn-neutral float-left" title="Adding New Methods and Properties" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="iterating-array-patterns.html" class="btn btn-neutral float-right" title="Iterating Array Patterns" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

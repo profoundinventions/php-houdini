@@ -45,8 +45,8 @@
 <li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-new-methods-and-properties.html">Adding New Methods and Properties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterating-array-patterns.html">Iterating Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
@@ -116,38 +116,22 @@ and properties.</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="using-constants-as-a-source.html">Using Constants as a Source</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="using-constants-as-a-source.html#generators">Generators</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="using-constants-as-a-source.html#addmethodsfromallconstants-and-addmethodfromconstant">addMethodsFromAllConstants and addMethodFromConstant</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using-constants-as-a-source.html#addpropertiesfromallconstants-and-addpropertyfromconstant">addPropertiesFromAllConstants and addPropertyFromConstant</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="using-constants-as-a-source.html#configuring">Configuring</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="using-constants-as-a-source.html#setmethodnamefromconstantname-setpropertynamefromconstantname">setMethodNameFromConstantName() / setPropertyNameFromConstantName</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using-constants-as-a-source.html#setmethodnamefromconstantvalue-setpropertynamefromconstantvalue">setMethodNameFromConstantValue() / setPropertyNameFromConstantValue()</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="using-constants-as-a-source.html#configuring-the-return-property-type">Configuring the return / property type</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="using-constants-as-a-source.html#setreturntypefromconstantname-setpropertytypefromconstantname">setReturnTypeFromConstantName() / setPropertyTypeFromConstantName()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using-constants-as-a-source.html#setreturntypefromconstantvalue-setpropertytypefromconstantvalue">setReturnTypeFromConstantValue() / setPropertyTypeFromConstantValue()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using-constants-as-a-source.html#setreturntypefromtypeofconstantvalue-setpropertytypefromtypeofconstantvalue">setReturnTypeFromTypeOfConstantValue() / setPropertyTypeFromTypeOfConstantValue()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using-constants-as-a-source.html#setreturntype-string-returntype-setpropertytype-string-propertytype">setReturnType(string $returnType) / setPropertyType(string $propertyType)</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="array-patterns.html#simple-array-patterns-example">Simple Array Patterns Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="array-patterns.html#the-match-method">The <code class="docutils literal notranslate"><span class="pre">match()</span></code> method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="array-patterns.html#autocompleting-properties-example">Autocompleting Properties Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array-patterns.html#generating-more-than-one-match-from-a-pattern">Generating more than one match from a pattern</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="array-patterns.html#using-foreachkeyandvalue">Using forEachKeyAndValue()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="array-patterns.html#using-foreachvalue">Using forEachValue()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array-patterns.html#combining-patterns-with-other-methods">Combining Patterns with other methods</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="array-patterns.html#combining-foreachvalue-and-foreachkeyandvalue">Combining forEachValue() and forEachKeyAndValue()</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array-patterns.html#combining-patterns-with-other-methods">Combining Patterns with other methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array-patterns.html#adieu-to-array-patterns">Adieu to Array Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterating-array-patterns.html">Iterating Array Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="iterating-array-patterns.html#using-foreachkeyandvalue">Using forEachKeyAndValue()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iterating-array-patterns.html#using-foreachvalue">Using forEachValue()</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="iterating-array-patterns.html#combining-foreachvalue-and-foreachkeyandvalue">Combining forEachValue() and forEachKeyAndValue()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterating-array-patterns.html#selecting-keys">Selecting Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterating-array-patterns.html#only-matching-string-or-integer-keys">Only matching string or integer keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterating-array-patterns.html#adieu-to-array-patterns">Adieu to Array Patterns</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>

@@ -311,7 +311,7 @@ the properties:
             'int' => [
                [
                   'name' => 'propertyThree'
-               ]
+               ],
                [
                   'name' => 'propertyFour'
                ]

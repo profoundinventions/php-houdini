@@ -20,7 +20,7 @@ Sources include constants, properties, or methods from another class or the same
     The autocompleted methods have zero arguments. This is ideal for configuring getter methods.
 
     In the future, there may be a way to configure the arguments for each dynamic method. Please contact us
-    at ``profoundinventions+houdini@gmail.com`` if you would like to request this feature.
+    at ``support@profoundinventions.com`` if you would like to request this feature.
 
 
 Here's an example that completes methods from all the protected properties in a class, and

@@ -419,6 +419,6 @@ Hopefully that helps to illustrate Array Patterns and what you would use them fo
 can be a powerful feature if you have to deal with code that makes heavy use of
 array definitions for magic methods or properties.
 
-If you have any question, feel free to email ``profoundinventions+houdini@gmail.com``
+If you have any questions, feel free to email ``support@profoundinventions.com``
 and let us know you questions or concerns.
 

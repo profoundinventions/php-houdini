@@ -7,8 +7,6 @@ This document describes how to use the PhpStorm plugin ``PHP Houdini``
 and properties.
 
 .. toctree::
-    :maxdepth 2
-
     introduction
     the-houdini-config-file
     promoting-properties
@@ -17,7 +15,6 @@ and properties.
     transforms
     adding-new-methods-and-properties
     array-patterns
-    iterating-array-patterns
     support
     list-of-filters
     list-of-transforms

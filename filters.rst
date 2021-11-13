@@ -50,7 +50,7 @@ This will promote any property that both filters, so only properties that start
 with `get` and also contain `foo` somewhere in the name will be promoted.
 
 You can also combine multiple filters explicitly with the ``AllFilters`` class.
-This isn't useful though unless you are :ref:`combining filters <combining-filters-with-logical-or-and-logical-and>`
+This isn't useful though unless you are :ref:`combining filters <combining-filters>` with each other.
 
 Using multiple filters (with logical OR)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,6 +76,8 @@ use ``AnyFilter::create()`` method and pass both filters in:
 Here we used the ``AnyFilter`` class to combine filters, and the ``AccessFilter`` class
 to limit it to private properties. This will promote any property that matches either
 filter, so all private properties, and any filter that matches `foo`.
+
+.. _combining-filters:
 
 Combining filters with logical OR and logical AND
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

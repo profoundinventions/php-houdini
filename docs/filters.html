@@ -52,7 +52,6 @@
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-new-methods-and-properties.html">Adding New Methods and Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iterating-array-patterns.html">Iterating Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
@@ -129,7 +128,7 @@ so <em>all</em> of the filters passed must apply for the method or property to b
 <p>This will promote any property that both filters, so only properties that start
 with <cite>get</cite> and also contain <cite>foo</cite> somewhere in the name will be promoted.</p>
 <p>You can also combine multiple filters explicitly with the <code class="docutils literal notranslate"><span class="pre">AllFilters</span></code> class.
-This isn’t useful though unless you are <span class="xref std std-ref">combining filters</span></p>
+This isn’t useful though unless you are <a class="reference internal" href="#combining-filters"><span class="std std-ref">combining filters</span></a> with each other.</p>
 </section>
 <section id="using-multiple-filters-with-logical-or">
 <h2>Using multiple filters (with logical OR)<a class="headerlink" href="#using-multiple-filters-with-logical-or" title="Permalink to this headline"></a></h2>
@@ -156,7 +155,7 @@ to limit it to private properties. This will promote any property that matches e
 filter, so all private properties, and any filter that matches <cite>foo</cite>.</p>
 </section>
 <section id="combining-filters-with-logical-or-and-logical-and">
-<h2>Combining filters with logical OR and logical AND<a class="headerlink" href="#combining-filters-with-logical-or-and-logical-and" title="Permalink to this headline"></a></h2>
+<span id="combining-filters"></span><h2>Combining filters with logical OR and logical AND<a class="headerlink" href="#combining-filters-with-logical-or-and-logical-and" title="Permalink to this headline"></a></h2>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">AllFilters</span></code> and <code class="docutils literal notranslate"><span class="pre">AnyFilter</span></code> classes together to filter by arbitrary
 complicated conditions:</p>
 <div class="literal-block-wrapper docutils container" id="id4">
@@ -199,9 +198,6 @@ autocompleted methods and properties.</p>
     <p>&#169; Copyright 2021, Profound Inventions, LLC.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

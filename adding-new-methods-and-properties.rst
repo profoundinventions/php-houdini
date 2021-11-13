@@ -11,7 +11,7 @@ Adding New Methods
 ~~~~~~~~~~~~~~~~~~
 
 To add new methods, you call the ``addNewMethods()`` after ``overrideClass()``
-and the you must specify a :ref:`source<Available Sources>` for the new methods.
+and the you must specify a :ref:`available sources <available-sources>` for the new methods.
 
 Sources include constants, properties, or methods from another class or the same class.
 
@@ -21,7 +21,6 @@ Sources include constants, properties, or methods from another class or the same
 
     In the future, there may be a way to configure the arguments for each dynamic method. Please contact us
     at ``profoundinventions+houdini@gmail.com`` if you would like to request this feature.
-
 
 
 Here's an example that completes methods from all the protected properties in a class, and
@@ -65,7 +64,7 @@ generates properties instead of methods:
        ->filter( AccessFilter::isProtected() )
        ->transform( NameTransform::camelCase() )
 
-
+.. _available-sources:
 
 Available Sources
 ~~~~~~~~~~~~~~~~~

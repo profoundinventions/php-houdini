@@ -1,5 +1,5 @@
 ------------------------
-Iterating Array Patterns
+Complex Array Patterns
 ------------------------
 
 The ``match()`` on ``ArrayPattern`` is already capable of generating multiple matches from
@@ -7,16 +7,9 @@ a single key-value pair array.
 
 However, if the array pattern in a class is more complex, ``match()`` may not be enough. So Houdini
 also has methods on the ``ArrayPattern`` class to *iterate* an array to extract methods and
-properties for completion.
+properties for completion, and to specify.
 
-Those methods are summarized here and their usage is described further below.
-
-      ``forEachValue()``
-          Iterate each value in the array.
-      ``forEachKeyAndValue()``
-          Iterate each key and value in the array.
-      ``selectKey(string $key)``
-          Select the given key in the array for further iteration.
+Those methods and their usage is described further below.
 
 Using forEachValue()
 --------------------
@@ -30,7 +23,7 @@ Here's an example of using ``forEachValue()``
    :caption: array-pattern-foreach-value-example.php
 
    <?php
-   namespace SomeNamespace;
+   namespace ArrayPatternExamples;
 
    class ForEachValueExample {
 
@@ -61,7 +54,7 @@ Here's an example of using ``forEachValue()``
    <?php
    namespace Houdini\Config\V1;
 
-   use SomeNamespace\ForEachValueExample;
+   use ArrayPatternExamples\ForEachValueExample;
 
    houdini()->overrideClass(ForEachValueExample::class)
        ->addNewProperties()
@@ -89,9 +82,9 @@ to iterate with ``forEachKeyAndValue()``:
    :caption: **array-pattern-for-each-key-and-value**.php
 
    <?php
-   namespace SomeNamespace;
+   namespace ArrayPatternExamples;
 
-   class MultiConstantExample {
+   class ForEachKeyAndValueExample {
 
       /**
        * This static array defines the valid properties.
@@ -129,9 +122,9 @@ In this example, the property definitions contain the name of the property as th
    <?php
    namespace Houdini\Config\V1;
 
-   use SomeNamespace\MultiConstantExample;
+   use ArrayPatternExamples\ForEachKeyAndValueExample;
 
-   houdini()->overrideClass(MultiConstantExample::class)
+   houdini()->overrideClass(ForEachKeyAndValueExample::class)
        ->addNewProperties()
        ->fromPropertyOfTheSameClass('PROPERTY_DEFINITIONS')
        ->useArrayPattern(
@@ -157,7 +150,7 @@ for this:
 
    <?php
 
-   namespace SomeNamespace;
+   namespace ArrayPatternExamples;
 
    class SelectKeyExample {
        const DEFINITIONS = [
@@ -183,7 +176,7 @@ for this:
    <?php
    namespace Houdini\Config\V1;
 
-   use SomeNamespace\SelectKeyExample;
+   use ArrayPatternExamples\SelectKeyExample;
 
    houdini()->overrideClass(SelectKeyExample::class)
       ->addNewProperties()
@@ -212,7 +205,7 @@ Handling mixed associative arrays
 
 If an array contains a mixture of key-value pairs and unpaired elements, there are two optional filters
 you can pass to ``forEachValue()`` and ``forEachKeyAndValue`` to only grab the key-value pairs or
-the unpaired elements. Those filters are on the ``ForEachOptions`` class and are created with
+the unpaired elements. Those filters ArrayPatternAnythingExample on the ``ForEachOptions`` class and are created with
 ``ForEachOptions::onlyStringKeys()`` and ``ForEachOptions::onlyIntegerKeys()``.
 
 The string keys will correspond to the key-value pairs, while the integer keys will correspond to the
@@ -224,7 +217,7 @@ Here's an example showing how to extract both from an array:
    :caption: **array-pattern-mixed-pair-arrays**.php
 
    <?php
-   namespace SomeNamespace;
+   namespace ArrayPatternExamples;
 
    class MixedPairArrays {
        const PROPERTY_DEFINITIONS = [
@@ -240,7 +233,7 @@ Here's an example showing how to extract both from an array:
    <?php
    namespace Houdini\Config\V1;
 
-   use SomeNamespace\MixedPairArrays;
+   use ArrayPatternExamples\MixedPairArrays;
 
    // match the key-value pairs (with string keys):
    houdini()->overrideClass(MixedPairArrays::class)
@@ -254,7 +247,7 @@ Here's an example showing how to extract both from an array:
        );
 
    // Match the non-paired keys (with integer keys):
-   houdini()->overrideClass(MixedPairArrays::class)
+   houdini()->overrideClass(MixedPairArrays::ArrayPatternAnythingExample)
       ->addNewProperties()
       ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
       ->useCustomType('string')
@@ -289,12 +282,12 @@ Here's an example that has an associative list of properties that is keyed by th
 the properties:
 
 .. code-block:: php
-   :caption: array-pattern-example-multi-foreach-example.php
+   :caption: array-pattern-next-example.php
 
    <?php
-   namespace SomeNamespace;
+   namespace ArrayPatternExamples;
 
-   class MultiForEachExample {
+   class NextExample {
 
       /**
        * This static array defines the valid properties.
@@ -336,9 +329,9 @@ the properties:
    <?php
    namespace Houdini\Config\V1;
 
-   use SomeNamespace\MultiForEachExample;
+   use ArrayPatternExamples\NextExample;
 
-   houdini()->overrideClass(MultiForEachExample::class)
+   houdini()->overrideClass(NextExample::class)
        ->addNewProperties()
        ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
        ->useArrayPattern(
@@ -349,7 +342,6 @@ the properties:
                'name' => ArrayPattern::NAME
             ])
        );
-
 
 Here we used the ``ArrayPattern::NEXT`` as a placeholder to match an array of any format
 in the first ``match()`` method. At that point, we absorb the *type* of the property
@@ -362,6 +354,63 @@ of its values. Finally we do a ``match`` looking for a ``'name'`` key and genera
 completion for the value its paired with.
 
 The result of this is four properties will be autocompleted.
+
+Using ``ArrayPattern::ANYTHING``
+---------------------------------
+
+Sometimes you don't care about the content of a key - where it isn't the *name* or *type* -
+but you want to match or iterate on its value.
+
+For this case, you can use ``ArrayPattern::ANYTHING`` in the key slot.
+
+Here's an example that maps an irrelevant key to the name with a custom type:
+
+.. code-block:: php
+   :caption: array-pattern-anything.php
+
+   <?php
+   namespace ArrayPatternExamples;
+
+   class AnythingExample {
+
+      /**
+       * This static array defines the valid properties.
+       */
+      const PROPERTY_DEFINITIONS = [
+         'irrelevant_key' => 'propertyOne',
+         'another_irrelevant_key' => 'propertyTwo'
+      ];
+
+      /**
+       * Where this class stores its data.
+       */
+      protected $data = [];
+
+      public function __get($name) {
+         if (in_array(self::PROPERTY_DEFINITIONS, $name)) {
+            return $this->data[$name];
+         }
+      }
+   }
+
+.. code-block:: php
+   :caption: .houdini.php
+   :emphasize-lines: 12
+
+   <?php
+   namespace Houdini\Config\V1;
+
+   use ArrayPatternExamples\AnythingExample;
+
+   houdini()->overrideClass(AnythingExample::class)
+       ->addNewProperties()
+       ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
+       ->useCustomType('string')
+       ->useArrayPattern(
+            ArrayPattern::create()
+            ->match( [ ArrayPattern::ANYTHING => ArrayPattern::NAME ] )
+       );
+
 
 Adieu to Array Patterns
 -----------------------

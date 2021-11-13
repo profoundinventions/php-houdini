@@ -48,7 +48,14 @@
 <li class="toctree-l1"><a class="reference internal" href="adding-new-methods-and-properties.html">Adding New Methods and Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">List of Filters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">List of Filters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#name-filters">Name filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-filters">Type filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#access-filters">Access filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#any-filter">Any filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#all-filters">All filters</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
 </ul>
 
@@ -78,6 +85,72 @@
              
   <section id="list-of-filters">
 <h1>List of Filters<a class="headerlink" href="#list-of-filters" title="Permalink to this headline"></a></h1>
+<p>The following transforms are supported by the <code class="docutils literal notranslate"><span class="pre">filter</span></code> method:</p>
+<section id="name-filters">
+<h2>Name filters<a class="headerlink" href="#name-filters" title="Permalink to this headline"></a></h2>
+<p>These are accessible with <code class="docutils literal notranslate"><span class="pre">NameFilter::</span></code> in <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">contains(string</span> <span class="pre">$str)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startsWith(string</span> <span class="pre">$str)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endsWith(string</span> <span class="pre">$str)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">equals(string</span> <span class="pre">$str)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isUppercase()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isLowercase()</span></code></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="type-filters">
+<h2>Type filters<a class="headerlink" href="#type-filters" title="Permalink to this headline"></a></h2>
+<p>These are accessible with <code class="docutils literal notranslate"><span class="pre">TypeFilter::</span></code> in <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">contains(string</span> <span class="pre">$str)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startsWith(string</span> <span class="pre">$str)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endsWith(string</span> <span class="pre">$str)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">equals(string</span> <span class="pre">$str)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isUppercase()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isLowercase()</span></code></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="access-filters">
+<h2>Access filters<a class="headerlink" href="#access-filters" title="Permalink to this headline"></a></h2>
+<p>These are accessible with <code class="docutils literal notranslate"><span class="pre">AccessFilter::</span></code> in <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">isPrivate()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isProtected()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isPublic()</span></code></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="any-filter">
+<h2>Any filter<a class="headerlink" href="#any-filter" title="Permalink to this headline"></a></h2>
+<p>This is accessible with <code class="docutils literal notranslate"><span class="pre">AnyFilter::</span></code> in <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">create(Filter</span> <span class="pre">...)</span></code></dt><dd><p>Pass a list of any filter here. If any apply, the filter will pass.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</section>
+<section id="all-filters">
+<h2>All filters<a class="headerlink" href="#all-filters" title="Permalink to this headline"></a></h2>
+<p>This is accessible with <code class="docutils literal notranslate"><span class="pre">AnyFilter::</span></code> in <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">create(Filter</span> <span class="pre">...</span> <span class="pre">$filters)</span></code></dt><dd><p>Pass a list of filters here. If all apply, the filter will pass.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</section>
 </section>
 
 

@@ -66,7 +66,7 @@ Here's an example of using ``forEachValue()``
    houdini()->overrideClass(ForEachValueExample::class)
        ->addNewProperties()
        ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
-       ->matchArrayPattern(
+       ->useArrayPattern(
             ArrayPattern::create()
             ->forEachValue()
             ->match([
@@ -134,7 +134,7 @@ In this example, the property definitions contain the name of the property as th
    houdini()->overrideClass(MultiConstantExample::class)
        ->addNewProperties()
        ->fromPropertyOfTheSameClass('PROPERTY_DEFINITIONS')
-       ->matchArrayPattern(
+       ->useArrayPattern(
             ArrayPattern::create()
             ->forEachKeyAndValue()
             ->match( [ ArrayPattern::NAME => ArrayPattern::TYPE ] )
@@ -145,22 +145,22 @@ Here we changed the example to generate multiple properties from our constant de
 Because the ``match`` method will only generate a single match, we need to add ``forEachKeyAndValue()``
 to iterate all the entries in the ``PROPERTY_DEFINITIONS`` constant.
 
-Selecting a particular key
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Selecting a particular key with selectKey(string $key)
+------------------------------------------------------
 
 You may find you want to traverse only down a particular part of the array. You can use ``selectKey``
 for this:
 
 
 Handling mixed associative arrays
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
 If the definition has a mixture of both types of associative and indexed arrays, it's possible
 to use both ``forEachValue()`` and ``forEachKeyAndValue()`` combinined with multiple ``match``
 calls to match each property or method:
 
 Using ``ArrayPattern::NEXT``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 You may find you want to match the name or type in the *key* of the array, but then you want to
 continue iterating with ``forEachValue()``, ``forEachKeyAndValue()``, or a subsequent call
@@ -225,7 +225,7 @@ the properties:
    houdini()->overrideClass(MultiForEachExample::class)
        ->addNewProperties()
        ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
-       ->matchArrayPattern(
+       ->useArrayPattern(
             ArrayPattern::create()
             ->match([ ArrayPattern::TYPE => ArrayPattern::NEXT ])
             ->forEachValue()
@@ -248,7 +248,7 @@ completion for the value its paired with.
 The result of this is four properties will be autocompleted.
 
 Adieu to Array Patterns
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 Hopefully that helps to illustrate Array Patterns and what you would use them for. It
 can be a powerful feature if you have to deal with code that makes heavy use of

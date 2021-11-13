@@ -20,6 +20,12 @@ the default values based on patterns you describe in the ``.houdini.php`` file.
 Simple Array Patterns Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Each ``ArrayPattern`` is a fluent object that must have one or more calls to the ``match()``
+method in order to generate completions.
+
+To create an ``ArrayPattern``, you need to use the ``ArrayPattern::create()`` method. To use
+it, you pass the pattern to the ``->useArrayPattern`` method.
+
 Here's a simple example of autocompleting a property from a specification inside an array:
 
 .. code-block:: php
@@ -62,19 +68,21 @@ Here's a simple example of autocompleting a property from a specification inside
        ->addNewMethods()
        ->fromPropertyOfTheSameClass('methodDefinitions')
        ->fromContext( Context::isStatic() )
-       ->matchArrayPattern(
+       ->useArrayPattern(
             ArrayPattern::create()
             ->match( [ ArrayPattern::NAME => ArrayPattern::TYPE ] )
        );
 
 
 In this example, we're autocompleting a method from a definition in the array stored
-in the static property ``$methodDefitions``. The definition has to include
+in the static property ``$methodDefinitions``. The definition has to include
 both the method name and the return type in for a completion match to be generated. The
 name is matched with the ``ArrayPattern::NAME`` placeholder. Whatever is in the array will
-be used in th completion. Similarly, the ``ArrayPattern::TYPE`` placeholder will match the
-property type or the method return type.  In order for an array pattern to generate a completion,
-both the name and type have to be matched (but see below for an exception to this).
+be used in th completion.
+
+Similarly, the ``ArrayPattern::TYPE`` placeholder will match the property type or the method return type.
+In order for an array pattern to generate a completion, both the name and type have to be matched
+(but see below for an exception to this).
 
 So, in this example, two non-static methods will be autocompleted for the ``SimpleArrayPatternExample``
 instances.
@@ -142,11 +150,10 @@ subset of the array - so an array can contain values not in the pattern and stil
        ->addNewMethods()
        ->fromPropertyOfTheSameClass('methodDefinitions')
        ->fromContext( Context::isStatic() )
-       ->matchArrayPattern(
+       ->useArrayPattern(
             ArrayPattern::create()
             ->match([
                ArrayPattern::NAME => [
-                  // only this part is matched:
                   'type' => ArrayPattern::TYPE
                ]
             ])
@@ -198,11 +205,10 @@ similar example, that generates properties from constants:
    houdini()->overrideClass(PropertyConstantExample::class)
        ->addNewProperties()
        ->fromPropertyOfTheSameClass('PROPERTY_DEFINITIONS')
-       ->matchArrayPattern(
+       ->useArrayPattern(
             ArrayPattern::create()
             ->match( [ ArrayPattern::NAME => ArrayPattern::TYPE ] )
        );
-
 
 
 Combining Patterns with other methods
@@ -213,8 +219,8 @@ to include ``ArrayPattern::NAME`` and ``ArrayPattern::TYPE``, but it's also poss
 one of those and grab the other one from another method.
 
 For example, you could grab the name from the ArrayPattern with ``ArrayPattern::NAME``
-and the return type with ``useCustomType('string')``.
-
+and the return type with ``useCustomType('string')``. Then, you'll generate a new ``string``
+property for each *name* found in the array pattern.
 
 Go to the :doc:`next step <iterating-array-patterns>` to learn about
 adding methods or properties from specialized patterns of arrays.

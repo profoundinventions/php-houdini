@@ -1,11 +1,15 @@
-.rst-content .code-block-caption
+.rst-content.rst-content .code-block-caption
 {
+    font-size: 0.85rem;
+    text-align: left;
     font-style: italic;
-    font-weight: bold;
-    font-size: 1.125rem;
-    text-align: left; 
-    padding: 0;
-    margin-bottom: 0.2em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px solid #e1e4e5;
+    background: #f8f8f8;
+    margin: 0 0 -5px 0;
+    padding: 10px 15px 0;
+    width: min-content;
 }
 
 .wy-side-nav-search.wy-side-nav-search img

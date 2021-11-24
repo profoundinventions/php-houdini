@@ -104,7 +104,7 @@ You can specify autocompleting in one context or another using the ``useContext`
 then specifying which context with ``Context::isStatic()`` or ``Context::isInstance()``.
 
 If you want to autocomplete a static property or method from a non-static one or vice-versa,
-you can use the ``fromContext()`` or ``toContext()`` methods individually instead of ``useContext()` individually instead of ``useContext()``.
+you can use the ``fromContext()`` or ``toContext()`` methods individually instead of ``useContext()``
 to control whether the source or autocompleted property/method is static. Effectively, ``useContext(Context::isStatic()``
 is equivalent to ``fromContext(Context::isStatic())->toContext(Context::isStatic()``
 
@@ -130,7 +130,7 @@ extend ``MyCLabs\Enum\Enum`` - you don't need to specify each one individually.
    houdini()->overrideClass(Enum::class)
    ->addNewMethods()
    ->fromAllConstantsOfTheSameClass()
-   ->useContext( Context::isStatic() );
+   ->toContext( Context::isStatic() );
 
 
 Configuring the Name and Type

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Complex Array Patterns &mdash; PHP Houdini  documentation</title>
+  <title>Iterating Array Patterns &mdash; PHP Houdini  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -16,12 +16,11 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/js/custom.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Support or Contact" href="support.html" />
-    <link rel="prev" title="Simple Array Patterns" href="simple-array-patterns.html" /> 
+    <link rel="prev" title="Array Patterns" href="array-patterns.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -29,11 +28,8 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-<a href="https://www.profoundinventions.com/php-houdini.html">
-    PHP Houdini
-    <img alt="PHP Houdini" src="https://www.profoundinventions.com/img/wizard-hat-white.png">
-</a>
+            <a href="index.html" class="icon icon-home"> PHP Houdini
+          </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -50,18 +46,14 @@
 <li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-new-methods-and-properties.html">Adding New Methods and Properties</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="array-patterns.html">Array Patterns</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="simple-array-patterns.html">Simple Array Patterns</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Complex Array Patterns</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#using-foreachvalue">Using forEachValue()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-foreachkeyandvalue">Using forEachKeyAndValue()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#selecting-a-particular-key-with-selectkey-string-key">Selecting a particular key with selectKey(string $key)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#handling-mixed-associative-arrays">Handling mixed associative arrays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-arraypattern-next">Using <code class="docutils literal notranslate"><span class="pre">ArrayPattern::NEXT</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-arraypattern-anything">Using <code class="docutils literal notranslate"><span class="pre">ArrayPattern::ANYTHING</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adieu-to-array-patterns">Adieu to Array Patterns</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Iterating Array Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-foreachvalue">Using forEachValue()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-foreachkeyandvalue">Using forEachKeyAndValue()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selecting-a-particular-key-with-selectkey-string-key">Selecting a particular key with selectKey(string $key)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-mixed-associative-arrays">Handling mixed associative arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-arraypattern-next">Using <code class="docutils literal notranslate"><span class="pre">ArrayPattern::NEXT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adieu-to-array-patterns">Adieu to Array Patterns</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
@@ -83,10 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="array-patterns.html">Array Patterns</a> &raquo;</li>
-      <li>Complex Array Patterns</li>
+      <li>Iterating Array Patterns</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/complex-array-patterns.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/iterating-array-patterns.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -94,14 +85,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="complex-array-patterns">
-<h1>Complex Array Patterns<a class="headerlink" href="#complex-array-patterns" title="Permalink to this headline"></a></h1>
+  <section id="iterating-array-patterns">
+<h1>Iterating Array Patterns<a class="headerlink" href="#iterating-array-patterns" title="Permalink to this headline"></a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">match()</span></code> on <code class="docutils literal notranslate"><span class="pre">ArrayPattern</span></code> is already capable of generating multiple matches from
 a single key-value pair array.</p>
 <p>However, if the array pattern in a class is more complex, <code class="docutils literal notranslate"><span class="pre">match()</span></code> may not be enough. So Houdini
 also has methods on the <code class="docutils literal notranslate"><span class="pre">ArrayPattern</span></code> class to <em>iterate</em> an array to extract methods and
-properties for completion, and to specify.</p>
-<p>Those methods and their usage is described further below.</p>
+properties for completion.</p>
+<p>Those methods are summarized here and their usage is described further below.</p>
+<blockquote>
+<div><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code></dt><dd><p>Iterate each value in the array.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code></dt><dd><p>Iterate each key and value in the array.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">selectKey(string</span> <span class="pre">$key)</span></code></dt><dd><p>Select the given key in the array for further iteration.</p>
+</dd>
+</dl>
+</div></blockquote>
 <section id="using-foreachvalue">
 <h2>Using forEachValue()<a class="headerlink" href="#using-foreachvalue" title="Permalink to this headline"></a></h2>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code> if the array you’re iterating is an indexed and not an associative
@@ -110,7 +111,7 @@ array if you want to generate a match for each element.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">array-pattern-foreach-value-example.php</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">ArrayPatternExamples</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="nx">SomeNamespace</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">ForEachValueExample</span> <span class="p">{</span>
 
@@ -142,7 +143,7 @@ array if you want to generate a match for each element.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
-<span class="k">use</span> <span class="nx">ArrayPatternExamples\ForEachValueExample</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">SomeNamespace\ForEachValueExample</span><span class="p">;</span>
 
 <span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">ForEachValueExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">addNewProperties</span><span class="p">()</span>
@@ -169,9 +170,9 @@ to iterate with <code class="docutils literal notranslate"><span class="pre">for
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text"><strong>array-pattern-for-each-key-and-value</strong>.php</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">ArrayPatternExamples</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="nx">SomeNamespace</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">ForEachKeyAndValueExample</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">MultiConstantExample</span> <span class="p">{</span>
 
    <span class="sd">/**</span>
 <span class="sd">    * This static array defines the valid properties.</span>
@@ -209,9 +210,9 @@ to iterate with <code class="docutils literal notranslate"><span class="pre">for
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
-<span class="k">use</span> <span class="nx">ArrayPatternExamples\ForEachKeyAndValueExample</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">SomeNamespace\MultiConstantExample</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">ForEachKeyAndValueExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">MultiConstantExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">addNewProperties</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">fromPropertyOfTheSameClass</span><span class="p">(</span><span class="s1">&#39;PROPERTY_DEFINITIONS&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">useArrayPattern</span><span class="p">(</span>
@@ -234,7 +235,7 @@ for this:</p>
 <div class="code-block-caption"><span class="caption-text"><strong>array-pattern-select-key</strong>.php</span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="k">namespace</span> <span class="nx">ArrayPatternExamples</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="nx">SomeNamespace</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">SelectKeyExample</span> <span class="p">{</span>
     <span class="k">const</span> <span class="no">DEFINITIONS</span> <span class="o">=</span> <span class="p">[</span>
@@ -261,7 +262,7 @@ for this:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
-<span class="k">use</span> <span class="nx">ArrayPatternExamples\SelectKeyExample</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">SomeNamespace\SelectKeyExample</span><span class="p">;</span>
 
 <span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">SelectKeyExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
    <span class="o">-&gt;</span><span class="na">addNewProperties</span><span class="p">()</span>
@@ -290,7 +291,7 @@ named <code class="docutils literal notranslate"><span class="pre">foo</span></c
 <h2>Handling mixed associative arrays<a class="headerlink" href="#handling-mixed-associative-arrays" title="Permalink to this headline"></a></h2>
 <p>If an array contains a mixture of key-value pairs and unpaired elements, there are two optional filters
 you can pass to <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code> and <code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue</span></code> to only grab the key-value pairs or
-the unpaired elements. Those filters ArrayPatternAnythingExample on the <code class="docutils literal notranslate"><span class="pre">ForEachOptions</span></code> class and are created with
+the unpaired elements. Those filters are on the <code class="docutils literal notranslate"><span class="pre">ForEachOptions</span></code> class and are created with
 <code class="docutils literal notranslate"><span class="pre">ForEachOptions::onlyStringKeys()</span></code> and <code class="docutils literal notranslate"><span class="pre">ForEachOptions::onlyIntegerKeys()</span></code>.</p>
 <p>The string keys will correspond to the key-value pairs, while the integer keys will correspond to the
 unpaired elements.</p>
@@ -298,7 +299,7 @@ unpaired elements.</p>
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-text"><strong>array-pattern-mixed-pair-arrays</strong>.php</span><a class="headerlink" href="#id7" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">ArrayPatternExamples</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="nx">SomeNamespace</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">MixedPairArrays</span> <span class="p">{</span>
     <span class="k">const</span> <span class="no">PROPERTY_DEFINITIONS</span> <span class="o">=</span> <span class="p">[</span>
@@ -315,7 +316,7 @@ unpaired elements.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
-<span class="k">use</span> <span class="nx">ArrayPatternExamples\MixedPairArrays</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">SomeNamespace\MixedPairArrays</span><span class="p">;</span>
 
 <span class="c1">// match the key-value pairs (with string keys):</span>
 <span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">MixedPairArrays</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
@@ -329,7 +330,7 @@ unpaired elements.</p>
     <span class="p">);</span>
 
 <span class="c1">// Match the non-paired keys (with integer keys):</span>
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">MixedPairArrays</span><span class="o">::</span><span class="na">ArrayPatternAnythingExample</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">MixedPairArrays</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
    <span class="o">-&gt;</span><span class="na">addNewProperties</span><span class="p">()</span>
    <span class="o">-&gt;</span><span class="na">fromConstantOfTheSameClass</span><span class="p">(</span><span class="s1">&#39;PROPERTY_DEFINITIONS&#39;</span><span class="p">)</span>
    <span class="o">-&gt;</span><span class="na">useCustomType</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
@@ -359,11 +360,11 @@ wherever that value is.</p>
 <p>Here’s an example that has an associative list of properties that is keyed by the type of
 the properties:</p>
 <div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">array-pattern-next-example.php</span><a class="headerlink" href="#id9" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text">array-pattern-example-multi-foreach-example.php</span><a class="headerlink" href="#id9" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">ArrayPatternExamples</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="nx">SomeNamespace</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">NextExample</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">MultiForEachExample</span> <span class="p">{</span>
 
    <span class="sd">/**</span>
 <span class="sd">    * This static array defines the valid properties.</span>
@@ -406,9 +407,9 @@ the properties:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
 
-<span class="k">use</span> <span class="nx">ArrayPatternExamples\NextExample</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">SomeNamespace\MultiForEachExample</span><span class="p">;</span>
 
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">NextExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">MultiForEachExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">addNewProperties</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">fromConstantOfTheSameClass</span><span class="p">(</span><span class="s1">&#39;PROPERTY_DEFINITIONS&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">useArrayPattern</span><span class="p">(</span>
@@ -432,66 +433,12 @@ of its values. Finally we do a <code class="docutils literal notranslate"><span 
 completion for the value its paired with.</p>
 <p>The result of this is four properties will be autocompleted.</p>
 </section>
-<section id="using-arraypattern-anything">
-<h2>Using <code class="docutils literal notranslate"><span class="pre">ArrayPattern::ANYTHING</span></code><a class="headerlink" href="#using-arraypattern-anything" title="Permalink to this headline"></a></h2>
-<p>Sometimes you don’t care about the content of a key - where it isn’t the <em>name</em> or <em>type</em> -
-but you want to match or iterate on its value.</p>
-<p>For this case, you can use <code class="docutils literal notranslate"><span class="pre">ArrayPattern::ANYTHING</span></code> in the key slot.</p>
-<p>Here’s an example that maps an irrelevant key to the name with a custom type:</p>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">array-pattern-anything.php</span><a class="headerlink" href="#id11" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">ArrayPatternExamples</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">AnythingExample</span> <span class="p">{</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * This static array defines the valid properties.</span>
-<span class="sd">    */</span>
-   <span class="k">const</span> <span class="no">PROPERTY_DEFINITIONS</span> <span class="o">=</span> <span class="p">[</span>
-      <span class="s1">&#39;irrelevant_key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;propertyOne&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;another_irrelevant_key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;propertyTwo&#39;</span>
-   <span class="p">];</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * Where this class stores its data.</span>
-<span class="sd">    */</span>
-   <span class="k">protected</span> <span class="nv">$data</span> <span class="o">=</span> <span class="p">[];</span>
-
-   <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">PROPERTY_DEFINITIONS</span><span class="p">,</span> <span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
-         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$name</span><span class="p">];</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id12" title="Permalink to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">ArrayPatternExamples\AnythingExample</span><span class="p">;</span>
-
-<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">AnythingExample</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addNewProperties</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">fromConstantOfTheSameClass</span><span class="p">(</span><span class="s1">&#39;PROPERTY_DEFINITIONS&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">useCustomType</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">useArrayPattern</span><span class="p">(</span>
-         <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
-<span class="hll">         <span class="o">-&gt;</span><span class="na">match</span><span class="p">(</span> <span class="p">[</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">ANYTHING</span> <span class="o">=&gt;</span> <span class="nx">ArrayPattern</span><span class="o">::</span><span class="na">NAME</span> <span class="p">]</span> <span class="p">)</span>
-</span>    <span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</section>
 <section id="adieu-to-array-patterns">
 <h2>Adieu to Array Patterns<a class="headerlink" href="#adieu-to-array-patterns" title="Permalink to this headline"></a></h2>
 <p>Hopefully that helps to illustrate Array Patterns and what you would use them for. It
 can be a powerful feature if you have to deal with code that makes heavy use of
 array definitions for magic methods or properties.</p>
-<p>If you have any questions, feel free to email <code class="docutils literal notranslate"><span class="pre">support&#64;profoundinventions.com</span></code>
+<p>If you have any question, feel free to email <code class="docutils literal notranslate"><span class="pre">profoundinventions+houdini&#64;gmail.com</span></code>
 and let us know you questions or concerns.</p>
 </section>
 </section>
@@ -500,7 +447,7 @@ and let us know you questions or concerns.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="simple-array-patterns.html" class="btn btn-neutral float-left" title="Simple Array Patterns" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="array-patterns.html" class="btn btn-neutral float-left" title="Array Patterns" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="support.html" class="btn btn-neutral float-right" title="Support or Contact" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -510,6 +457,9 @@ and let us know you questions or concerns.</p>
     <p>&#169; Copyright 2021, Profound Inventions, LLC.</p>
   </div>
 
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

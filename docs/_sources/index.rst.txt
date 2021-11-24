@@ -1,5 +1,5 @@
-PHP Houdini Documentation
--------------------------
+PHP Houdini Tutorial
+--------------------
 
 This document describes how to use the PhpStorm plugin ``PHP Houdini``
 

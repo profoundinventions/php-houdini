@@ -10,7 +10,7 @@ The methods for doing so are ``addNewMethods()`` and ``addNewProperties()``.
 Adding New Methods
 ~~~~~~~~~~~~~~~~~~
 
-To add new methods, you call the ``addNewMethods()`` after ``overrideClass()``
+To add new methods, you call the :func:`addNewMethods` after :func:`overrideClass`
 and the you must specify a :ref:`available sources <available-sources>` for the new methods.
 
 Sources include constants, properties, or methods from another class or the same class.

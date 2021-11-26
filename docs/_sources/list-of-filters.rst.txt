@@ -13,8 +13,6 @@ These are accessible with ``NameFilter::`` in ``.houdini.php``
     - ``startsWith(string $str)``
     - ``endsWith(string $str)``
     - ``equals(string $str)``
-    - ``isUppercase()``
-    - ``isLowercase()``
 
 Type filters
 ~~~~~~~~~~~~
@@ -25,8 +23,6 @@ These are accessible with ``TypeFilter::`` in ``.houdini.php``:
     - ``startsWith(string $str)``
     - ``endsWith(string $str)``
     - ``equals(string $str)``
-    - ``isUppercase()``
-    - ``isLowercase()``
 
 
 Access filters

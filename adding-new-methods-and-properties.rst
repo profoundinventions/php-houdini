@@ -3,7 +3,7 @@ Adding New Methods and Properties
 ---------------------------------
 
 PHP Houdini also allows you to complete methods and properties that
-don't exist on the dynamic class.
+don't exist at all on the dynamic class.
 
 The methods for doing so are ``addNewMethods()`` and ``addNewProperties()``.
 
@@ -11,7 +11,7 @@ Adding New Methods
 ~~~~~~~~~~~~~~~~~~
 
 To add new methods, you call the :func:`addNewMethods` after :func:`overrideClass`
-and the you must specify a :ref:`available sources <available-sources>` for the new methods.
+and the you must specify an :ref:`available source <available-sources>` for the new methods.
 
 Sources include constants, properties, or methods from another class or the same class.
 
@@ -103,10 +103,11 @@ you can only access them as instance methods and not as static methods or proper
 You can specify autocompleting in one context or another using the ``useContext`` method, and
 then specifying which context with ``Context::isStatic()`` or ``Context::isInstance()``.
 
-If you want to autocomplete a static property or method from a non-static one or vice-versa,
-you can use the ``fromContext()`` or ``toContext()`` methods individually instead of ``useContext()``
-to control whether the source or autocompleted property/method is static. Effectively, ``useContext(Context::isStatic()``
-is equivalent to ``fromContext(Context::isStatic())->toContext(Context::isStatic()``
+Note you can also make autocomplete a static property or method from a non-static property
+or method, or vice versa. If you want to do this,
+you use the ``fromContext()`` method to specify whether the source is a static or instance method,
+and then the ``toContext()`` method to specify the context for the autocompleted property or method.
+Effectively, ``useContext(Context::isStatic()`` is equivalent to ``fromContext(Context::isStatic())->toContext(Context::isStatic()``
 
 .. note::
     Constants are always treated as static, and so when completing from a constant
@@ -136,12 +137,12 @@ extend ``MyCLabs\Enum\Enum`` - you don't need to specify each one individually.
 Configuring the Name and Type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also how the name or the type are determined.
+You can also configure how the name or the type are determined.
 
 Configuring the Name
 ####################
 
-You can configure the name to come using a few different methods:
+You can configure the name using a few different methods:
 
    ``useTheSameName()``
        This will use the same name as the source for a method or property.

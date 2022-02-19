@@ -61,7 +61,7 @@ Here's a simple example of autocompleting a property from a specification inside
 
 In this example, we're autocompleting a method from a definition in the array stored
 in the static property ``$methodDefinitions``. The definition has to include
-both the method name and the return type in for a completion match to be generated. The
+both the method name and the return type in order for a completion match to be generated. The
 name is matched with the ``ArrayPattern::NAME`` placeholder. Whatever is in the array will
 be used in th completion.
 
@@ -84,9 +84,7 @@ The ``match()`` method
 The argument passed to the ``match`` method is the one that is generating the completion.
 
 There are two options to pass to ``match``: a string or an array. In the previous example, we passed an array.
-We'll look at when you might want to pass a string later. When passing an array,
-you can include arbitrary strings and arrays in the pattern to match the structure of how the method
-name or return type are laid out in your method or property definition - just make sure to include
+We'll look at when you might want to pass a string later. The ``match`` should contain either either
 ``ArrayPattern::NAME`` or ``ArrayPattern::TYPE`` to get either the property type or the method return type.
 
 When matching against an array value, the ``match()`` method looks only at the relevant
@@ -149,7 +147,7 @@ Autocompleting Properties Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Hopefully that gives you an idea of what you can do with Array Patterns. Here's a
-similar example, that generates properties from constants:
+similar example, that generates properties an array in a constant:
 
 .. code-block:: php
    :caption: array-pattern-property-constant-example.php
@@ -189,7 +187,7 @@ similar example, that generates properties from constants:
 
    houdini()->overrideClass(PropertiesFromConstantExample::class)
        ->addNewProperties()
-       ->fromPropertyOfTheSameClass('PROPERTY_DEFINITIONS')
+       ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
        ->useArrayPattern(
             ArrayPattern::create()
             ->match( [ ArrayPattern::NAME => ArrayPattern::TYPE ] )

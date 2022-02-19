@@ -17,7 +17,7 @@ of a class that have a certain character string:
        ->promoteProperties()
        ->filter( NameFilter::contains('foo') );
 
-Here we used passed a ``NameFilter`` to the ``filter()`` method. This will
+Here we passed a ``NameFilter`` to the ``filter()`` method. This will
 enable autocompletion for private and protected properties of ``YourDynamicClass``,
 but only if those properties contain the string `foo`.
 
@@ -46,7 +46,7 @@ so *all* of the filters passed must apply for the method or property to be added
           NameFilter::startsWith('get')
        ));
 
-This will promote any property that both filters, so only properties that start
+This will promote any property that matches both filters, so only properties that start
 with `get` and also contain `foo` somewhere in the name will be promoted.
 
 You can also combine multiple filters explicitly with the ``AllFilters`` class.

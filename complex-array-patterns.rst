@@ -11,6 +11,15 @@ properties for completion, and to specify.
 
 Those methods and their usage is described further below.
 
+Fundamental Concepts
+--------------------
+
+In an ``ArrayPattern``, each completion match will only be generated when you have *both*
+a name and a type. For many of the more complex scenarios below, first a name match occurs,
+and then the parse continues until a type match happens. If this match happens multiple times,
+while iterating the array of the pattern, a completion result will be generated for each of
+the matches that have unique names.
+
 Using forEachValue()
 --------------------
 
@@ -68,7 +77,7 @@ Here's an example of using ``forEachValue()``
             ])
        );
 
-Here we iterating each value in the ``PROPERTY_DEFINITIONS`` constant array, and generating a property
+Here we are iterating each value in the ``PROPERTY_DEFINITIONS`` constant array, and generating a property
 for each. In this example, there will be two properties in the autocompletion: ``propertyOne`` as a ``string``,
 and ``propertyTwo`` as an ``int``.
 
@@ -114,8 +123,6 @@ to iterate with ``forEachKeyAndValue()``:
       }
    }
 
-In this example, the property definitions contain the name of the property as the first key, following
-
 .. code-block:: php
    :caption: .houdini.php
 
@@ -126,12 +133,19 @@ In this example, the property definitions contain the name of the property as th
 
    houdini()->overrideClass(ForEachKeyAndValueExample::class)
        ->addNewProperties()
-       ->fromPropertyOfTheSameClass('PROPERTY_DEFINITIONS')
+       ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
        ->useArrayPattern(
             ArrayPattern::create()
             ->forEachKeyAndValue()
-            ->match( [ ArrayPattern::NAME => ArrayPattern::TYPE ] )
+            ->match([
+               ArrayPattern::NAME => [
+                  'metadata' => [
+                     'type' => ArrayPattern::TYPE
+                  ]
+            ])
        );
+
+In this example, the property definitions contain the name of the property as the first key.
 
 Here we changed the example to generate multiple properties from our constant definitions.
 

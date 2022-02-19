@@ -126,7 +126,7 @@ In this example, the property definitions contain the name of the property as th
 
    houdini()->overrideClass(ForEachKeyAndValueExample::class)
        ->addNewProperties()
-       ->fromPropertyOfTheSameClass('PROPERTY_DEFINITIONS')
+       ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
        ->useArrayPattern(
             ArrayPattern::create()
             ->forEachKeyAndValue()

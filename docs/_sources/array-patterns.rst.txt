@@ -5,7 +5,7 @@ Array Patterns
 In some projects, you may encounter classes that have complex specifications
 of types inside of constants or properties.
 
-Houdini can generate methods, constants, or properties from such definitions
+Houdini can generate completion for methods or properties from such definitions
 using *Array Patterns*
 
 .. note::

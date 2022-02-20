@@ -1,8 +1,8 @@
 Filters
 -------
 
-Filters allow you to control which properties or methods are generated that will affect the source
-. For example, you can use ``promoteMethods()`` and the ``filter()`` operator to only promote methods
+Filters allow you to control which properties or methods are generated. For example, you can use ``promoteMethods
+()`` and the ``filter()`` operator to only promote methods
 of a class that have a certain character string:
 
 .. code-block:: php
@@ -103,7 +103,7 @@ complicated conditions:
           )
        ));
 
-This will promote autocompletion for any property that contains foo, or is both a private property and contains
+This will promote for autocompletion any property that contains ``foo``, or is both a private property and contains
 the string ``bar``.
 
 Go to the :doc:`next step <transforms>` to see how you can change the names of

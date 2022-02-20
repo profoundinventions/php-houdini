@@ -87,8 +87,8 @@
              
   <section id="filters">
 <h1>Filters<a class="headerlink" href="#filters" title="Permalink to this headline"></a></h1>
-<p>Filters allow you to control which properties or methods are generated that will affect the source
-. For example, you can use <code class="docutils literal notranslate"><span class="pre">promoteMethods()</span></code> and the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> operator to only promote methods
+<p>Filters allow you to control which properties or methods are generated. For example, you can use <code class="docutils literal notranslate"><span class="pre">promoteMethods</span>
+<span class="pre">()</span></code> and the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> operator to only promote methods
 of a class that have a certain character string:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">.houdini.php</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
@@ -103,7 +103,7 @@ of a class that have a certain character string:</p>
 </pre></div>
 </div>
 </div>
-<p>Here we used passed a <code class="docutils literal notranslate"><span class="pre">NameFilter</span></code> to the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. This will
+<p>Here we passed a <code class="docutils literal notranslate"><span class="pre">NameFilter</span></code> to the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. This will
 enable autocompletion for private and protected properties of <code class="docutils literal notranslate"><span class="pre">YourDynamicClass</span></code>,
 but only if those properties contain the string <cite>foo</cite>.</p>
 <p>You can see the complete list of name filters supported by typing <code class="docutils literal notranslate"><span class="pre">NameFilter::</span></code> and PhpStorm will
@@ -129,7 +129,7 @@ so <em>all</em> of the filters passed must apply for the method or property to b
 </pre></div>
 </div>
 </div>
-<p>This will promote any property that both filters, so only properties that start
+<p>This will promote any property that matches both filters, so only properties that start
 with <cite>get</cite> and also contain <cite>foo</cite> somewhere in the name will be promoted.</p>
 <p>You can also combine multiple filters explicitly with the <code class="docutils literal notranslate"><span class="pre">AllFilters</span></code> class.
 This isn’t useful though unless you are <a class="reference internal" href="#combining-filters"><span class="std std-ref">combining filters</span></a> with each other.</p>
@@ -181,7 +181,7 @@ complicated conditions:</p>
 </pre></div>
 </div>
 </div>
-<p>This will promote autocompletion for any property that contains foo, or is both a private property and contains
+<p>This will promote for autocompletion any property that contains <code class="docutils literal notranslate"><span class="pre">foo</span></code>, or is both a private property and contains
 the string <code class="docutils literal notranslate"><span class="pre">bar</span></code>.</p>
 <p>Go to the <a class="reference internal" href="transforms.html"><span class="doc">next step</span></a> to see how you can change the names of
 autocompleted methods and properties.</p>

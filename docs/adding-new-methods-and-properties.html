@@ -94,12 +94,12 @@
   <section id="adding-new-methods-and-properties">
 <h1>Adding New Methods and Properties<a class="headerlink" href="#adding-new-methods-and-properties" title="Permalink to this headline"></a></h1>
 <p>PHP Houdini also allows you to complete methods and properties that
-don’t exist on the dynamic class.</p>
+don’t exist at all on the dynamic class.</p>
 <p>The methods for doing so are <code class="docutils literal notranslate"><span class="pre">addNewMethods()</span></code> and <code class="docutils literal notranslate"><span class="pre">addNewProperties()</span></code>.</p>
 <section id="adding-new-methods">
 <h2>Adding New Methods<a class="headerlink" href="#adding-new-methods" title="Permalink to this headline"></a></h2>
-<p>To add new methods, you call the <code class="xref py py-func docutils literal notranslate"><span class="pre">addNewMethods()</span></code> after <code class="xref py py-func docutils literal notranslate"><span class="pre">overrideClass()</span></code>
-and the you must specify a <a class="reference internal" href="#available-sources"><span class="std std-ref">available sources</span></a> for the new methods.</p>
+<p>To add new methods, you call the <code class="docutils literal notranslate"><span class="pre">addNewMethods</span></code> after <code class="docutils literal notranslate"><span class="pre">overrideClass</span></code>
+and the you must specify an <a class="reference internal" href="#available-sources"><span class="std std-ref">available source</span></a> for the new methods.</p>
 <p>Sources include constants, properties, or methods from another class or the same class.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -182,14 +182,16 @@ and constants.</p>
 you can only access them as instance methods and not as static methods or properties.</p>
 <p>You can specify autocompleting in one context or another using the <code class="docutils literal notranslate"><span class="pre">useContext</span></code> method, and
 then specifying which context with <code class="docutils literal notranslate"><span class="pre">Context::isStatic()</span></code> or <code class="docutils literal notranslate"><span class="pre">Context::isInstance()</span></code>.</p>
-<p>If you want to autocomplete a static property or method from a non-static one or vice-versa,
-you can use the <code class="docutils literal notranslate"><span class="pre">fromContext()</span></code> or <code class="docutils literal notranslate"><span class="pre">toContext()</span></code> methods individually instead of <code class="docutils literal notranslate"><span class="pre">useContext()</span></code>
-to control whether the source or autocompleted property/method is static. Effectively, <code class="docutils literal notranslate"><span class="pre">useContext(Context::isStatic()</span></code>
-is equivalent to <code class="docutils literal notranslate"><span class="pre">fromContext(Context::isStatic())-&gt;toContext(Context::isStatic()</span></code></p>
+<p>Note you can also make autocomplete a static property or method from a non-static property
+or method, or vice versa. If you want to do this,
+you use the <code class="docutils literal notranslate"><span class="pre">fromContext()</span></code> method to specify whether the source is a static or instance method,
+and then the <code class="docutils literal notranslate"><span class="pre">toContext()</span></code> method to specify the context for the autocompleted property or method.
+Effectively, <code class="docutils literal notranslate"><span class="pre">useContext(Context::isStatic()</span></code> is equivalent to
+<code class="docutils literal notranslate"><span class="pre">fromContext(Context::isStatic())-&gt;toContext(Context::isStatic())</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Constants are always treated as static, and so when completing from a constant
-<code class="docutils literal notranslate"><span class="pre">fromContext(Context::isInstance())</span></code> will be ignored.</p>
+<p>Constants are always treated as static. So, when completing from a constant,
+<code class="docutils literal notranslate"><span class="pre">fromContext(Context::isInstance())</span></code> will have no effect.</p>
 </div>
 <p>Here’s an example that adds completion for the <a class="reference external" href="https://github.com/myclabs/php-enum">MyCLabs Enum</a>
 library. To use that library, you extend an <code class="docutils literal notranslate"><span class="pre">Enum</span></code> class provided by the library that
@@ -213,10 +215,10 @@ extend <code class="docutils literal notranslate"><span class="pre">MyCLabs\Enum
 </section>
 <section id="configuring-the-name-and-type">
 <h2>Configuring the Name and Type<a class="headerlink" href="#configuring-the-name-and-type" title="Permalink to this headline"></a></h2>
-<p>You can also how the name or the type are determined.</p>
+<p>You can also configure how the name or the type are determined.</p>
 <section id="configuring-the-name">
 <h3>Configuring the Name<a class="headerlink" href="#configuring-the-name" title="Permalink to this headline"></a></h3>
-<p>You can configure the name to come using a few different methods:</p>
+<p>You can configure the name using a few different methods:</p>
 <blockquote>
 <div><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">useTheSameName()</span></code></dt><dd><p>This will use the same name as the source for a method or property.</p>
@@ -245,7 +247,7 @@ with something else (for example, underscores).</p>
 For example if a property looks like <code class="docutils literal notranslate"><span class="pre">protected</span> <span class="pre">$foo</span> <span class="pre">=</span> <span class="pre">'string'</span></code>,
 this method will make the type to be <code class="docutils literal notranslate"><span class="pre">string</span></code> for the method
 or property generated from that.</p>
-<p>Not available when the source is a method which doesn’t have a value.</p>
+<p>Not available when the source is a method, which can’t have a value.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">useNameAsTheType</span></code></dt><dd><p>This uses the name of the method, property, or constant as the type.</p>
 </dd>

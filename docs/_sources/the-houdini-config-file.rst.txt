@@ -8,7 +8,7 @@ Like ``.phpstorm.meta.php``, you will use some special function calls inside
 this file to configure autocompletion.
 
 The namespace of the config file must be ``Houdini\Config\V1``. Each configuration of a dynamic
-class will begin with the function call one or more calls to the function ``houdini()``. That
+class will begin with one or more calls to the function ``houdini()``. That
 function returns an object you can use for configuring the plugin with a fluent interface.
 
 .. note::

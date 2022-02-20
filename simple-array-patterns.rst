@@ -25,8 +25,7 @@ Here's a simple example of autocompleting a property from a specification inside
        * This static array defines the valid methods.
        */
       protected static $methodDefinitions = [
-         'methodOne' => 'string',
-         'methodTwo' => 'int',
+         'methodName' => 'string',
       ];
 
       /**
@@ -55,7 +54,7 @@ Here's a simple example of autocompleting a property from a specification inside
        ->fromContext( Context::isStatic() )
        ->useArrayPattern(
             ArrayPattern::create()
-            ->match( [ ArrayPattern::NAME => ArrayPattern::TYPE ] )
+            ->match([ ArrayPattern::NAME => ArrayPattern::TYPE ])
        );
 
 
@@ -69,7 +68,7 @@ Similarly, the ``ArrayPattern::TYPE`` placeholder will match the property type o
 In order for an array pattern to generate a completion, both the name and type have to be matched
 (but see below for an exception to this).
 
-So, in this example, two non-static methods will be autocompleted for the ``SimpleArrayPatternExample``
+So, in this example, one non-static methods will be autocompleted for the ``SimpleExample``
 instances.
 
 .. note::
@@ -102,7 +101,7 @@ subset of the array - so an array can contain values not in the pattern and stil
        * This static array defines the valid methods.
        */
       protected static $methodDefinitions = [
-         'methodOne' => [
+         'someMethodName' => [
             'type' => 'string',
             'irrelevant_key' => 'irrelevant_value', // match() will still work even with this set.
          ]
@@ -143,26 +142,113 @@ subset of the array - so an array can contain values not in the pattern and stil
        );
 
 
-Autocompleting Properties Example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Matching Properties As Well as Methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Hopefully that gives you an idea of what you can do with Array Patterns. Here's a
-similar example, that generates properties an array in a constant:
+The syntax for using array patterns with properties is the same as methods, except that
+you use ``addNewProperties()`` instead of ``addNewMethods()``.
+
+The next example adds autocompleted properties.
+
+Matching More than One Method or Property
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``match()`` method will match only a single value. In order to match more than one method or property
+in the same array, we have to use ``forEachKeyAndValue()`` or ``forEachValue()``.
+
+The difference between them is that ``forEachKeyAndValue()`` will include the key, while ``forEachValue()``
+will discard it.
+
+Using forEachValue()
+####################
+
+You should use ``forEachValue()`` if the array you're iterating is an indexed and not an associative
+array if you want to generate a match for each element.
+
+Here's an example of using ``forEachValue()``
 
 .. code-block:: php
-   :caption: array-pattern-property-constant-example.php
+   :caption: array-pattern-foreach-value-example.php
 
    <?php
-   PropertiesFromConstant;
+   namespace ArrayPatternExamples;
 
-   class PropertiesFromConstantExample {
+   class ForEachValueExample {
 
       /**
        * This static array defines the valid properties.
        */
       const PROPERTY_DEFINITIONS = [
-         'propertyOne' => 'string',
-         'propertyTwo' => 'float',
+         ['name' => 'propertyOne', 'type' => 'string'],
+         ['name' => 'propertyTwo', 'type' => 'int'],
+      ];
+
+      /**
+       * Where this class stores its data.
+       */
+      protected $data = [];
+
+      public function __get($name) {
+         foreach (self::PROPERTY_DEFINITIONS as $definition) {
+            if ($definition['name'] === $name) {
+               return $this->data[$name];
+            }
+         }
+      }
+   }
+
+.. code-block:: php
+   :caption: .houdini.php
+
+   <?php
+   namespace Houdini\Config\V1;
+
+   use ArrayPatternExamples\ForEachValueExample;
+
+   houdini()->overrideClass(ForEachValueExample::class)
+       ->addNewProperties()
+       ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
+       ->useArrayPattern(
+            ArrayPattern::create()
+            ->forEachValue()
+            ->match([
+               'name' => ArrayPattern::NAME,
+               'type' => ArrayPattern::TYPE
+            ])
+       );
+
+Here we are iterating each value in the ``PROPERTY_DEFINITIONS`` constant array, and generating a property
+for each. In this example, there will be two properties in the autocompletion: ``propertyOne`` as a ``string``,
+and ``propertyTwo`` as an ``int``.
+
+Using forEachKeyAndValue()
+##########################
+
+If the array you're matching against is associative, and you want to match the name or the type in the
+key, you need to iterate with ``forEachKeyAndValue()``:
+
+.. code-block:: php
+   :caption: **array-pattern-for-each-key-and-value**.php
+
+   <?php
+   namespace ArrayPatternExamples;
+
+   class ForEachKeyAndValueExample {
+
+      /**
+       * This static array defines the valid properties.
+       */
+      const PROPERTY_DEFINITIONS = [
+         'propertyOne' => [
+            'metadata' => [
+               'type' => 'string'
+            ]
+         ],
+         'propertyTwo' => [
+            'metadata' => [
+               'type' => 'float'
+            ]
+         ],
       ];
 
       /**
@@ -183,16 +269,27 @@ similar example, that generates properties an array in a constant:
    <?php
    namespace Houdini\Config\V1;
 
-   use ArrayPatternExamples\PropertiesFromConstantExample;
+   use ArrayPatternExamples\ForEachKeyAndValueExample;
 
-   houdini()->overrideClass(PropertiesFromConstantExample::class)
+   houdini()->overrideClass(ForEachKeyAndValueExample::class)
        ->addNewProperties()
        ->fromConstantOfTheSameClass('PROPERTY_DEFINITIONS')
        ->useArrayPattern(
             ArrayPattern::create()
-            ->match( [ ArrayPattern::NAME => ArrayPattern::TYPE ] )
+            ->forEachKeyAndValue()
+            ->match([
+               ArrayPattern::NAME => [
+                  'metadata' => [
+                     'type' => ArrayPattern::TYPE
+                  ]
+               ]
+            ])
        );
 
+In this example, the property definitions contain the name of the property as the first key.
+The type of the property is extracted from the ``metadata`` array.
+
+Here we changed the example to generate multiple properties from our constant definitions.
 
 Combining Patterns with other methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

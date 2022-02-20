@@ -10,7 +10,7 @@ The methods for doing so are ``addNewMethods()`` and ``addNewProperties()``.
 Adding New Methods
 ~~~~~~~~~~~~~~~~~~
 
-To add new methods, you call the :func:`addNewMethods` after :func:`overrideClass`
+To add new methods, you call the ``addNewMethods`` after ``overrideClass``
 and the you must specify an :ref:`available source <available-sources>` for the new methods.
 
 Sources include constants, properties, or methods from another class or the same class.
@@ -107,11 +107,12 @@ Note you can also make autocomplete a static property or method from a non-stati
 or method, or vice versa. If you want to do this,
 you use the ``fromContext()`` method to specify whether the source is a static or instance method,
 and then the ``toContext()`` method to specify the context for the autocompleted property or method.
-Effectively, ``useContext(Context::isStatic()`` is equivalent to ``fromContext(Context::isStatic())->toContext(Context::isStatic()``
+Effectively, ``useContext(Context::isStatic()`` is equivalent to
+``fromContext(Context::isStatic())->toContext(Context::isStatic())``
 
 .. note::
-    Constants are always treated as static, and so when completing from a constant
-    ``fromContext(Context::isInstance())`` will be ignored.
+    Constants are always treated as static. So, when completing from a constant,
+    ``fromContext(Context::isInstance())`` will have no effect.
 
 Here's an example that adds completion for the `MyCLabs Enum <https://github.com/myclabs/php-enum>`_
 library. To use that library, you extend an ``Enum`` class provided by the library that
@@ -170,7 +171,7 @@ The types of properties and methods are also configurable using methods:
        this method will make the type to be ``string`` for the method
        or property generated from that.
 
-       Not available when the source is a method which doesn't have a value.
+       Not available when the source is a method, which can't have a value.
    ``useNameAsTheType``
        This uses the name of the method, property, or constant as the type.
    ``useCustomType(string $type)``

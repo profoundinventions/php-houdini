@@ -37,7 +37,7 @@ Almost the same configuration works for methods - just replace ``promoteProperti
 ``promoteMethods()``:
 
 .. code-block:: php
-   :caption .houdini.php
+   :caption: .houdini.php
 
    <?php
    namespace Houdini\Config\V1;
@@ -52,7 +52,7 @@ Almost the same configuration works for methods - just replace ``promoteProperti
 
 A list of available transforms is on the ``NameTransform`` class in the ``Houdini\Config\V1`` namespace.
 You can see the full list by typing ``NameTransform::`` and then invoking PhpStorm's completion, or here on
-the :doc:`list of transforms <list-of-transforms>`
+the :doc:`list of transforms <list-of-transforms>`.
 
 Go to the :doc:`next step <adding-new-methods-and-properties>` to learn how you can
 add properties and methods that do not exist on the class already.

@@ -10,10 +10,10 @@ The methods for doing so are ``addNewMethods()`` and ``addNewProperties()``.
 Adding New Methods
 ~~~~~~~~~~~~~~~~~~
 
-To add new methods, you call the ``addNewMethods`` after ``overrideClass``
-and the you must specify an :ref:`available source <available-sources>` for the new methods.
+To add new methods, you call ``addNewMethods`` after ``overrideClass``
+and then you must specify an :ref:`available source <available-sources>` for the new methods.
 
-Sources include constants, properties, or methods from another class or the same class.
+Sources include constants, properties, or methods of the same class or another class.
 
 
 .. note::
@@ -80,46 +80,33 @@ Here's a list of all the available sources.
    ``fromAllMethodsOfTheSameClass()``
        Use all methods of the same class that you're overriding in ``overrideClass`` as a source.
    ``fromAllMethodsOfAnotherClass(string $className)``
-       Use all methods of another class as a source.
-   ``fromAllConstantsOfTheSameClass()``
-       Use all contants of the same class that you're overriding in ``overrideClass`` as a source.
-   ``fromAllConstantsOfAnotherClass(string $className)``
-       Use all constants of another class as a source.
-   ``fromConstantOfTheSameClass(string $constantName)``
-       Use a single property of the same class that you're overriding in ``overrideClass`` as a source.
+       Use all methods of the class specified by ``$className`` as a source.
    ``fromAllPropertiesOfTheSameClass()``
        Use all properties of the same class that you're overriding in ``overrideClass`` as a source.
    ``fromAllPropertiesOfAnotherClass(string $className)``
-       Use all properties of another class as a source.
+       Use all properties of the class specified by ``$className`` as a source.
    ``fromPropertyOfTheSameClass(string $propertyName)``
-       Use a single property of the same class that you're overriding in ``overrideClass`` as a source.
+       Use a single property with the name of ``$propertyName`` of the same class that you're overriding in ``overrideClass`` as a source.
+   ``fromAllConstantsOfTheSameClass()``
+       Use all contants of the same class that you're overriding in ``overrideClass`` as a source.
+   ``fromAllConstantsOfAnotherClass(string $className)``
+       Use all constants of the class specified by ``$className`` as a source.
+   ``fromConstantOfTheSameClass(string $constantName)``
+       Use a single constant with the name of ``$constantName`` of the same class that you're overriding in ``overrideClass`` as a source.
 
 Using Static Properties and Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, methods and properties are added in *instance* context. This means
-you can only access them as instance methods and not as static methods or properties.
+you can only access them as instance methods, and not as static methods or properties. Also,
 
 You can specify autocompleting in one context or another using the ``useContext`` method, and
 then specifying which context with ``Context::isStatic()`` or ``Context::isInstance()``.
 
-Note you can also make autocomplete a static property or method from a non-static property
-or method, or vice versa. If you want to do this,
-you use the ``fromContext()`` method to specify whether the source is a static or instance method,
-and then the ``toContext()`` method to specify the context for the autocompleted property or method.
-Effectively, ``useContext(Context::isStatic()`` is equivalent to
-``fromContext(Context::isStatic())->toContext(Context::isStatic())``
-
-.. note::
-    Constants are always treated as static. So, when completing from a constant,
-    ``fromContext(Context::isInstance())`` will have no effect.
-
 Here's an example that adds completion for the `MyCLabs Enum <https://github.com/myclabs/php-enum>`_
 library. To use that library, you extend an ``Enum`` class provided by the library that
-allows you to access a static method that corresponds to constants on the enum class.
-
-Note this example will add completion for *all* Enum classes in your project that
-extend ``MyCLabs\Enum\Enum`` - you don't need to specify each one individually.
+allows you to access a static method that corresponds to constants on the enum class. This example
+will add completion for those enums as static methods:
 
 .. code-block:: php
    :caption: .houdini.php
@@ -132,7 +119,24 @@ extend ``MyCLabs\Enum\Enum`` - you don't need to specify each one individually.
    houdini()->overrideClass(Enum::class)
    ->addNewMethods()
    ->fromAllConstantsOfTheSameClass()
-   ->toContext( Context::isStatic() );
+   ->useContext( Context::isStatic() );
+
+This example will add completion for *all* Enum classes in your project that
+extend ``MyCLabs\Enum\Enum`` - you don't need to specify each one individually.
+
+Swapping contexts
+#################
+
+Note you can also autocomplete a static property or method from a non-static property
+or method, or vice versa. If you want to do this,
+you use the ``fromContext()`` method to specify whether the source is a static or instance method,
+and then the ``toContext()`` method to specify the context for the autocompleted property or method.
+Effectively, ``useContext(Context::isStatic()`` is equivalent to
+``fromContext(Context::isStatic())->toContext(Context::isStatic())``
+
+.. note::
+    Constants are always treated as static. So, when completing from a constant,
+    ``fromContext(Context::isInstance())`` will have no effect.
 
 
 Configuring the Name and Type

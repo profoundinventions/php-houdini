@@ -45,7 +45,7 @@ This is accessible with ``AnyFilter::`` in ``.houdini.php``:
 All filters
 ~~~~~~~~~~~
 
-This is accessible with ``AnyFilter::`` in ``.houdini.php``:
+This is accessible with ``AllFilters::`` in ``.houdini.php``:
 
     - ``create(Filter ... $filters)``
         Pass a list of filters here. If all apply, the filter will pass.

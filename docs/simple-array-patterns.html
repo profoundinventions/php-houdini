@@ -151,14 +151,14 @@ it, you pass the pattern to the <code class="docutils literal notranslate"><span
 </pre></div>
 </div>
 </div>
-<p>In this example, we’re autocompleting a method from a definition in the array stored
-in the static property <code class="docutils literal notranslate"><span class="pre">$methodDefinitions</span></code>. The definition has to include
-both the method name and the return type in order for a completion match to be generated. The
-name is matched with the <code class="docutils literal notranslate"><span class="pre">ArrayPattern::NAME</span></code> placeholder. Whatever is in the array will
-be used in th completion.</p>
-<p>Similarly, the <code class="docutils literal notranslate"><span class="pre">ArrayPattern::TYPE</span></code> placeholder will match the property type or the method return type.
-In order for an array pattern to generate a completion, both the name and type have to be matched
-(but see below for an exception to this).</p>
+<p>In this example, we’re autocompleting a method from a definition in the array
+stored in the static property <code class="docutils literal notranslate"><span class="pre">$methodDefinitions</span></code>. The definition has to
+include both the method name and the return type in order for a completion
+match to be generated. The name is matched with the <code class="docutils literal notranslate"><span class="pre">ArrayPattern::NAME</span></code>
+placeholder. Whatever is in the array will be used in the completion.</p>
+<p>Similarly, the <code class="docutils literal notranslate"><span class="pre">ArrayPattern::TYPE</span></code> placeholder will match the property type or
+the method return type. In order for an array pattern to generate a completion,
+both the name and type have to be matched (but see below for an exception to this).</p>
 <p>So, in this example, one non-static methods will be autocompleted for the <code class="docutils literal notranslate"><span class="pre">SimpleExample</span></code>
 instances.</p>
 <div class="admonition note">
@@ -170,12 +170,15 @@ part.</p>
 </section>
 <section id="the-match-method">
 <h2>The <code class="docutils literal notranslate"><span class="pre">match()</span></code> method<a class="headerlink" href="#the-match-method" title="Permalink to this headline"></a></h2>
-<p>The argument passed to the <code class="docutils literal notranslate"><span class="pre">match</span></code> method is the one that is generating the completion.</p>
-<p>There are two options to pass to <code class="docutils literal notranslate"><span class="pre">match</span></code>: a string or an array. In the previous example, we passed an array.
-We’ll look at when you might want to pass a string later. The <code class="docutils literal notranslate"><span class="pre">match</span></code> should contain either either
-<code class="docutils literal notranslate"><span class="pre">ArrayPattern::NAME</span></code> or <code class="docutils literal notranslate"><span class="pre">ArrayPattern::TYPE</span></code> to get either the property type or the method return type.</p>
-<p>When matching against an array value, the <code class="docutils literal notranslate"><span class="pre">match()</span></code> method looks only at the relevant
-subset of the array - so an array can contain values not in the pattern and still match:</p>
+<p>The argument passed to the <code class="docutils literal notranslate"><span class="pre">match</span></code> method is the one that is generating the
+completion.</p>
+<p>There are two options to pass to <code class="docutils literal notranslate"><span class="pre">match</span></code>: a string or an array. In the previous
+example, we passed an array. We’ll look at when you might want to pass a string
+later. The <code class="docutils literal notranslate"><span class="pre">match</span></code> should contain either either <code class="docutils literal notranslate"><span class="pre">ArrayPattern::NAME</span></code> or
+<code class="docutils literal notranslate"><span class="pre">ArrayPattern::TYPE</span></code> to get either the property type or the method return type.</p>
+<p>When matching against an array value, the <code class="docutils literal notranslate"><span class="pre">match()</span></code> method looks only at the
+relevant subset of the array - so an array can contain values not in the pattern
+and still match:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">array-pattern-match-example.php</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -234,14 +237,14 @@ subset of the array - so an array can contain values not in the pattern and stil
 <h2>Matching Properties As Well as Methods<a class="headerlink" href="#matching-properties-as-well-as-methods" title="Permalink to this headline"></a></h2>
 <p>The syntax for using array patterns with properties is the same as methods, except that
 you use <code class="docutils literal notranslate"><span class="pre">addNewProperties()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">addNewMethods()</span></code>.</p>
-<p>The next example adds autocompleted properties.</p>
 </section>
 <section id="matching-more-than-one-method-or-property">
 <h2>Matching More than One Method or Property<a class="headerlink" href="#matching-more-than-one-method-or-property" title="Permalink to this headline"></a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">match()</span></code> method will match only a single value. In order to match more than one method or property
-in the same array, we have to use <code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code> or <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code>.</p>
-<p>The difference between them is that <code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code> will include the key, while <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code>
-will discard it.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">match()</span></code> method will match only a single value. In order to match more
+than one method or property in the same array, we have to use
+<code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code> or <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code>.</p>
+<p>The difference between them is that <code class="docutils literal notranslate"><span class="pre">forEachKeyAndValue()</span></code> will include the key,
+while <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code> will discard it.</p>
 <section id="using-foreachvalue">
 <h3>Using forEachValue()<a class="headerlink" href="#using-foreachvalue" title="Permalink to this headline"></a></h3>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">forEachValue()</span></code> if the array you’re iterating is an indexed and not an associative

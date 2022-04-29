@@ -2,3 +2,4 @@ todo.md
 .idea/
 venv/
 _build
+.DS_Store

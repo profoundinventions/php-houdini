@@ -33,7 +33,7 @@ completion.
 The ``overrideClass()`` method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``overrideClass()`` method takes one paraemeter: the name of the class
+The ``overrideClass()`` method takes one parameter: the name of the class
 to modify the autocompletion for. You can either pass a fully-qualified class
 name as a string, or add a ``use`` statement add the ``::class`` modifier after the class
 to affect:

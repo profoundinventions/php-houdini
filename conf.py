@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'PHP Houdini'
-copyright = '2021, Profound Inventions, LLC'
+copyright = '2022, Profound Inventions, LLC'
 author = 'Profound Inventions, LLC'
 
 

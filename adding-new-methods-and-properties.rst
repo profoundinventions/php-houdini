@@ -98,7 +98,7 @@ Using Static Properties and Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, methods and properties are added in *instance* context. This means
-you can only access them as instance methods, and not as static methods or properties. Also,
+you can only access them as instance methods, and not as static methods or properties.
 
 You can specify autocompleting in one context or another using the ``useContext`` method, and
 then specifying which context with ``Context::isStatic()`` or ``Context::isInstance()``.
@@ -117,9 +117,9 @@ will add completion for those enums as static methods:
    use MyCLabs\Enum\Enum;
 
    houdini()->overrideClass(Enum::class)
-   ->addNewMethods()
-   ->fromAllConstantsOfTheSameClass()
-   ->useContext( Context::isStatic() );
+            ->addNewMethods()
+            ->fromAllConstantsOfTheSameClass()
+            ->useContext( Context::isStatic() );
 
 This example will add completion for *all* Enum classes in your project that
 extend ``MyCLabs\Enum\Enum`` - you don't need to specify each one individually.

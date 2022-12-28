@@ -2,18 +2,6 @@
 Complex Array Patterns
 ------------------------
 
-The ``match()`` on ``ArrayPattern`` is already capable of generating multiple matches from
-a single key-value pair array.
-
-However, if the array pattern in a class is more complex, ``match()`` may not be enough. So Houdini
-also has methods on the ``ArrayPattern`` class to *iterate* an array to extract methods and
-properties for completion, and to specify.
-
-Those methods and their usage is described further below.
-
-Fundamental Concepts
---------------------
-
 In an ``ArrayPattern``, each completion match will only be generated when you have *both*
 a name and a type. For many of the more complex scenarios below, first a name match occurs,
 and then the parse continues until a type match happens. If this match happens multiple times,

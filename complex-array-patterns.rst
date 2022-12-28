@@ -4,9 +4,10 @@ Complex Array Patterns
 
 In an ``ArrayPattern``, each completion match will only be generated when you have *both*
 a name and a type. For many of the more complex scenarios below, first a name match occurs,
-and then the parse continues until a type match happens. If this match happens multiple times,
-while iterating the array of the pattern, a completion result will be generated for each of
-the matches that have unique names.
+and then the parse continues until a type match happens.
+
+If this match happens multiple times while iterating the array the pattern is matching against,
+a completion result will be generated for each of the matches that have unique names.
 
 
 Selecting a particular key with selectKey(string $key)

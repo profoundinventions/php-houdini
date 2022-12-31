@@ -13,8 +13,12 @@ function returns an object you can use for configuring the plugin with a fluent 
 
 .. note::
     Although the syntax of the config file is PHP, you can't use PHP functions like ``str_replace``
-    inside ``.houdini.php``. You can only use classes and methods from the ``Houdini\Config\V1``
+    inside ``.houdini.php`` because the file isn't actually run through PHP, but only examined
+    by the Houdini plugin. You can only use classes and methods from the ``Houdini\Config\V1``
     namespace inside ``.houdini.php``.
+    
+    Note that you can add ``use`` statements to the file and use `::class` to refer to the names
+    of your classes, which is useful and used in many examples in this tutorial.
 
 So, to start configuring the plugin, you can do this:
 

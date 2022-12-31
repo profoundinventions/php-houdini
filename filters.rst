@@ -1,9 +1,8 @@
 Filters
 -------
 
-Filters allow you to control which properties or methods are generated. For example, you can use ``promoteMethods
-()`` and the ``filter()`` operator to only promote methods
-of a class that have a certain character string:
+Filters allow you to control which properties or methods are generated. For example, you can use ``promoteProperties()`` 
+and the ``filter()`` operator to only promote properties of a class that have a certain character string:
 
 .. code-block:: php
    :caption: .houdini.php

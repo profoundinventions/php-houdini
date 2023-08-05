@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PHP Houdini Tutorial &mdash; PHP Houdini  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/js/custom.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+<a class="internal" href="https://www.profoundinventions.com/php-houdini.html">
+    PHP Houdini
+    <img alt="PHP Houdini" src="https://www.profoundinventions.com/img/wizard-hat-white.png">
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-houdini-config-file.html">The Houdini Config File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-properties.html">Promoting Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-new-methods-and-properties.html">Adding New Methods and Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">PHP Houdini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>PHP Houdini Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="php-houdini-tutorial">
+<h1>PHP Houdini Tutorial<a class="headerlink" href="#php-houdini-tutorial" title="Permalink to this headline"></a></h1>
+<p>This document describes how to use the PhpStorm plugin <code class="docutils literal notranslate"><span class="pre">PHP</span> <span class="pre">Houdini</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">PHP</span> <span class="pre">Houdini</span></code> allows you to add completion for classes with magic methods
+and properties.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-houdini-config-file.html">The Houdini Config File</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="the-houdini-config-file.html#the-overrideclass-method">The <code class="docutils literal notranslate"><span class="pre">overrideClass()</span></code> method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-properties.html">Promoting Properties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="promoting-properties.html#only-promoting-protected-properties">Only promoting protected properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="filters.html#using-multiple-filters-with-logical-and">Using multiple filters (with logical AND)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html#using-multiple-filters-with-logical-or">Using multiple filters (with logical OR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html#combining-filters-with-logical-or-and-logical-and">Combining filters with logical OR and logical AND</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#transforming-auto-completed-properties">Transforming auto-completed properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html#transforming-auto-completed-methods">Transforming auto-completed methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adding-new-methods-and-properties.html">Adding New Methods and Properties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adding-new-methods-and-properties.html#adding-new-methods">Adding New Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-new-methods-and-properties.html#adding-new-properties">Adding New Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-new-methods-and-properties.html#available-sources">Available Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-new-methods-and-properties.html#using-static-properties-and-methods">Using Static Properties and Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adding-new-methods-and-properties.html#swapping-contexts">Swapping contexts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adding-new-methods-and-properties.html#configuring-the-name-and-type">Configuring the Name and Type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adding-new-methods-and-properties.html#configuring-the-name">Configuring the Name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-new-methods-and-properties.html#configuring-the-type">Configuring the Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simple-array-patterns.html">Simple Array Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simple-array-patterns.html#simple-arraypattern-example">Simple ArrayPattern Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simple-array-patterns.html#the-match-method">The <code class="docutils literal notranslate"><span class="pre">match()</span></code> method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simple-array-patterns.html#matching-properties-as-well-as-methods">Matching Properties As Well as Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simple-array-patterns.html#matching-more-than-one-method-or-property">Matching More than One Method or Property</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simple-array-patterns.html#using-foreachvalue">Using forEachValue()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simple-array-patterns.html#using-foreachkeyandvalue">Using forEachKeyAndValue()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simple-array-patterns.html#combining-patterns-with-other-methods">Combining Patterns with other methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="complex-array-patterns.html">Complex Array Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="complex-array-patterns.html#selecting-a-particular-key-with-selectkey-string-key">Selecting a particular key with selectKey(string $key)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="complex-array-patterns.html#handling-mixed-associative-arrays">Handling mixed associative arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="complex-array-patterns.html#using-arraypattern-next">Using <code class="docutils literal notranslate"><span class="pre">ArrayPattern::NEXT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="complex-array-patterns.html#using-arraypattern-anything">Using <code class="docutils literal notranslate"><span class="pre">ArrayPattern::ANYTHING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="complex-array-patterns.html#adieu-to-array-patterns">Adieu to Array Patterns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="list-of-filters.html#name-filters">Name filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list-of-filters.html#type-filters">Type filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list-of-filters.html#access-filters">Access filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list-of-filters.html#any-filter">Any filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list-of-filters.html#all-filters">All filters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="list-of-transforms.html#name-transforms">Name transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list-of-transforms.html#type-transforms">Type transforms</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Profound Inventions, LLC.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

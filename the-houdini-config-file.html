@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Houdini Config File &mdash; PHP Houdini  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/js/custom.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Promoting Properties" href="promoting-properties.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+<a class="internal" href="https://www.profoundinventions.com/php-houdini.html">
+    PHP Houdini
+    <img alt="PHP Houdini" src="https://www.profoundinventions.com/img/wizard-hat-white.png">
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Houdini Config File</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-overrideclass-method">The <code class="docutils literal notranslate"><span class="pre">overrideClass()</span></code> method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-properties.html">Promoting Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="promoting-methods.html">Promoting Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-new-methods-and-properties.html">Adding New Methods and Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-patterns.html">Array Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support or Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-filters.html">List of Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-transforms.html">List of Transforms</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PHP Houdini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>The Houdini Config File</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/the-houdini-config-file.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-houdini-config-file">
+<h1>The Houdini Config File<a class="headerlink" href="#the-houdini-config-file" title="Permalink to this headline"></a></h1>
+<p>The Houdini plugin is configured by a <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code> config file
+in the root of each project. This file is similar  to <code class="docutils literal notranslate"><span class="pre">.phpstorm.meta.php</span></code>.
+Like <code class="docutils literal notranslate"><span class="pre">.phpstorm.meta.php</span></code>, you will use some special function calls inside
+this file to configure autocompletion.</p>
+<p>The namespace of the config file must be <code class="docutils literal notranslate"><span class="pre">Houdini\Config\V1</span></code>. Each configuration of a dynamic
+class will begin with one or more calls to the function <code class="docutils literal notranslate"><span class="pre">houdini()</span></code>. That
+function returns an object you can use for configuring the plugin with a fluent interface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the syntax of the config file is PHP, you can’t use PHP functions like <code class="docutils literal notranslate"><span class="pre">str_replace</span></code>
+inside <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code> because the file isn’t actually run through PHP, but only examined
+by the Houdini plugin. You can only use classes and methods from the <code class="docutils literal notranslate"><span class="pre">Houdini\Config\V1</span></code>
+namespace inside <code class="docutils literal notranslate"><span class="pre">.houdini.php</span></code>.</p>
+<p>Note that you can add <code class="docutils literal notranslate"><span class="pre">use</span></code> statements to the file and use <cite>::class</cite> to refer to the names
+of your classes, which is useful and used in many examples in this tutorial.</p>
+</div>
+<p>So, to start configuring the plugin, you can do this:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>Inside .houdini.php</strong></span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
+
+<span class="nx">houdini</span><span class="p">()</span><span class="o">-&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>PhpStorm should show a dropdown with completion options once you finish typing
+the <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> arrow. You’ll need to use the <code class="docutils literal notranslate"><span class="pre">overrideClass()</span></code> method to add dynamic
+completion.</p>
+<section id="the-overrideclass-method">
+<h2>The <code class="docutils literal notranslate"><span class="pre">overrideClass()</span></code> method<a class="headerlink" href="#the-overrideclass-method" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">overrideClass()</span></code> method takes one parameter: the name of the class
+to modify the autocompletion for. You can either pass a fully-qualified class
+name as a string, or add a <code class="docutils literal notranslate"><span class="pre">use</span></code> statement add the <code class="docutils literal notranslate"><span class="pre">::class</span></code> modifier after the class
+to affect:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><strong>Inside .houdini.php</strong></span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Houdini\Config\V1</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">YourDynamicNamespace\YourDynamicClass</span><span class="p">;</span>
+
+<span class="c1">// works:</span>
+<span class="nx">houdini</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="s1">&#39;\YourDynamicNamespace\YourDynamicClass&#39;</span><span class="p">);</span>
+
+<span class="c1">// also works:</span>
+<span class="nx">houdini</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">overrideClass</span><span class="p">(</span><span class="nx">YourDynamicClass</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">overrideClass()</span></code> by itself doesn’t do anything here - it only
+returns an object that you can use to further configure completion with
+a <a class="reference external" href="https://en.wikipedia.org/wiki/Fluent_interfaceinterface">fluent interface</a>.</p>
+<p>Go to the <a class="reference internal" href="promoting-properties.html"><span class="doc">next step</span></a> to see a more complete example.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="promoting-properties.html" class="btn btn-neutral float-right" title="Promoting Properties" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Profound Inventions, LLC.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
